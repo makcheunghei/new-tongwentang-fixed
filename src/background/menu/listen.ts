@@ -1,10 +1,11 @@
 import { LangType } from 'tongwen-core/dictionaries';
 import { browser } from '../../service/browser';
+import type { ActionMenuId } from '../../service/menu/browser-action';
 import type { ContextMenuChildrenId } from '../../service/menu/create-menu';
 import { dispatchCtAction } from '../../service/runtime/content';
 import { convertClipboard } from '../clipboard';
 import { bgLog } from '../logger';
-import { addDomainToRules, type ActionMenuId } from './browser-action';
+import { addDomainToRules } from './browser-action';
 
 export const listenMenusEvent = () => {
   browser.contextMenus.onClicked.addListener(async (info, tab) => {

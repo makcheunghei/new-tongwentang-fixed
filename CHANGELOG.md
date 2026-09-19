@@ -19,7 +19,8 @@ All notable changes to this project will be documented in this file.
 - Fixed stale converter caches when custom or default dictionaries change.
 - Fixed textarea and input conversion by preserving selection, invoking native value setters, and dispatching proper input events for controlled UIs.
 - Added editable-region conversion and nested Shadow DOM active-element detection.
-- Fixed the initial context menu not being created and fixed duplicate option-page storage listeners that leaked after re-renders.
+- Fixed the initial context menu not being created, serialized full menu rebuilds, cleared stale menu IDs before recreation, and handled Chrome context-menu callback errors to prevent duplicate-ID runtime errors.
+- Fixed duplicate option-page storage listeners that leaked after re-renders.
 - Fixed regular-expression filter state reuse and made domain matching exact or subdomain-only, preventing suffix spoofing.
 - Fixed invalid regular-expression flag handling and URL validation.
 - Split option pages into lazy-loaded chunks, made build manifest generation synchronous, and added unit/CI coverage.

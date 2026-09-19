@@ -1,7 +1,7 @@
 import { patchFilterRulesRegExp } from '../../preference/filter-rule';
 import type { Pref } from '../../preference/types/lastest';
 import { setBadge } from '../../service/browser-action/set-badge';
-import { createMenu } from '../../service/menu/create-menu';
+import { rebuildMenus } from '../../service/menu/rebuild-menus';
 import { getStorage, initialStorage, setStorage, type StorageChanges } from '../../service/storage/storage';
 import { resetConverter } from '../converter';
 
@@ -43,7 +43,7 @@ export const bgHandlePrefUpdate = (changes: StorageChanges): void => {
         if (change.newValue) {
           const menu = change.newValue as Pref['menu'];
           state && (state.menu = menu);
-          await createMenu(menu);
+          await rebuildMenus(menu);
         }
         break;
       case 'filter':

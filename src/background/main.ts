@@ -1,8 +1,7 @@
-import { createMenu } from '../service/menu/create-menu';
 import { i18n } from '../service/i18n/i18n';
+import { rebuildMenus } from '../service/menu/rebuild-menus';
 import { mountBrowserActionListener } from './browser-action';
 import { mountCommandListener } from './commands';
-import { createBrowserActionMenus } from './menu/browser-action';
 import { listenMenusEvent } from './menu/listen';
 import { mountRuntimeListener } from './runtime';
 import { mountPrefListener } from './state/mount-pref-listener';
@@ -13,9 +12,8 @@ mountRuntimeListener();
 mountBrowserActionListener();
 mountCommandListener();
 listenMenusEvent();
-createBrowserActionMenus();
 bgInitialPref()
-  .then(({ menu }) => createMenu(menu))
+  .then(({ menu }) => rebuildMenus(menu))
   .catch(console.error);
 
 console.info(`${i18n.getMessage('MSG_EXT_NAME')} 👌`);
