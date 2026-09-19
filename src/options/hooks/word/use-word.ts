@@ -4,22 +4,22 @@ import type { PrefWord } from '../../../preference/types/v2';
 import { getStorage, listenStorage } from '../../../service/storage/storage';
 
 export const useWord = () => {
-  const [word, setWord] = useState<PrefWord>(getDefaultPref().word);
-
-  listenStorage(
-    ({ word }) => {
-      setWord(word?.newValue as PrefWord);
-    },
-    { keys: ['word'], areaName: ['local'] },
-  );
+  const [word, setWord] = useState<PrefWord>(() => getDefaultPref().word);
 
   useEffect(
     () =>
-      void getStorage('word').then(({ word }) => {
-        setWord(word);
-      }),
+      listenStorage(
+        ({ word }) => {
+          if (word?.newValue) setWord(word.newValue as PrefWord);
+        },
+        { keys: ['word'], areaName: ['local'] },
+      ),
     [],
   );
+
+  useEffect(() => {
+    getStorage('word').then(({ word }) => setWord(word));
+  }, []);
 
   return { word, setWord };
 };

@@ -14,7 +14,7 @@ import { getTarget } from './handle-get-target';
  * background message handler
  */
 export function mountRuntimeListener() {
-  browser.runtime.onMessage.addListener(async (message, sender) => {
+  browser.runtime.onMessage.addListener(async (message: unknown, sender: browser.Runtime.MessageSender) => {
     const action = message as BgReqAction;
     bgLog('[BG_RECEIVE_REQ] req:', action, 'sender:', sender);
 

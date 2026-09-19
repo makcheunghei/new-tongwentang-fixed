@@ -1,19 +1,17 @@
-import type { Dispatch, FC} from 'react';
+import type { Dispatch, FC } from 'react';
 import { useCallback } from 'react';
 import { i18n } from '../../../service/i18n/i18n';
-import type { PageAction, PageState} from '../../hooks/page';
+import type { PageAction, PageState } from '../../hooks/page';
 import { PageType } from '../../hooks/page';
 
 export const Navbar: FC<{ page: PageState; setPage: Dispatch<PageAction> }> = ({ page, setPage }) => {
-  const setPageWith = useCallback((type: PageType) => () => { setPage({ type }); }, [setPage]);
+  const toGeneral = useCallback(() => setPage({ type: PageType.general }), [setPage]);
+  const toMenu = useCallback(() => setPage({ type: PageType.menu }), [setPage]);
+  const toFilter = useCallback(() => setPage({ type: PageType.filter }), [setPage]);
+  const toWord = useCallback(() => setPage({ type: PageType.word }), [setPage]);
+  const toAbout = useCallback(() => setPage({ type: PageType.about }), [setPage]);
 
-  const toGeneral = useCallback(setPageWith(PageType.general), [setPageWith]);
-  const toMenu = useCallback(setPageWith(PageType.menu), [setPageWith]);
-  const toFilter = useCallback(setPageWith(PageType.filter), [setPageWith]);
-  const toWord = useCallback(setPageWith(PageType.word), [setPageWith]);
-  const toAbout = useCallback(setPageWith(PageType.about), [setPageWith]);
-
-  const isActive = useCallback((type: PageType) => (type === page.type ? 'active' : ''), [page]);
+  const isActive = useCallback((type: PageType) => (type === page.type ? 'active' : ''), [page.type]);
 
   return (
     <nav>

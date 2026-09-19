@@ -7,20 +7,18 @@ import { addFilterRule } from '../../service/storage/local';
 import { getHostName, getRandomId } from '../../utilities';
 import { getSessionState, setSessionState } from '../session';
 
-// TODO: handle for none http protocol url
 export const addDomainToRules = (target: FilterTarget, tab: browser.Tabs.Tab) => {
-  isUrlLike(tab.url!) &&
-    addFilterRule({
-      target,
-      regexp: null,
-      id: getRandomId(),
-      pattern: getHostName(tab.url!),
-    });
+  if (!tab.url || !isUrlLike(tab.url)) return;
+  return addFilterRule({
+    target,
+    regexp: null,
+    id: getRandomId(),
+    pattern: getHostName(tab.url),
+  });
 };
 
 export type ActionMenuId = (
-  | ReturnType<typeof createBrowserActionProperties>
-  | ReturnType<typeof createClipboardProperties>
+  ReturnType<typeof createBrowserActionProperties> | ReturnType<typeof createClipboardProperties>
 )[number]['id'];
 
 const createBrowserActionProperties = () =>
@@ -55,22 +53,21 @@ const createClipboardProperties = () =>
     },
   ] as const satisfies browser.Menus.CreateCreatePropertiesType[];
 
-// TODO: need icon
 export async function createBrowserActionMenus(): Promise<unknown> {
-  return getSessionState().then(async ({ hasBrowserActionMenu }) => {
-    if (hasBrowserActionMenu) return;
+  const { hasBrowserActionMenu } = await getSessionState();
+  if (hasBrowserActionMenu) return;
 
-    const browserActionMenuItems: browser.Menus.CreateCreatePropertiesType[] = [
-      ...createBrowserActionProperties(),
-      ...createClipboardProperties(),
-    ].map(item =>
-      Object.assign(item, {
-        type: 'normal',
-        contexts: ['action'],
-      } satisfies browser.Menus.CreateCreatePropertiesType),
-    );
+  const browserActionMenuItems: browser.Menus.CreateCreatePropertiesType[] = [
+    ...createBrowserActionProperties(),
+    ...createClipboardProperties(),
+  ].map(item =>
+    Object.assign(item, {
+      type: 'normal',
+      contexts: ['action'],
+    } satisfies browser.Menus.CreateCreatePropertiesType),
+  );
 
-    const task = browserActionMenuItems.map(item => browser.contextMenus.create(item));
-    return Promise.resolve([task, setSessionState({ hasBrowserActionMenu: Promise.resolve(task) })]);
-  });
+  const menus = browserActionMenuItems.map(item => browser.contextMenus.create(item));
+  await setSessionState({ hasBrowserActionMenu: true });
+  return menus;
 }

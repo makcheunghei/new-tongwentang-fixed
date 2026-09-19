@@ -1,4 +1,4 @@
-import type { FC, RefObject, SyntheticEvent} from 'react';
+import type { FC, SyntheticEvent } from 'react';
 import { useCallback, useRef } from 'react';
 import { i18n } from '../../../service/i18n/i18n';
 import { exportPref } from '../../../service/storage/export-pref';
@@ -12,9 +12,9 @@ const onload = (event: ProgressEvent<FileReader>) => {
 };
 
 export const Preferences: FC = () => {
-  const ref = useRef<HTMLInputElement>();
+  const ref = useRef<HTMLInputElement>(null);
 
-  const showDialog = useCallback(() => ref.current?.click(), [ref.current]);
+  const showDialog = useCallback(() => ref.current?.click(), []);
 
   const handleLoad = useCallback((_: SyntheticEvent<HTMLInputElement>) => {
     const reader = new FileReader();
@@ -26,14 +26,7 @@ export const Preferences: FC = () => {
     <div className="container">
       <div className="columns">
         <div className="column">
-          <input
-            type="file"
-            style={{ display: 'none' }}
-            accept=".json"
-            // TODO: remove type assertion after react fix type
-            ref={ref as RefObject<HTMLInputElement>}
-            onChange={handleLoad}
-          />
+          <input type="file" style={{ display: 'none' }} accept=".json" ref={ref} onChange={handleLoad} />
           <Button type="primary" onClick={showDialog}>
             {i18n.getMessage('MSG_IMPORT')} <i className="icon icon-upload" />
           </Button>

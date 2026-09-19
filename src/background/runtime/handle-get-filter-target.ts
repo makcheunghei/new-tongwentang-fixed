@@ -1,14 +1,15 @@
-import { isRegExpLike } from '../../preference/filter-rule';
+import { matchesFilterRule } from '../../preference/filter-rule';
 import type { Pref } from '../../preference/types/lastest';
-import type { FilterTarget, PrefFilterRule } from '../../preference/types/v2';
-
-const findRule = (rules: PrefFilterRule[], url: URL) =>
-  rules.find(rule =>
-    !rule.regexp ? false : isRegExpLike(rule.pattern) ? rule.regexp.test(url.href) : rule.regexp.test(url.host),
-  );
+import type { FilterTarget } from '../../preference/types/v2';
 
 export const getTargetByFilter = (pref: Pref, url: string): FilterTarget | undefined => {
-  const rule = pref.filter.enabled ? findRule(pref.filter.rules, new URL(url)) : undefined;
+  if (!pref.filter.enabled) return undefined;
 
-  return rule ? rule.target : undefined;
+  try {
+    const parsedUrl = new URL(url);
+    const rule = pref.filter.rules.find(rule => matchesFilterRule(rule, parsedUrl));
+    return rule?.target;
+  } catch {
+    return undefined;
+  }
 };

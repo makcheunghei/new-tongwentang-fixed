@@ -1,10 +1,4 @@
-import type { FC, Reducer} from 'react';
 import { useReducer } from 'react';
-import { AboutPage } from '../../pages/about/AboutPage';
-import { FilterPage } from '../../pages/filter/FilterPage';
-import { GeneralPage } from '../../pages/general/GeneralPage';
-import { MenuPage } from '../../pages/menu/MenuPage';
-import { WordPage } from '../../pages/word/WordPage';
 
 export enum PageType {
   general = 'GENERAL',
@@ -14,23 +8,14 @@ export enum PageType {
   about = 'ABOUT',
 }
 
-export interface PageAction { type: PageType }
+export interface PageAction {
+  type: PageType;
+}
 
-export interface PageState { type: PageType; node: FC }
+export interface PageState {
+  type: PageType;
+}
 
-const pageReducer: Reducer<PageState, PageAction> = (s, { type }) => {
-  switch (type) {
-    case PageType.general:
-      return { type, node: GeneralPage };
-    case PageType.menu:
-      return { type, node: MenuPage };
-    case PageType.filter:
-      return { type, node: FilterPage };
-    case PageType.word:
-      return { type, node: WordPage };
-    case PageType.about:
-      return { type, node: AboutPage };
-  }
-};
+const pageReducer = (_state: PageState, { type }: PageAction): PageState => ({ type });
 
-export const usePage = () => useReducer(pageReducer, { type: PageType.general, node: GeneralPage });
+export const usePage = () => useReducer(pageReducer, { type: PageType.general });

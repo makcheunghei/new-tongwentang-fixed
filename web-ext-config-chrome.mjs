@@ -1,7 +1,6 @@
-import { config, env } from './web-ext-config.mjs';
+import { env } from './web-ext-env.mjs';
 
 export default {
-  ...config,
   sourceDir: './dist/chromium',
   run: {
     target: ['chromium'],

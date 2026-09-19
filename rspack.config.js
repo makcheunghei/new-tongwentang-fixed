@@ -1,6 +1,6 @@
 // @ts-check
 const path = require('path');
-const { spawn, exec } = require('child_process');
+const { spawn, execFileSync } = require('child_process');
 const { watch } = require('fs');
 const rspack = require('@rspack/core');
 
@@ -24,8 +24,9 @@ module.exports = (env, argv) => {
     output: {
       path: distPath,
       filename: '[name].js',
+      clean: true,
     },
-    resolve: { extensions: ['.ts', '.tsx', '.js', 'jsx'] },
+    resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
     module: {
       rules: [
         { test: /\.svg$/, type: 'asset' },
@@ -82,10 +83,7 @@ module.exports = (env, argv) => {
         const state = { manifest: false, webExt: false };
 
         function writeManifest() {
-          exec('node ./manifest.js', (error, stdout, stderr) => {
-            console.log('write manifest:');
-            error || stderr ? console.log(`error - ${error || stderr}`) : console.log(stdout || 'done');
-          });
+          execFileSync(process.execPath, ['./manifest.js'], { cwd: __dirname, env: process.env, stdio: 'inherit' });
         }
 
         compiler.hooks.done.tap('generate manifest.json', () => {

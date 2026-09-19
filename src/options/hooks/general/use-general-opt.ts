@@ -7,10 +7,10 @@ import type { AutoConvertOpt, BrowserActionOpt, PrefGeneral } from '../../../pre
 import { getStorage, listenStorage, setStorage } from '../../../service/storage/storage';
 
 export const useGeneralOpt = () => {
-  const [general, set] = useState<PrefGeneral>(getDefaultPref().general);
+  const [generalState, setGeneralState] = useState<PrefGeneral>(() => getDefaultPref().general);
 
   const setGeneral = async <T extends keyof PrefGeneral>(key: T, value: PrefGeneral[T]) =>
-    setStorage({ general: { ...general, [key]: value } });
+    setStorage({ general: { ...generalState, [key]: value } });
   const setAutoConvert: ChangeEventHandler<HTMLSelectElement> = e =>
     void setGeneral('autoConvert', e.currentTarget.value as AutoConvertOpt);
   const setBrowserAction: ChangeEventHandler<HTMLSelectElement> = e =>
@@ -24,21 +24,24 @@ export const useGeneralOpt = () => {
 
   useEffect(
     () =>
-      listenStorage(changes => changes.general?.newValue && set(changes.general.newValue as Pref['general']), {
-        keys: ['general'],
-        areaName: ['local'],
-      }),
+      listenStorage(
+        changes => changes.general?.newValue && setGeneralState(changes.general.newValue as Pref['general']),
+        {
+          keys: ['general'],
+          areaName: ['local'],
+        },
+      ),
     [],
   );
 
   useEffect(() => {
     getStorage('general').then(({ general }) => {
-      set(general);
+      setGeneralState(general);
     });
   }, []);
 
   return {
-    general,
+    general: generalState,
     setGeneral,
     setAutoConvert,
     setBrowserAction,

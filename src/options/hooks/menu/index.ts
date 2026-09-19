@@ -6,7 +6,7 @@ import type { Pref } from '../../../preference/types/lastest';
 import { getStorage, listenStorage, setStorage } from '../../../service/storage/storage';
 
 export const useMenu = () => {
-  const [menu, set] = useState(getDefaultPref().menu);
+  const [menu, setMenu] = useState(() => getDefaultPref().menu);
 
   const setMenuEnable: ChangeEventHandler<HTMLInputElement> = async e =>
     setStorage({ menu: { ...menu, enabled: e.currentTarget.checked } });
@@ -43,7 +43,7 @@ export const useMenu = () => {
     () =>
       listenStorage(
         changes => {
-          set(changes.menu?.newValue as Pref['menu']);
+          if (changes.menu?.newValue) setMenu(changes.menu.newValue as Pref['menu']);
         },
         { keys: ['menu'], areaName: ['local'] },
       ),
@@ -52,7 +52,7 @@ export const useMenu = () => {
 
   useEffect(() => {
     getStorage('menu').then(({ menu }) => {
-      set(menu);
+      setMenu(menu);
     });
   }, []);
 

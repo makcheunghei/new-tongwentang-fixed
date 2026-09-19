@@ -1,10 +1,28 @@
 import { createConverterMap, type Converter } from 'tongwen-core';
 import { LangType, type DicObj, type SrcPack } from 'tongwen-core/dictionaries';
 import type { PrefWord } from '../../preference/types/v2';
+import { browser } from '../../service/browser';
 import { bgGetPref } from '../state/storage';
 
-const getDict = async (dir: LangType, type: 'char' | 'phrase') => {
-  return fetch(`dictionaries/${dir}-${type}.min.json`).then(async r => r.json() as Promise<DicObj>);
+const dictCache = new Map<string, Promise<DicObj>>();
+
+const getDict = async (dir: LangType, type: 'char' | 'phrase'): Promise<DicObj> => {
+  const path = `dictionaries/${dir}-${type}.min.json`;
+  const cached = dictCache.get(path);
+  if (cached) return cached;
+
+  const request = fetch(browser.runtime.getURL(path)).then(async response => {
+    if (!response.ok) throw new Error(`Unable to load dictionary ${path}: HTTP ${response.status}`);
+    return response.json() as Promise<DicObj>;
+  });
+  dictCache.set(path, request);
+
+  try {
+    return await request;
+  } catch (error) {
+    dictCache.delete(path);
+    throw error;
+  }
 };
 
 const createSrcPack = async ({ default: def, custom }: PrefWord): Promise<SrcPack> => {
@@ -16,14 +34,34 @@ const createSrcPack = async ({ default: def, custom }: PrefWord): Promise<SrcPac
   ]).then(([ss, sp, ts, tp]) => ({ s2t: [ss, sp, custom.s2t], t2s: [ts, tp, custom.t2s] }));
 };
 
-let converter: Converter | undefined = undefined;
-let queue: Promise<Converter> | undefined = undefined;
+let converter: Converter | undefined;
+let queue: Promise<Converter> | undefined;
+let revision = 0;
+
+export const resetConverter = (): void => {
+  revision += 1;
+  converter = undefined;
+  queue = undefined;
+};
 
 export const getConverter = async (): Promise<Converter> => {
-  return converter
-    ? Promise.resolve(converter)
-    : (queue ??
-        (queue = bgGetPref()
-          .then(async pref => createSrcPack(pref.word))
-          .then(src => (converter = createConverterMap(src)))));
+  if (converter) return converter;
+
+  const currentRevision = revision;
+  queue ??= bgGetPref()
+    .then(async pref => createSrcPack(pref.word))
+    .then(src => {
+      const created = createConverterMap(src);
+      if (currentRevision === revision) {
+        converter = created;
+        queue = undefined;
+      }
+      return created;
+    })
+    .catch(error => {
+      if (currentRevision === revision) queue = undefined;
+      throw error;
+    });
+
+  return queue;
 };

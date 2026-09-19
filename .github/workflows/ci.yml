@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+      - 'codex/**'
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run test:tsc
+
+      - name: Lint
+        run: npm run test:lint
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Build all targets
+        run: npm run build:all
+
+      - name: Validate WebExtension manifest
+        run: npm run test:webext
+
+      - name: Build extension archives
+        run: |
+          npm run build:zip:firefox
+          npm run build:zip:chromium
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tongwentang-extension
+          path: web-ext-artifacts/*
+          if-no-files-found: error

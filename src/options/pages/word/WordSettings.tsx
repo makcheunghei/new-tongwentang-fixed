@@ -14,7 +14,12 @@ import { WordEntryList } from './WordEntryList';
 
 export const WordSettings: FC = () => {
   const { word, setWord } = useWord();
-  const setDefault = useCallback((def: PrefWordDefault) => { setWord(word => ({ ...word, default: def })); }, [setWord]);
+  const setDefault = useCallback(
+    (def: PrefWordDefault) => {
+      setWord(word => ({ ...word, default: def }));
+    },
+    [setWord],
+  );
   const [tab, setTab] = useState<LangType | null>(null);
   const [toEdit, setToEdit] = useState<[string, string]>(['', '']);
   const [isModal, { on, off }] = useToggle(false);
@@ -43,7 +48,7 @@ export const WordSettings: FC = () => {
 
       off();
     },
-    [tab, toEdit],
+    [tab, toEdit, setWord, off],
   );
 
   const remove = useCallback(
@@ -59,7 +64,7 @@ export const WordSettings: FC = () => {
         return newPw;
       });
     },
-    [tab],
+    [tab, setWord],
   );
 
   const save = useCallback(
@@ -73,17 +78,32 @@ export const WordSettings: FC = () => {
         <div className="panel-nav">
           <ul className="tab tab-block">
             <li className={`tab-item ${tab === null ? 'active' : ''}`}>
-              <a style={{ cursor: 'pointer' }} onClick={() => { setTab(null); }}>
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  setTab(null);
+                }}
+              >
                 {i18n.getMessage('MSG_DEFAULT')}
               </a>
             </li>
             <li className={`tab-item ${tab === LangType.s2t ? 'active' : ''}`}>
-              <a style={{ cursor: 'pointer' }} onClick={() => { setTab(LangType.s2t); }}>
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  setTab(LangType.s2t);
+                }}
+              >
                 {i18n.getMessage('MSG_CUSTOM_S2T')}
               </a>
             </li>
             <li className={`tab-item ${tab === LangType.t2s ? 'active' : ''}`}>
-              <a style={{ cursor: 'pointer' }} onClick={() => { setTab(LangType.t2s); }}>
+              <a
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  setTab(LangType.t2s);
+                }}
+              >
                 {i18n.getMessage('MSG_CUSTOM_T2S')}
               </a>
             </li>
@@ -97,7 +117,12 @@ export const WordSettings: FC = () => {
             <Fragment>
               <div className="columns">
                 <div className="column col-auto">
-                  <Button type="primary" onClick={() => { edit(['', '']); }}>
+                  <Button
+                    type="primary"
+                    onClick={() => {
+                      edit(['', '']);
+                    }}
+                  >
                     {i18n.getMessage('MSG_ADD')}
                   </Button>
                 </div>
@@ -114,7 +139,7 @@ export const WordSettings: FC = () => {
         </div>
       </div>
       <Modal isActive={isModal} onCancel={off}>
-        <WordEntryEditor entry={toEdit} onSubmit={update} />
+        <WordEntryEditor key={`${toEdit[0]}:${toEdit[1]}`} entry={toEdit} onSubmit={update} />
       </Modal>
     </Fragment>
   );

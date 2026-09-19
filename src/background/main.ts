@@ -1,3 +1,4 @@
+import { createMenu } from '../service/menu/create-menu';
 import { i18n } from '../service/i18n/i18n';
 import { mountBrowserActionListener } from './browser-action';
 import { mountCommandListener } from './commands';
@@ -13,6 +14,8 @@ mountBrowserActionListener();
 mountCommandListener();
 listenMenusEvent();
 createBrowserActionMenus();
-bgInitialPref();
+bgInitialPref()
+  .then(({ menu }) => createMenu(menu))
+  .catch(console.error);
 
 console.info(`${i18n.getMessage('MSG_EXT_NAME')} 👌`);

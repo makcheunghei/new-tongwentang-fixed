@@ -13,18 +13,28 @@ const createManifest = vendor => {
   const isFirefox = vendor === 'firefox';
   /** @type {Manifest.WebExtensionManifest['browser_specific_settings']} */
   const browser_specific_settings = isFirefox
-    ? { gecko: { id: 'tongwen@softcup', strict_min_version: '63.0' } }
+    ? {
+        gecko: {
+          id: 'newtown@makcheunghei',
+          strict_min_version: '140.0',
+          data_collection_permissions: { required: ['none'] },
+        },
+        gecko_android: {
+          strict_min_version: '142.0',
+        },
+      }
     : undefined;
   /** @type {Manifest.WebExtensionManifest['background']} */
   const background = isFirefox ? { scripts: ['background.js'] } : { service_worker: 'background.js' };
 
   return {
     manifest_version: 3,
+    minimum_chrome_version: '102',
     name: '__MSG_MSG_EXT_NAME__',
     version: pkg.version,
     description: '__MSG_MSG_EXT_DESC__',
     author: 't7yang',
-    homepage_url: 'https://github.com/tongwentang/tongwentang-extension',
+    homepage_url: 'https://github.com/makcheunghei/tongwentang-extension',
     default_locale: 'en',
     browser_specific_settings,
     icons: {
@@ -45,6 +55,7 @@ const createManifest = vendor => {
       },
     ],
     action: {
+      default_title: '__MSG_MSG_EXT_NAME__',
       default_icon: {
         16: 'icons/tongwen-icon-16.png',
         32: 'icons/tongwen-icon-32.png',
@@ -53,7 +64,6 @@ const createManifest = vendor => {
       },
     },
     options_ui: {
-      browser_style: true,
       open_in_tab: true,
       page: 'options.html',
     },

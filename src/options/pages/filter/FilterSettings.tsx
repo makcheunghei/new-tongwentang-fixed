@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, FC} from 'react';
+import type { ChangeEventHandler, FC } from 'react';
 import { Fragment, useCallback, useState } from 'react';
 import { createFilterRule } from '../../../preference/filter-rule';
 import type { PrefFilterRule } from '../../../preference/types/v2';
@@ -12,19 +12,21 @@ import { FilterRuleEditor } from './FilterRuleEditor';
 import { FilterRules } from './FilterRules';
 
 export const FilterSettings: FC = () => {
-  const { enabled, setEnable, rules, setRules } = useFilter();
+  const { enabled, setEnabled, rules, setRules } = useFilter();
 
   const handleEnabledChange: ChangeEventHandler<HTMLInputElement> = useCallback(
-    e => { setEnable(e.currentTarget.checked); },
-    [setEnable],
+    e => {
+      setEnabled(e.currentTarget.checked);
+    },
+    [setEnabled],
   );
 
   const [isModal, { on, off }] = useToggle(false);
 
-  const [toEdit, setToEdit] = useState<{ isAdd: boolean; rule: PrefFilterRule }>({
+  const [toEdit, setToEdit] = useState<{ isAdd: boolean; rule: PrefFilterRule }>(() => ({
     isAdd: true,
     rule: createFilterRule(),
-  });
+  }));
 
   const handleAdd = useCallback(() => {
     setToEdit({ isAdd: true, rule: createFilterRule() });
@@ -44,11 +46,12 @@ export const FilterSettings: FC = () => {
       !toEdit.isAdd ? setRules({ type: 'UPDATE', payload: rule }) : setRules({ type: 'ADD', payload: rule });
       off();
     },
-    [toEdit, setRules],
+    [toEdit, setRules, off],
   );
 
   const save = useCallback(
-    async () => setStorage({ filter: { enabled, rules } }).then(async () => createNoti(i18n.getMessage('MSG_UPDATE_COMPLETED'))),
+    async () =>
+      setStorage({ filter: { enabled, rules } }).then(async () => createNoti(i18n.getMessage('MSG_UPDATE_COMPLETED'))),
     [enabled, rules],
   );
 
@@ -84,7 +87,12 @@ export const FilterSettings: FC = () => {
       </div>
 
       <Modal isActive={isModal} onOk={on} onCancel={off}>
-        <FilterRuleEditor value={toEdit.rule} onSubmit={handleSubmit} onCancel={off} />
+        <FilterRuleEditor
+          key={`${toEdit.isAdd}:${toEdit.rule.id}`}
+          value={toEdit.rule}
+          onSubmit={handleSubmit}
+          onCancel={off}
+        />
       </Modal>
     </Fragment>
   );

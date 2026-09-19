@@ -1,9 +1,9 @@
 import eslint from '@eslint/js';
-import react from 'eslint-plugin-react';
+import eslintReact from '@eslint-react/eslint-plugin';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const scripts = ['**/rspack.config.js', '**/manifest.js', '**/web-ext-config*.js'];
+const scripts = ['**/rspack.config.js', '**/manifest.js', '**/web-ext-config*.{js,mjs}', '**/web-ext-env.mjs'];
 
 /**
  * @type {import('typescript-eslint').Config}
@@ -26,13 +26,9 @@ export default [
       '@typescript-eslint/no-require-imports': 'off',
     },
   },
-  react.configs.flat.recommended,
   {
-    settings: { react: { version: 'detect' } },
-    rules: {
-      'react/prop-types': 'off',
-      'react/react-in-jsx-scope': 'off',
-    },
+    ...eslintReact.configs['recommended-typescript'],
+    files: ['**/src/**/*.{js,mjs,cjs,ts,jsx,tsx}'],
   },
   {
     name: 'extension',
@@ -41,6 +37,9 @@ export default [
       parser: tseslint.parser,
       parserOptions: { project: true, tsconfigRootDir: import.meta.dirname },
       globals: globals.browser,
+    },
+    rules: {
+      '@eslint-react/no-leaked-conditional-rendering': 'off',
     },
   },
 ];

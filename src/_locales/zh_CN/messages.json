@@ -1,0 +1,236 @@
+{
+  "MSG_EXT_NAME": {
+    "message": "新同文堂"
+  },
+  "MSG_EXT_DESC": {
+    "message": "简体与繁体中文互换"
+  },
+  "MSG_GENERAL": {
+    "message": "常规"
+  },
+  "MSG_MAINTAIN_PREF": {
+    "message": "维护首选项"
+  },
+  "MSG_AUTO_CONVERT": {
+    "message": "自动转换"
+  },
+  "MSG_BROWSER_ACTION": {
+    "message": "图标操作"
+  },
+  "MSG_DEFAULT_CONVERT": {
+    "message": "默认转换目标"
+  },
+  "MSG_DYNAMIC_CONVERT": {
+    "message": "动态转换"
+  },
+  "MSG_UPDATE_LANG": {
+    "message": "同时更新网页语言属性（有助于浏览器使用合适字体）"
+  },
+  "MSG_DEBUG_MODE": {
+    "message": "调试模式"
+  },
+  "MSG_IMPORT": {
+    "message": "导入"
+  },
+  "MSG_EXPORT": {
+    "message": "导出"
+  },
+  "MSG_RESET": {
+    "message": "重置"
+  },
+  "MSG_RESET_ALL": {
+    "message": "全部重置"
+  },
+  "MSG_RESET_TIP": {
+    "message": "保留自定义词典"
+  },
+  "MSG_RESET_ALL_TIP": {
+    "message": "同时删除自定义词典"
+  },
+  "MSG_EXPORT_FAILED": {
+    "message": "导出失败"
+  },
+  "MSG_IMPORT_CANCELED": {
+    "message": "已取消导入"
+  },
+  "MSG_IMPORT_COMPLETED": {
+    "message": "导入完成"
+  },
+  "MSG_IMPORT_FAILED": {
+    "message": "导入失败"
+  },
+  "MSG_PREF_RESET_COMPLETED": {
+    "message": "已重置首选项"
+  },
+  "MSG_PREF_RESET_FAILED": {
+    "message": "重置首选项失败"
+  },
+  "MSG_OPTION": {
+    "message": "选项"
+  },
+  "MSG_DISABLED": {
+    "message": "停用"
+  },
+  "MSG_S2T": {
+    "message": "简转繁"
+  },
+  "MSG_T2S": {
+    "message": "繁转简"
+  },
+  "MSG_DETECTIVE_S2T": {
+    "message": "检测后简转繁"
+  },
+  "MSG_DETECTIVE_T2S": {
+    "message": "检测后繁转简"
+  },
+  "MSG_CONFIRM_FIX_IMPORT": {
+    "message": "导入的首选项格式不正确，是否让程序自动修正后导入？"
+  },
+  "MSG_CONFIRM_RESET": {
+    "message": "此操作会重置全部首选项，但保留自定义词典。是否继续？"
+  },
+  "MSG_CONFIRM_RESET_ALL": {
+    "message": "此操作会重置全部首选项并删除自定义词典。是否继续？"
+  },
+  "MSG_MENU": {
+    "message": "右键菜单"
+  },
+  "MSG_ENABLE_MENU": {
+    "message": "启用右键菜单"
+  },
+  "MSG_WEBPAGE_S2T": {
+    "message": "网页简转繁"
+  },
+  "MSG_WEBPAGE_T2S": {
+    "message": "网页繁转简"
+  },
+  "MSG_TEXTAREA_S2T": {
+    "message": "文本框简转繁"
+  },
+  "MSG_TEXTAREA_T2S": {
+    "message": "文本框繁转简"
+  },
+  "MSG_DOMAIN_RULE": {
+    "message": "域名规则"
+  },
+  "MSG_ENABLE_DOMAIN_RULE": {
+    "message": "启用域名规则"
+  },
+  "MSG_TARGET": {
+    "message": "目标"
+  },
+  "MSG_URL_REGEX": {
+    "message": "网址或正则表达式"
+  },
+  "MSG_ADD": {
+    "message": "添加"
+  },
+  "MSG_EDIT": {
+    "message": "编辑"
+  },
+  "MSG_DELETE": {
+    "message": "删除"
+  },
+  "MSG_SAVE": {
+    "message": "保存"
+  },
+  "MSG_MOVE_UP": {
+    "message": "上移"
+  },
+  "MSG_MOVE_DOWN": {
+    "message": "下移"
+  },
+  "MSG_DEFAULT_S2T_CHAR": {
+    "message": "默认简转繁字符"
+  },
+  "MSG_DEFAULT_S2T_WORD": {
+    "message": "默认简转繁词汇"
+  },
+  "MSG_DEFAULT_T2S_CHAR": {
+    "message": "默认繁转简字符"
+  },
+  "MSG_DEFAULT_T2S_WORD": {
+    "message": "默认繁转简词汇"
+  },
+  "MSG_CUSTOM_S2T": {
+    "message": "自定义简转繁"
+  },
+  "MSG_CUSTOM_T2S": {
+    "message": "自定义繁转简"
+  },
+  "MSG_WORD": {
+    "message": "词汇"
+  },
+  "MSG_DEFAULT": {
+    "message": "默认"
+  },
+  "MSG_UPDATE_COMPLETED": {
+    "message": "更新完成"
+  },
+  "MSG_CONVERT_TARGET": {
+    "message": "转换目标"
+  },
+  "MSG_CONVERT_VALUE": {
+    "message": "转换值"
+  },
+  "MSG_ABOUT": {
+    "message": "关于"
+  },
+  "MSG_REPOSITORY": {
+    "message": "代码仓库"
+  },
+  "MSG_CHANGELOG": {
+    "message": "变更日志"
+  },
+  "MSG_CONTRIBUTORS": {
+    "message": "贡献者"
+  },
+  "MSG_LICENSE": {
+    "message": "许可证"
+  },
+  "MSG_HELP_SUPPORT": {
+    "message": "帮助与支持"
+  },
+  "MSG_ISSUE_REPORT": {
+    "message": "问题反馈"
+  },
+  "MSG_ADD_DOMAIN_TO_DISABLED": {
+    "message": "将域名加入停用规则"
+  },
+  "MSG_ADD_DOMAIN_TO_S2T": {
+    "message": "将域名加入简转繁规则"
+  },
+  "MSG_ADD_DOMAIN_TO_T2S": {
+    "message": "将域名加入繁转简规则"
+  },
+  "MSG_CONVERT_CLIPBOARD_S2T": {
+    "message": "剪贴板简转繁"
+  },
+  "MSG_CONVERT_CLIPBOARD_T2S": {
+    "message": "剪贴板繁转简"
+  },
+  "MSG_OK": {
+    "message": "确定"
+  },
+  "MSG_CANCEL": {
+    "message": "取消"
+  },
+  "MSG_JSON_ERROR": {
+    "message": "无法解析导入文件，请确认文件符合 JSON 格式"
+  },
+  "NT_TITLE": {
+    "message": "新同文堂 - 通知"
+  },
+  "NT_CLB_TO_S2T": {
+    "message": "剪贴板已转换为繁体"
+  },
+  "NT_CLB_TO_T2S": {
+    "message": "剪贴板已转换为简体"
+  },
+  "NT_GRT_PRM_DENIED": {
+    "message": "选择性授权请求已被拒绝"
+  },
+  "NT_GRT_PRM_ONLY_USR_INTER": {
+    "message": "只能在用户交互时请求选择性授权，请先到扩展的授权页面启用"
+  }
+}

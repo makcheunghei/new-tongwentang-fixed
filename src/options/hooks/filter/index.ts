@@ -1,4 +1,4 @@
-import type { Reducer} from 'react';
+import type { Reducer } from 'react';
 import { useEffect, useReducer, useState } from 'react';
 import { getDefaultPref } from '../../../preference/default';
 import type { PrefFilterRule } from '../../../preference/types/v2';
@@ -34,20 +34,20 @@ const reducer: Reducer<PrefFilterRule[], UseFilterRuleAction> = (rules, action) 
 };
 
 const useFilterRules = (org: PrefFilterRule[]) => {
-  const [rules, setRules] = useReducer<Reducer<PrefFilterRule[], UseFilterRuleAction>>(reducer, org);
+  const [rules, setRules] = useReducer(reducer, org);
 
   return { rules, setRules };
 };
 
 export const useFilter = () => {
-  const [enabled, setEnable] = useState(getDefaultPref().filter.enabled);
+  const [enabled, setEnabled] = useState(() => getDefaultPref().filter.enabled);
   const { rules, setRules } = useFilterRules(getDefaultPref().filter.rules);
 
   useEffect(() => {
     getStorage('filter').then(
-      ({ filter: { enabled, rules } }) => (setEnable(enabled), setRules({ type: 'RESET', payload: rules })),
+      ({ filter: { enabled, rules } }) => (setEnabled(enabled), setRules({ type: 'RESET', payload: rules })),
     );
-  }, []);
+  }, [setRules]);
 
-  return { enabled, setEnable, rules, setRules };
+  return { enabled, setEnabled, rules, setRules };
 };

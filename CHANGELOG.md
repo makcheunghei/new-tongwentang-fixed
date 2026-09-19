@@ -1,6 +1,31 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
+
+## [2.5.0] - 2026-09-19
+
+### Highlights
+
+- Updated the toolchain to Node.js 22+, React 19, Rspack 2, TypeScript 5.9, ESLint 9, web-ext 10, and current supporting dependencies.
+- Removed all reported npm audit vulnerabilities.
+- Replaced the obsolete release workflow with npm-based CI and reproducible Firefox/Chromium packaging.
+- Raised the Firefox MV3 minimum version to 140 desktop / 142 Android and set Chromium's minimum supported version to 102.
+- Added Simplified Chinese and Hong Kong Chinese interface locales.
+
+### Fixed
+
+- Prevented unbounded mutation queues and background-tab DOM stalls by adding bounded batching, a hard flush deadline, visibility pausing, and deferred full rescans.
+- Added support for converting and observing open Shadow DOM content.
+- Fixed stale converter caches when custom or default dictionaries change.
+- Fixed textarea and input conversion by preserving selection, invoking native value setters, and dispatching proper input events for controlled UIs.
+- Added editable-region conversion and nested Shadow DOM active-element detection.
+- Fixed the initial context menu not being created and fixed duplicate option-page storage listeners that leaked after re-renders.
+- Fixed regular-expression filter state reuse and made domain matching exact or subdomain-only, preventing suffix spoofing.
+- Fixed invalid regular-expression flag handling and URL validation.
+- Split option pages into lazy-loaded chunks, made build manifest generation synchronous, and added unit/CI coverage.
+- Fixed `web-ext` development when `.env` is absent.
+
+This changelog follows Conventional Commits and is maintained with commit-and-tag-version.
 
 ### [2.4.0](https://github.com/tongwentang/tongwentang-extension/compare/2.2.0...2.4.0) (2024-12-29)
 

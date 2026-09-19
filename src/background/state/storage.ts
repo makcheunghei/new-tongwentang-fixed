@@ -3,12 +3,18 @@ import type { Pref } from '../../preference/types/lastest';
 import { setBadge } from '../../service/browser-action/set-badge';
 import { createMenu } from '../../service/menu/create-menu';
 import { getStorage, initialStorage, setStorage, type StorageChanges } from '../../service/storage/storage';
+import { resetConverter } from '../converter';
 
 let state: Pref | undefined;
 let queue: Promise<Pref> | null = null;
 
+const applyRuntimeState = (pref: Pref): Pref => ({
+  ...pref,
+  filter: patchFilterRulesRegExp(pref.filter),
+});
+
 export const bgInitialPref = async () => {
-  return (queue = initialStorage().then(pref => (state = { ...pref, filter: patchFilterRulesRegExp(pref.filter) })));
+  return (queue = initialStorage().then(pref => (state = applyRuntimeState(pref))));
 };
 
 export const bgGetPref = async () => {
@@ -16,11 +22,11 @@ export const bgGetPref = async () => {
     ? Promise.resolve(state)
     : queue
       ? queue
-      : (queue = getStorage().then(p => (state = { ...p, filter: patchFilterRulesRegExp(p.filter) })));
+      : (queue = getStorage().then(pref => (state = applyRuntimeState(pref))));
 };
 
 export const bgSetPref = async (...args: Parameters<typeof setStorage>) => {
-  return setStorage(...args).then(async () => (queue = getStorage().then(p => (state = p))));
+  return setStorage(...args).then(async () => (queue = getStorage().then(pref => (state = applyRuntimeState(pref)))));
 };
 
 export const bgHandlePrefUpdate = (changes: StorageChanges): void => {
@@ -50,6 +56,7 @@ export const bgHandlePrefUpdate = (changes: StorageChanges): void => {
         if (change.newValue) {
           const word = change.newValue as Pref['word'];
           state && (state.word = word);
+          resetConverter();
         }
         break;
     }

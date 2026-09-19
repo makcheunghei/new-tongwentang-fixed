@@ -1,4 +1,4 @@
-import type { FC} from 'react';
+import type { FC } from 'react';
 import { useCallback } from 'react';
 import type { DicObj } from 'tongwen-core/dictionaries';
 import { i18n } from '../../../service/i18n/i18n';
@@ -10,8 +10,12 @@ const WordEntryRow: FC<{
   onEdit: (entry: [string, string]) => void;
   onRemove: (key: string) => void;
 }> = ({ index, entry, onEdit: handleEdit, onRemove: handleRemove }) => {
-  const edit = useCallback(() => { handleEdit(entry); }, [entry]);
-  const remove = useCallback(() => { handleRemove(entry[0]); }, [entry]);
+  const edit = useCallback(() => {
+    handleEdit(entry);
+  }, [entry, handleEdit]);
+  const remove = useCallback(() => {
+    handleRemove(entry[0]);
+  }, [entry, handleRemove]);
 
   return (
     <tr>
