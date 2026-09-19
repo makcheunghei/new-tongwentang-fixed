@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Replaced the obsolete release workflow with npm-based CI and reproducible Firefox/Chromium packaging.
 - Raised the Firefox MV3 minimum version to 140 desktop / 142 Android and set Chromium's minimum supported version to 102.
 - Added Simplified Chinese and Hong Kong Chinese interface locales.
+- Renamed the maintained fork to 新同文堂（修復） and translated the project introduction into Traditional Chinese.
 
 ### Fixed
 

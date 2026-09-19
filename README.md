@@ -1,75 +1,75 @@
-# New Tong Wen Tang
+# 新同文堂（修復）
 
-New Tong Wen Tang is a browser extension that converts Chinese text between Simplified and Traditional Chinese.
+本專案是新同文堂瀏覽器擴充功能的持續修復版本，主要提供簡體中文與繁體中文互相轉換。
 
-> Maintained fork: [`makcheunghei/tongwentang-extension`](https://github.com/makcheunghei/tongwentang-extension). Upstream project: [`tongwentang/tongwentang-extension`](https://github.com/tongwentang/tongwentang-extension).
+> 本專案位於 [`makcheunghei/new-tongwentang-fixed`](https://github.com/makcheunghei/new-tongwentang-fixed)。上游專案為 [`tongwentang/tongwentang-extension`](https://github.com/tongwentang/tongwentang-extension)。
 
-## Main Features
+## 主要功能
 
-- Convert automatically when a webpage loads.
-- Convert dynamic and single-page application content.
-- Convert open Shadow DOM content, including many modern component-based sites.
-- Convert manually through the browser action, keyboard shortcuts, or context menu.
-- Convert text in inputs, textareas, and editable regions while preserving the caret position for text controls.
-- Convert clipboard content.
-- Import and export preferences, including v1 preferences.
-- Set domain and regular-expression rules.
-- Use built-in and custom mapping words.
-- Apply preference changes without reloading the extension.
+- 網頁載入後自動轉換。
+- 支援動態網頁及單頁應用程式內容。
+- 支援元件化網站及開放式影子根節點內容。
+- 可透過工具列圖示、鍵盤快速鍵或右鍵選單手動轉換。
+- 支援輸入框、文字區及可直接編輯區域，文字控制項會保留游標位置。
+- 支援剪貼簿內容轉換。
+- 支援偏好設定匯入及匯出，包括第一版設定。
+- 支援網域規則及正規表示式規則。
+- 支援內建及自訂詞庫。
+- 修改偏好設定後毋須重新載入擴充功能。
 
-## Upstream Published Downloads
+## 上游已發佈版本
 
-These links point to the upstream project. Fork builds are attached to this repository's GitHub releases.
+以下連結指向上游專案。本修復版本的建置檔案會附加於本專案的 GitHub Releases。
 
 - [Firefox](https://addons.mozilla.org/firefox/addon/new_tongwentang/)
 - [Chrome](https://chromewebstore.google.com/detail/new-tongwentang/ldmgbgaoglmaiblpnphffibpbfchjaeg)
 - [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/%E6%96%B0%E5%90%8C%E6%96%87%E5%A0%82/ijddgmclgedepadbikmfekambhhfjfnl)
 
-## Development
+## 開發環境
 
-Requirements:
+需要：
 
-- Node.js 22 or later
-- npm 10 or later
+- Node.js 22 或以上
+- npm 10 或以上
 
-Install dependencies:
+安裝依賴套件：
 
 ```sh
 npm ci
 ```
 
-Run Firefox or Chromium development mode:
+執行 Firefox 或 Chromium 開發模式：
 
 ```sh
 npm run dev:firefox
 npm run dev:chromium
 ```
 
-For Chromium development, create a `.env` file from `.env.example` and set `CHROMIUM_BINARY` when the browser is not detected automatically.
+進行 Chromium 開發時，可由 `.env.example` 建立 `.env`，並在瀏覽器未被自動偵測時設定 `CHROMIUM_BINARY`。
 
-Run the full verification suite:
+執行完整驗證：
 
 ```sh
 npm test
 ```
 
-Build both targets:
+建置兩個目標：
 
 ```sh
 npm run build:all
 ```
 
-Package both extension archives:
+封裝兩個擴充功能壓縮檔：
 
 ```sh
 npm run build:zip:firefox
 npm run build:zip:chromium
 ```
 
-## Project Layout
+## 專案結構
 
-- `src/background`: service worker, context menus, storage, and conversion worker.
-- `src/content`: page conversion, dynamic DOM observation, Shadow DOM support, and editable controls.
-- `src/options`: React preference UI.
-- `src/preference`: preference schemas, migrations, and filter rules.
-- `docs`: permission, build, and preference documentation.
+- `src/background`：背景服務、右鍵選單、儲存及轉換工作。
+- `src/content`：網頁轉換、動態節點監察及可直接編輯控制項。
+- `src/options`：偏好設定介面。
+- `src/preference`：偏好設定結構、版本遷移及過濾規則。
+- `docs`：權限、建置及偏好設定文件。

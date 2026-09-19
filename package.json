@@ -1,7 +1,7 @@
 {
-  "name": "tongwentang-extension",
+  "name": "new-tongwentang-fixed",
   "version": "2.5.0",
-  "description": "New TongWenTang browser extension for Chinese Simplified and Traditional conversion.",
+  "description": "新同文堂（修復）係持續維護的繁簡中文轉換瀏覽器擴充功能。",
   "keywords": [
     "browser-extension",
     "chinese",
@@ -77,12 +77,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/makcheunghei/tongwentang-extension.git"
+    "url": "git+https://github.com/makcheunghei/new-tongwentang-fixed.git"
   },
   "bugs": {
-    "url": "https://github.com/makcheunghei/tongwentang-extension/issues"
+    "url": "https://github.com/makcheunghei/new-tongwentang-fixed/issues"
   },
-  "homepage": "https://github.com/makcheunghei/tongwentang-extension#readme",
+  "homepage": "https://github.com/makcheunghei/new-tongwentang-fixed#readme",
   "engines": {
     "node": ">=22"
   },

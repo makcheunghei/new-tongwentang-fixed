@@ -34,7 +34,7 @@ const createManifest = vendor => {
     version: pkg.version,
     description: '__MSG_MSG_EXT_DESC__',
     author: 't7yang',
-    homepage_url: 'https://github.com/makcheunghei/tongwentang-extension',
+    homepage_url: 'https://github.com/makcheunghei/new-tongwentang-fixed',
     default_locale: 'en',
     browser_specific_settings,
     icons: {
