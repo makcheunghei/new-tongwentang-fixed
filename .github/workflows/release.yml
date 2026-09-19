@@ -40,5 +40,5 @@ jobs:
         uses: softprops/action-gh-release@v3.0.3
         with:
           files: |
-            web-ext-artifacts/tongwentang-firefox.zip
-            web-ext-artifacts/tongwentang-chromium.zip
+            web-ext-artifacts/new-tongwentang-fixed-firefox.zip
+            web-ext-artifacts/new-tongwentang-fixed-chromium.zip

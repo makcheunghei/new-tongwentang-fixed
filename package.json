@@ -29,8 +29,8 @@
     "prepare": "husky",
     "test:lint": "eslint .",
     "test": "npm run test:tsc && npm run test:lint && npm run test:unit && npm run build:all && npm run test:webext",
-    "build:zip:firefox": "mkdir -p web-ext-artifacts && web-ext build -s dist/firefox -a web-ext-artifacts --filename=tongwentang-firefox.zip --overwrite-dest",
-    "build:zip:chromium": "mkdir -p web-ext-artifacts && cd dist/chromium && zip -qr ../../web-ext-artifacts/tongwentang-chromium.zip .",
+    "build:zip:firefox": "mkdir -p web-ext-artifacts && web-ext build -s dist/firefox -a web-ext-artifacts --filename=new-tongwentang-fixed-firefox.zip --overwrite-dest",
+    "build:zip:chromium": "mkdir -p web-ext-artifacts && cd dist/chromium && zip -qr ../../web-ext-artifacts/new-tongwentang-fixed-chromium.zip .",
     "test:webext": "web-ext lint -s dist/firefox --no-config-discovery",
     "test:unit": "vitest run"
   },

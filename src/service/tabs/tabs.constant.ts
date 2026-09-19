@@ -4,5 +4,5 @@ export enum ZhType {
   und = 'und',
 }
 
-export const chtTypes = ['zh-hant', 'zh-tw', 'zh-hk'] as const;
+export const chtTypes = ['zh-hant', 'zh-tw', 'zh-hk', 'zh-mo'] as const;
 export const chsTypes = ['zh', 'zh-cn', 'zh-hans', 'zh-sg'] as const;

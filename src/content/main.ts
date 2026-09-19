@@ -11,6 +11,6 @@ import { createCtState } from './state';
   mountRuntimeListener(state);
   await mountMutationObserver(state);
 
-  const target = await getTarget().catch(console.error);
-  (target != null) && convertNode(state, target, [document]).catch(console.error);
+  const target = await getTarget(state.zhType).catch(console.error);
+  target != null && convertNode(state, target, [document]).catch(console.error);
 })();

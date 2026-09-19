@@ -8,8 +8,7 @@ declare module 'webextension-polyfill' {
           onCommand: Events.Event<(command: CommandType, tab: Tabs.Tab | undefined) => void>;
         })
       | undefined;
-    const downloads: Downloads.Static | undefined;
-    const tabs: Omit<Tabs.Static, 'detectLanguage'> & { detectLanguage?: Tabs.Static['detectLanguage'] };
+    const tabs: Tabs.Static;
   }
 
   export = Browser;

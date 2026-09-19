@@ -13,11 +13,11 @@ export const listenMenusEvent = () => {
 
     switch (info.menuItemId as ActionMenuId | ContextMenuChildrenId) {
       case 'domain_disabled':
-        return tab && addDomainToRules('disabled', tab);
+        return addDomainToRules('disabled', info.pageUrl);
       case 'domain_s2t':
-        return tab && addDomainToRules(LangType.s2t, tab);
+        return addDomainToRules(LangType.s2t, info.pageUrl);
       case 'domain_t2s':
-        return tab && addDomainToRules(LangType.t2s, tab);
+        return addDomainToRules(LangType.t2s, info.pageUrl);
       case 'options':
         return browser.runtime.openOptionsPage();
       case 'clipboard_s2t':

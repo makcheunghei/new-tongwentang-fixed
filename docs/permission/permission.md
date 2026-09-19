@@ -1,25 +1,23 @@
-# Permessions Required for New TongWenTang Extension
+# Permissions Required by 新同文堂（修復）
 
-The Extension require several permissions inorder to work well.
+The extension requests only the permissions required for its current features.
 
-### Required Permissions
+## Required Permissions
 
 - `contextMenus`
-  - Browser action context menu.
-  - Web page context menu.
-- `downloads`
-  - Export preferences by download.
+  - Creates browser action and webpage context menus.
 - `notifications`
-  - Notify for error.
-  - Notify for information like convert done.
+  - Displays clipboard conversion results and error messages.
 - `storage`
-  - For saving preferences including custom domain rules and mapping words.
-- `unlimitedStorage`
-  - Custom domain rules and mapping words could be many.
+  - Stores preferences, domain rules, and custom mapping words.
 
-### Optional Permissions
+Host access to `<all_urls>` is declared by the content script because webpage conversion must run on pages selected by the user.
+
+## Optional Permissions
 
 - `clipboardWrite`
-  - Write converted content back to clipboard.
+  - Writes converted content back to the clipboard.
 - `clipboardRead`
-  - Read to convert content from clipboard.
+  - Reads clipboard content for conversion.
+
+The optional clipboard permissions are requested only after the user selects a clipboard conversion command.

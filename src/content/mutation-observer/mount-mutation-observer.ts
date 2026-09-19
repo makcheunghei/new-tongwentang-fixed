@@ -18,7 +18,7 @@ const clearScheduledFlush = (state: CtState) => {
 };
 
 const fullRescan = (state: CtState) => {
-  getTarget()
+  getTarget(state.zhType)
     .then(target => (target != null ? convertNode(state, target, [document]) : undefined))
     .catch(console.error);
 };

@@ -8,11 +8,9 @@ import type { ReqAction, ReqActionDispatcher, ReqActionHandler, TActionMap, TAct
 export type BgActionMap = TActionMap<{
   Convert: TActionPayload<{ target: LangType; text: string }, string>;
   NodesText: TActionPayload<{ target: LangType; texts: string[] }, string[]>;
-  DetectLang: TActionPayload<void, ZhType>;
   FilterTarget: TActionPayload<void, FilterTarget | undefined>;
-  AutoConvert: TActionPayload<void, MaybeTransTarget>;
   ConvertClipboard: TActionPayload<LangType, void>;
-  GetTarget: TActionPayload<void, MaybeTransTarget>;
+  GetTarget: TActionPayload<{ zhType: ZhType }, MaybeTransTarget>;
   SpaMode: TActionPayload<void, boolean>;
   Log: TActionPayload<unknown[], void>;
 }>;

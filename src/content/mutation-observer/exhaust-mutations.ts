@@ -5,7 +5,7 @@ import { parseMutation } from './parse-mutation';
 
 export type ExhaustMutations = (s: CtState, m: MutationRecord[]) => void;
 export const exhaustMutations: ExhaustMutations = (state, mutations) => {
-  getTarget()
+  getTarget(state.zhType)
     .then(async target => {
       if (target != null) {
         await convertNode(state, target, mutations.flatMap(parseMutation));
