@@ -1,24 +1,40 @@
 import type { ChangeEventHandler, FC } from 'react';
 import { Fragment, useCallback, useState } from 'react';
 import { createFilterRule } from '../../../preference/filter-rule';
+import { parseLanguageTags } from '../../../preference/language-tags';
 import type { PrefFilterRule } from '../../../preference/types/v2';
 import { i18n } from '../../../service/i18n/i18n';
 import { createNoti } from '../../../service/notification/create-noti';
 import { setStorage } from '../../../service/storage/storage';
-import { Button, Checkbox, Modal } from '../../components';
+import { Button, Checkbox, Divider, Modal } from '../../components';
 import { useFilter } from '../../hooks/filter';
 import { useToggle } from '../../hooks/state/use-toggle';
 import { FilterRuleEditor } from './FilterRuleEditor';
 import { FilterRules } from './FilterRules';
 
 export const FilterSettings: FC = () => {
-  const { enabled, setEnabled, rules, setRules } = useFilter();
+  const { enabled, setEnabled, rules, setRules, chtTagsText, setChtTagsText, chsTagsText, setChsTagsText } =
+    useFilter();
 
   const handleEnabledChange: ChangeEventHandler<HTMLInputElement> = useCallback(
     e => {
       setEnabled(e.currentTarget.checked);
     },
     [setEnabled],
+  );
+
+  const handleChtTagsChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    e => {
+      setChtTagsText(e.currentTarget.value);
+    },
+    [setChtTagsText],
+  );
+
+  const handleChsTagsChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    e => {
+      setChsTagsText(e.currentTarget.value);
+    },
+    [setChsTagsText],
   );
 
   const [isModal, { on, off }] = useToggle(false);
@@ -51,8 +67,15 @@ export const FilterSettings: FC = () => {
 
   const save = useCallback(
     async () =>
-      setStorage({ filter: { enabled, rules } }).then(async () => createNoti(i18n.getMessage('MSG_UPDATE_COMPLETED'))),
-    [enabled, rules],
+      setStorage({
+        filter: {
+          enabled,
+          rules,
+          chtTags: parseLanguageTags(chtTagsText),
+          chsTags: parseLanguageTags(chsTagsText),
+        },
+      }).then(async () => createNoti(i18n.getMessage('MSG_UPDATE_COMPLETED'))),
+    [enabled, rules, chtTagsText, chsTagsText],
   );
 
   return (
@@ -82,6 +105,41 @@ export const FilterSettings: FC = () => {
         </div>
 
         <div className="panel-body" style={{ maxHeight: '60vh' }}>
+          <div className="columns" style={{ padding: '0 1em' }}>
+            <div className="column">
+              <div className="form-group">
+                <label className="form-label">{i18n.getMessage('MSG_LANG_RULE')}</label>
+                <label className="form-label" htmlFor="cht-tags">
+                  {i18n.getMessage('MSG_LANG_CHT')}
+                </label>
+                <input
+                  id="cht-tags"
+                  className="form-input"
+                  type="text"
+                  value={chtTagsText}
+                  onChange={handleChtTagsChange}
+                />
+              </div>
+            </div>
+            <div className="column">
+              <div className="form-group">
+                <label className="form-label">&nbsp;</label>
+                <label className="form-label" htmlFor="chs-tags">
+                  {i18n.getMessage('MSG_LANG_CHS')}
+                </label>
+                <input
+                  id="chs-tags"
+                  className="form-input"
+                  type="text"
+                  value={chsTagsText}
+                  onChange={handleChsTagsChange}
+                />
+              </div>
+            </div>
+          </div>
+
+          <Divider />
+
           <FilterRules rules={rules} setRules={setRules} onUpdate={handleUpdate} />
         </div>
       </div>

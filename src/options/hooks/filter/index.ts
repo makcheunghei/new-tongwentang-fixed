@@ -40,14 +40,20 @@ const useFilterRules = (org: PrefFilterRule[]) => {
 };
 
 export const useFilter = () => {
-  const [enabled, setEnabled] = useState(() => getDefaultPref().filter.enabled);
-  const { rules, setRules } = useFilterRules(getDefaultPref().filter.rules);
+  const defaults = getDefaultPref().filter;
+  const [enabled, setEnabled] = useState(() => defaults.enabled);
+  const [chtTagsText, setChtTagsText] = useState(() => defaults.chtTags.join(', '));
+  const [chsTagsText, setChsTagsText] = useState(() => defaults.chsTags.join(', '));
+  const { rules, setRules } = useFilterRules(defaults.rules);
 
   useEffect(() => {
-    getStorage('filter').then(
-      ({ filter: { enabled, rules } }) => (setEnabled(enabled), setRules({ type: 'RESET', payload: rules })),
-    );
+    getStorage('filter').then(({ filter: { enabled, rules, chtTags, chsTags } }) => {
+      setEnabled(enabled);
+      setRules({ type: 'RESET', payload: rules });
+      setChtTagsText(chtTags.join(', '));
+      setChsTagsText(chsTags.join(', '));
+    });
   }, [setRules]);
 
-  return { enabled, setEnabled, rules, setRules };
+  return { enabled, setEnabled, rules, setRules, chtTagsText, setChtTagsText, chsTagsText, setChsTagsText };
 };

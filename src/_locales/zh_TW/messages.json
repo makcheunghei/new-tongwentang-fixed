@@ -111,10 +111,10 @@
     "message": "文字區正轉簡"
   },
   "MSG_DOMAIN_RULE": {
-    "message": "網域規則"
+    "message": "自動規則"
   },
   "MSG_ENABLE_DOMAIN_RULE": {
-    "message": "啟用網域規則"
+    "message": "啟用自動規則"
   },
   "MSG_TARGET": {
     "message": "目標"
@@ -232,5 +232,14 @@
   },
   "NT_GRT_PRM_ONLY_USR_INTER": {
     "message": "請求選擇性授權只能在使用者互動下，請先到套件的授權分頁啟用"
+  },
+  "MSG_LANG_RULE": {
+    "message": "語言規則"
+  },
+  "MSG_LANG_CHT": {
+    "message": "繁體中文標籤（以逗號分隔）"
+  },
+  "MSG_LANG_CHS": {
+    "message": "簡體中文標籤（以逗號分隔）"
   }
 }

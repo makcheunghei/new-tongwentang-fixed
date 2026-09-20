@@ -111,10 +111,10 @@
     "message": "文本框繁转简"
   },
   "MSG_DOMAIN_RULE": {
-    "message": "域名规则"
+    "message": "自动规则"
   },
   "MSG_ENABLE_DOMAIN_RULE": {
-    "message": "启用域名规则"
+    "message": "启用自动规则"
   },
   "MSG_TARGET": {
     "message": "目标"
@@ -232,5 +232,14 @@
   },
   "NT_GRT_PRM_ONLY_USR_INTER": {
     "message": "只能在用户交互时请求选择性授权，请先到扩展的授权页面启用"
+  },
+  "MSG_LANG_RULE": {
+    "message": "语言规则"
+  },
+  "MSG_LANG_CHT": {
+    "message": "繁体中文标签（以逗号分隔）"
+  },
+  "MSG_LANG_CHS": {
+    "message": "简体中文标签（以逗号分隔）"
   }
 }

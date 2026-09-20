@@ -111,10 +111,10 @@
     "message": "Textarea Traditional to Simplified"
   },
   "MSG_DOMAIN_RULE": {
-    "message": "Domain Rule"
+    "message": "Auto Rules"
   },
   "MSG_ENABLE_DOMAIN_RULE": {
-    "message": "Enable Domain Rule"
+    "message": "Enable Auto Rules"
   },
   "MSG_TARGET": {
     "message": "Target"
@@ -232,5 +232,14 @@
   },
   "NT_GRT_PRM_ONLY_USR_INTER": {
     "message": "Grant optional permission can only under user interaction, to give permission(s) please go extension permission tab"
+  },
+  "MSG_LANG_RULE": {
+    "message": "Language Rules"
+  },
+  "MSG_LANG_CHT": {
+    "message": "Traditional Chinese tags (comma separated)"
+  },
+  "MSG_LANG_CHS": {
+    "message": "Simplified Chinese tags (comma separated)"
   }
 }

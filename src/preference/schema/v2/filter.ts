@@ -1,7 +1,8 @@
-import type { Control} from 'data-fixer';
+import type { Control } from 'data-fixer';
 import { actrl, dctrl, vctrl } from 'data-fixer';
 import { z } from 'zod';
 import { getRandomId } from '../../../utilities';
+import { DEFAULT_CHS_TAGS, DEFAULT_CHT_TAGS } from '../../language-tags';
 import { DOMAIN_PATTERN, REGEXP_PATTERN } from '../../filter-rule';
 import type { FilterTarget, PrefFilter, PrefFilterRule, RegExpMaybe } from '../../types/v2';
 import { isBoolean } from '../controllers';
@@ -17,4 +18,6 @@ const filterRuleSchema: Control<PrefFilterRule> = dctrl({
 export const filterSchema: Control<PrefFilter> = dctrl({
   enabled: isBoolean(true),
   rules: actrl(filterRuleSchema),
+  chtTags: vctrl(vldFn(z.array(z.string())), [...DEFAULT_CHT_TAGS]),
+  chsTags: vctrl(vldFn(z.array(z.string())), [...DEFAULT_CHS_TAGS]),
 });

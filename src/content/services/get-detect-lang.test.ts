@@ -1,6 +1,25 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+vi.mock('../../service/storage/storage', () => ({
+  getStorage: vi.fn(async () => ({
+    filter: {
+      enabled: false,
+      rules: [],
+      chtTags: ['zh-hant', 'zh-tw', 'zh-hk', 'zh-mo'],
+      chsTags: ['zh', 'zh-cn', 'zh-hans', 'zh-sg'],
+    },
+  })),
+}));
+import type { PrefFilter } from '../../preference/types/v2';
 import { ZhType } from '../../service/tabs/tabs.constant';
 import { getDetectLanguage } from './get-detect-lang';
+
+const createFilter = (chtTags: string[], chsTags: string[]): PrefFilter => ({
+  enabled: false,
+  rules: [],
+  chtTags,
+  chsTags,
+});
 
 describe('getDetectLanguage', () => {
   beforeEach(() => {
@@ -16,6 +35,11 @@ describe('getDetectLanguage', () => {
   it('detects Traditional Chinese from an extended language tag', async () => {
     document.documentElement.lang = 'zh-Hant-TW';
     await expect(getDetectLanguage()).resolves.toBe(ZhType.hant);
+  });
+
+  it('supports custom language tags', async () => {
+    document.documentElement.lang = 'ja-JP';
+    await expect(getDetectLanguage(createFilter(['ja'], []))).resolves.toBe(ZhType.hant);
   });
 
   it('falls back to the content-language metadata tag', async () => {
