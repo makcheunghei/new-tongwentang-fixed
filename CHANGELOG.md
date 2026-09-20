@@ -2,11 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.6.0] - 2026-09-20
+
+### Features
+
+- Integrated upstream PR #96 by RossWang to add configurable Traditional and Simplified Chinese language tags.
+- Integrated upstream PR #111 by KaranocaVe to add Safari Web Extension development and local Xcode generation support.
+- Added Safari-safe i18n, notification, clipboard, export, and action menu fallbacks.
+- Added bundled English, Traditional Chinese, Hong Kong Chinese, and Simplified Chinese fallback messages.
+
+### Fixed
+
+- Preserved custom language tags when adding, updating, or deleting domain rules.
+- Fixed rule updates deleting the rule being edited.
+
+### Notes
+
+- Safari support is development-only because signed distribution requires an Xcode application and Apple signing.
+- Preserve-layout support from PR #97 and tongwen-core PR #14 remains excluded until the core implementation is merged.
+
 ## [2.5.0] - 2026-09-19
 
 ### Highlights
 
-- Updated the toolchain to Node.js 22+, React 19, Rspack 2, TypeScript 5.9, ESLint 9, web-ext 10, and current supporting dependencies.
+- Updated the toolchain to Node.js 22+, React 19, Rspack 2, TypeScript 5.9, ESLint 10, web-ext 10, and current supporting dependencies.
 - Removed all reported npm audit vulnerabilities.
 - Reduced Manifest V3 permissions to `contextMenus`, `notifications`, and `storage`; removed `tabs`, `downloads`, and `unlimitedStorage`.
 - Replaced the obsolete release workflow with npm-based CI and reproducible Firefox/Chromium packaging.

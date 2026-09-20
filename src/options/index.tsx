@@ -37,7 +37,7 @@ function App() {
   );
 }
 
-document.documentElement.lang = browser.i18n.getUILanguage();
+document.documentElement.lang = browser.i18n.getUILanguage?.() ?? document.documentElement.lang;
 document.title = i18n.getMessage('MSG_EXT_NAME');
 
 createRoot(document.querySelector('#app')!).render(<App />);

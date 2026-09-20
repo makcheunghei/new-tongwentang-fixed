@@ -64,6 +64,7 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [
+      new rspack.DefinePlugin({ __SAFARI__: JSON.stringify(vendor === 'safari') }),
       new rspack.HtmlRspackPlugin({
         filename: 'options.html',
         template: './src/options/index.html',
@@ -100,7 +101,7 @@ module.exports = (env, argv) => {
           });
         });
 
-        if (isProd) return;
+        if (isProd || vendor === 'safari') return;
 
         compiler.hooks.afterDone.tap('start web-ext', () => {
           if (state.webExt) return;

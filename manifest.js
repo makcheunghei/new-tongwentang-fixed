@@ -11,6 +11,7 @@ const pkg = require('./package.json');
  */
 const createManifest = vendor => {
   const isFirefox = vendor === 'firefox';
+  const isSafari = vendor === 'safari';
   /** @type {Manifest.WebExtensionManifest['browser_specific_settings']} */
   const browser_specific_settings = isFirefox
     ? {
@@ -29,7 +30,7 @@ const createManifest = vendor => {
 
   return {
     manifest_version: 3,
-    minimum_chrome_version: '102',
+    minimum_chrome_version: isSafari ? undefined : '102',
     name: '__MSG_MSG_EXT_NAME__',
     version: pkg.version,
     description: '__MSG_MSG_EXT_DESC__',
@@ -43,8 +44,8 @@ const createManifest = vendor => {
       48: 'icons/tongwen-icon-48.png',
       128: 'icons/tongwen-icon-128.png',
     },
-    permissions: ['contextMenus', 'notifications', 'storage'],
-    optional_permissions: ['clipboardWrite', 'clipboardRead'],
+    permissions: isSafari ? ['contextMenus', 'storage'] : ['contextMenus', 'notifications', 'storage'],
+    optional_permissions: isSafari ? undefined : ['clipboardWrite', 'clipboardRead'],
     background,
     content_scripts: [
       {
@@ -63,10 +64,14 @@ const createManifest = vendor => {
         128: 'icons/tongwen-icon-128.png',
       },
     },
-    options_ui: {
-      open_in_tab: true,
-      page: 'options.html',
-    },
+    options_ui: isSafari
+      ? {
+          page: 'options.html',
+        }
+      : {
+          open_in_tab: true,
+          page: 'options.html',
+        },
     commands: {
       w_s2t: {
         description: '__MSG_MSG_WEBPAGE_S2T__',

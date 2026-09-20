@@ -1,6 +1,6 @@
 {
   "name": "new-tongwentang-fixed",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "新同文堂（修復）係持續維護的繁簡中文轉換瀏覽器擴充功能。",
   "keywords": [
     "browser-extension",
@@ -32,7 +32,10 @@
     "build:zip:firefox": "mkdir -p web-ext-artifacts && web-ext build -s dist/firefox -a web-ext-artifacts --filename=new-tongwentang-fixed-firefox.zip --overwrite-dest",
     "build:zip:chromium": "mkdir -p web-ext-artifacts && cd dist/chromium && zip -qr ../../web-ext-artifacts/new-tongwentang-fixed-chromium.zip .",
     "test:webext": "web-ext lint -s dist/firefox --no-config-discovery",
-    "test:unit": "vitest run"
+    "test:unit": "vitest run",
+    "dev:safari": "rspack build --mode=development --env vendor=safari",
+    "build:safari": "rspack build --mode=production --env vendor=safari",
+    "safari:convert": "npm run build:safari && node ./scripts/safari-convert.mjs"
   },
   "nano-staged": {
     "*.{js,jsx,ts,tsx,json,md}": [

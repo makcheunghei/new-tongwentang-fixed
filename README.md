@@ -13,7 +13,7 @@
 - 支援輸入框、文字區及可直接編輯區域，文字控制項會保留游標位置。
 - 支援剪貼簿內容轉換。
 - 支援偏好設定匯入及匯出，包括第一版設定。
-- 支援網域規則及正規表示式規則。
+- 支援網域規則、正規表示式規則及自訂語言標籤。
 - 支援內建及自訂詞庫。
 - 修改偏好設定後毋須重新載入擴充功能。
 
@@ -46,6 +46,15 @@ npm run dev:chromium
 ```
 
 進行 Chromium 開發時，可由 `.env.example` 建立 `.env`，並在瀏覽器未被自動偵測時設定 `CHROMIUM_BINARY`。
+
+Safari 開發需要完整安裝 Xcode：
+
+```sh
+npm run build:safari
+npm run safari:convert
+```
+
+`safari:convert` 會在 `safari/` 產生本機 Xcode 專案；該目錄不會提交到版本控制。可用 `SAFARI_APP_NAME`、`SAFARI_BUNDLE_ID` 及 `SAFARI_PROJECT_LOCATION` 覆寫預設值。
 
 執行完整驗證：
 

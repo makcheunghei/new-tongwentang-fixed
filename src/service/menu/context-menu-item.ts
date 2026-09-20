@@ -1,5 +1,6 @@
 import type { Menus } from 'webextension-polyfill';
 import { browser } from '../browser';
+import { IS_SAFARI } from '../types';
 
 export type ContextMenuItemProperties = Menus.CreateCreatePropertiesType & { id: string };
 
@@ -28,7 +29,7 @@ const reportError = (error: unknown): void => {
 export const createContextMenuItem = (properties: ContextMenuItemProperties): string | number => {
   const chromeApi = getChromeApi();
 
-  if (!isFirefox() && chromeApi?.contextMenus?.create) {
+  if (!IS_SAFARI && !isFirefox() && chromeApi?.contextMenus?.create) {
     try {
       chromeApi.contextMenus.create(properties, () => {
         const message = chromeApi.runtime.lastError?.message;

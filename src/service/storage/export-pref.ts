@@ -15,7 +15,10 @@ export const exportPref = async (): Promise<void> => {
 
     anchor.href = url;
     anchor.download = 'tongwentang-pref.json';
+    anchor.style.display = 'none';
+    document.body.append(anchor);
     anchor.click();
+    anchor.remove();
     delayRevoke(url);
   } catch {
     await createNoti(i18n.getMessage('MSG_EXPORT_FAILED'));
