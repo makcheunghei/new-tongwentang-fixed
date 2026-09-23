@@ -32,6 +32,7 @@ export function prefGcV1ToV2(v1Pref: PrefGcV1): PrefV2 {
       autoConvert: TargetConverter[v1Pref.autoConvert],
       browserAction: TargetConverter[v1Pref.iconAction],
       defaultTarget: LangType.s2t,
+      detectFallback: 'skip',
       spaMode: true,
       updateLangAttr: false,
       debugMode: false,

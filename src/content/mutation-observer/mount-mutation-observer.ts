@@ -1,9 +1,10 @@
 import { dispatchBgAction } from '../../service/runtime/background';
-import { convertNode } from '../convert';
-import { getTarget } from '../services';
+import { rescanDocument } from '../convert/rescan-document';
 import type { CtState } from '../state';
 import { observeRoot } from '../state';
 import { exhaustMutations } from './exhaust-mutations';
+import { noteMutationReversions } from './note-reversions';
+import { enqueueMutations, finishConversion, type MutationQueue, type QueueAction } from './queue-policy';
 import { findOpenShadowRoots } from './shadow-roots';
 
 const DEBOUNCE_MS = 500;
@@ -17,10 +18,39 @@ const clearScheduledFlush = (state: CtState) => {
   }
 };
 
-const fullRescan = (state: CtState) => {
-  getTarget(state.zhType)
-    .then(target => (target != null ? convertNode(state, target, [document]) : undefined))
-    .catch(console.error);
+const queueSnapshot = (state: CtState): MutationQueue<MutationRecord> => ({
+  items: state.mutations,
+  pendingFullRescan: state.pendingFullRescan,
+  missedDuringUpdate: state.missedDuringUpdate,
+});
+
+const applyQueue = (state: CtState, queue: MutationQueue<MutationRecord>) => {
+  state.mutations = queue.items;
+  state.pendingFullRescan = queue.pendingFullRescan;
+  state.missedDuringUpdate = queue.missedDuringUpdate;
+};
+
+const runQueueAction = (state: CtState, action: QueueAction) => {
+  if (action === 'none') return;
+
+  if (document.hidden) {
+    state.pendingFullRescan = true;
+    state.mutations = [];
+    state.firstMutationAt = undefined;
+    clearScheduledFlush(state);
+    return;
+  }
+
+  if (action === 'rescan') {
+    state.pendingFullRescan = false;
+    state.mutations = [];
+    state.firstMutationAt = undefined;
+    clearScheduledFlush(state);
+    rescanDocument(state);
+    return;
+  }
+
+  scheduleFlush(state);
 };
 
 const flushMutations = (state: CtState) => {
@@ -50,18 +80,13 @@ const scheduleFlush = (state: CtState) => {
 };
 
 const queueMutations = (state: CtState, mutations: MutationRecord[]) => {
-  if (state.isUpdating) return;
-
-  if (document.hidden) {
-    state.pendingFullRescan = true;
-    state.mutations = [];
-    state.firstMutationAt = undefined;
-    clearScheduledFlush(state);
-    return;
-  }
-
-  for (const mutation of mutations) state.mutations.push(mutation);
-  scheduleFlush(state);
+  noteMutationReversions(state, mutations);
+  const result = enqueueMutations(queueSnapshot(state), mutations, {
+    hidden: document.hidden,
+    updating: state.isUpdating,
+  });
+  applyQueue(state, result.queue);
+  runQueueAction(state, result.action);
 };
 
 const observerFn = (state: CtState) => (mutations: MutationRecord[]) => {
@@ -95,7 +120,7 @@ const mountVisibilityListener = (state: CtState) => {
     observeKnownRoots(state);
     if (state.pendingFullRescan) {
       state.pendingFullRescan = false;
-      fullRescan(state);
+      rescanDocument(state);
     }
   });
 };
@@ -104,6 +129,11 @@ export const mountMutationObserver = async (state: CtState): Promise<void> => {
   const isSpa = await dispatchBgAction({ type: 'SpaMode', payload: undefined });
   if (!isSpa) return;
 
+  state.afterDomUpdate = () => {
+    const result = finishConversion(queueSnapshot(state));
+    applyQueue(state, result.queue);
+    runQueueAction(state, result.action);
+  };
   state.mutationObserver = new MutationObserver(observerFn(state));
   observeRoot(state, document);
   findOpenShadowRoots(document).forEach(root => observeRoot(state, root));

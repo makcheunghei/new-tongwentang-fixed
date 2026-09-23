@@ -1,9 +1,5 @@
-import {
-  classifyLanguageTag,
-  DEFAULT_CHS_TAGS,
-  DEFAULT_CHT_TAGS,
-  normalizeLanguageTag,
-} from '../../preference/language-tags';
+import { DEFAULT_CHS_TAGS, DEFAULT_CHT_TAGS, normalizeLanguageTag } from '../../preference/language-tags';
+import { resolveDetectedKind } from '../../preference/zh-sample';
 import type { PrefFilter } from '../../preference/types/v2';
 import { getStorage } from '../../service/storage/storage';
 import { ZhType } from '../../service/tabs/tabs.constant';
@@ -20,8 +16,9 @@ export const getDocumentLanguageTag = (): string =>
 
 export const getDetectLanguage: GetDetectLanguage = async filter => {
   const tags = filter ?? (await getStorage('filter').then(({ filter }) => filter));
-  const kind = classifyLanguageTag(
+  const kind = resolveDetectedKind(
     getDocumentLanguageTag(),
+    document.body?.textContent ?? '',
     tags?.chtTags ?? DEFAULT_CHT_TAGS,
     tags?.chsTags ?? DEFAULT_CHS_TAGS,
   );

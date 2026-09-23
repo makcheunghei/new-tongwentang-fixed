@@ -5,8 +5,16 @@ import { autoConvertOptions, browserActionOptions, defaultTargetOptions } from '
 import { useGeneralOpt } from '../../hooks/general/use-general-opt';
 
 export const GeneralSettings: FC = () => {
-  const { general, setAutoConvert, setBrowserAction, setDefaultTarget, setSpaMode, setUpdateLangAttr, setDebugMode } =
-    useGeneralOpt();
+  const {
+    general,
+    setAutoConvert,
+    setBrowserAction,
+    setDefaultTarget,
+    setDetectFallback,
+    setSpaMode,
+    setUpdateLangAttr,
+    setDebugMode,
+  } = useGeneralOpt();
 
   return (
     <form>
@@ -18,6 +26,12 @@ export const GeneralSettings: FC = () => {
       >
         {autoConvertOptions()}
       </Select>
+      <Checkbox
+        isSwitch={true}
+        label={i18n.getMessage('MSG_DETECT_FALLBACK')}
+        checked={general.detectFallback === 'convert'}
+        onChange={setDetectFallback}
+      />
       <Select
         id="BrowserAction"
         label={i18n.getMessage('MSG_BROWSER_ACTION')}

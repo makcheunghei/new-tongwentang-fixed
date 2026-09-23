@@ -1,8 +1,8 @@
-import type { Control} from 'data-fixer';
+import type { Control } from 'data-fixer';
 import { dctrl, vctrl } from 'data-fixer';
 import { LangType } from 'tongwen-core/dictionaries';
 import { z } from 'zod';
-import type { AutoConvertOpt, BrowserActionOpt, PrefGeneral } from '../../types/v2';
+import type { AutoConvertOpt, BrowserActionOpt, DetectFallback, PrefGeneral } from '../../types/v2';
 import { isBoolean } from '../controllers';
 import { vldFn } from '../validator';
 
@@ -13,6 +13,7 @@ export const generalSchema: Control<PrefGeneral> = dctrl({
   ),
   browserAction: vctrl<BrowserActionOpt>(vldFn(z.enum(['auto', LangType.s2t, LangType.t2s])), 'auto'),
   defaultTarget: vctrl(vldFn(z.enum([LangType.s2t, LangType.t2s])), LangType.s2t),
+  detectFallback: vctrl<DetectFallback>(vldFn(z.enum(['skip', 'convert'])), 'skip'),
   spaMode: isBoolean(true),
   updateLangAttr: isBoolean(false),
   debugMode: isBoolean(false),

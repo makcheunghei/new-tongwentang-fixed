@@ -25,6 +25,7 @@ describe('getDetectLanguage', () => {
   beforeEach(() => {
     document.documentElement.lang = '';
     document.head.innerHTML = '';
+    document.body.textContent = '';
   });
 
   it('detects Simplified Chinese from the document language', async () => {
@@ -48,6 +49,21 @@ describe('getDetectLanguage', () => {
   });
 
   it('returns und when no reliable language hint exists', async () => {
+    await expect(getDetectLanguage()).resolves.toBe(ZhType.und);
+  });
+
+  it('samples page text when the language tag is missing or generic', async () => {
+    document.body.textContent = '这是一个简体中文测试页面，电脑网络显示汉字转换。';
+    await expect(getDetectLanguage()).resolves.toBe(ZhType.hans);
+
+    document.documentElement.lang = 'zh';
+    document.body.textContent = '這是一個簡體中文測試頁面，電腦網絡顯示漢字轉換。';
+    await expect(getDetectLanguage()).resolves.toBe(ZhType.hant);
+  });
+
+  it('does not sample an explicit non-Chinese language tag', async () => {
+    document.documentElement.lang = 'en';
+    document.body.textContent = '这是一个简体中文测试页面，电脑网络显示汉字转换。';
     await expect(getDetectLanguage()).resolves.toBe(ZhType.und);
   });
 });

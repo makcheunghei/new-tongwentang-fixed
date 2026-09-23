@@ -1,4 +1,5 @@
 import { TARGET_NODE_ATTRIBUTES } from 'tongwen-core/walker';
+import type { ConversionMemory } from './mutation-observer/note-reversions';
 import { getStorage } from '../service/storage/storage';
 import type { ZhType } from '../service/tabs/tabs.constant';
 import { getDetectLanguage } from './services';
@@ -22,8 +23,11 @@ export interface CtState {
   observedRoots: Set<Node>;
   mutations: MutationRecord[];
   pendingFullRescan: boolean;
+  missedDuringUpdate: boolean;
   isUpdating: boolean;
   converting: Promise<void>;
+  conversionSlots: WeakMap<Node, Map<string, ConversionMemory>>;
+  afterDomUpdate?: () => void;
 }
 
 const getUpdateLangAttr = async () => getStorage('general').then(({ general }) => general.updateLangAttr);
@@ -64,8 +68,10 @@ export async function createCtState(): Promise<CtState> {
       observedRoots: new Set<Node>(),
       mutations: [],
       pendingFullRescan: false,
+      missedDuringUpdate: false,
       isUpdating: false,
       converting: Promise.resolve(undefined),
+      conversionSlots: new WeakMap(),
     }),
   );
 }

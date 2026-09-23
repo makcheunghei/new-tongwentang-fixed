@@ -17,6 +17,8 @@ export const useGeneralOpt = () => {
     void setGeneral('browserAction', e.currentTarget.value as BrowserActionOpt);
   const setDefaultTarget: ChangeEventHandler<HTMLSelectElement> = e =>
     void setGeneral('defaultTarget', e.currentTarget.value as LangType);
+  const setDetectFallback: ChangeEventHandler<HTMLInputElement> = e =>
+    void setGeneral('detectFallback', e.currentTarget.checked ? 'convert' : 'skip');
   const setSpaMode: ChangeEventHandler<HTMLInputElement> = e => void setGeneral('spaMode', e.currentTarget.checked);
   const setUpdateLangAttr: ChangeEventHandler<HTMLInputElement> = e =>
     void setGeneral('updateLangAttr', e.currentTarget.checked);
@@ -46,6 +48,7 @@ export const useGeneralOpt = () => {
     setAutoConvert,
     setBrowserAction,
     setDefaultTarget,
+    setDetectFallback,
     setSpaMode,
     setUpdateLangAttr,
     setDebugMode,

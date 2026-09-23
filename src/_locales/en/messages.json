@@ -29,6 +29,9 @@
   "MSG_DEBUG_MODE": {
     "message": "Debug Mode"
   },
+  "MSG_DETECT_FALLBACK": {
+    "message": "Still convert when Chinese cannot be identified"
+  },
   "MSG_IMPORT": {
     "message": "Import"
   },

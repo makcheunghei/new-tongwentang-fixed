@@ -29,6 +29,9 @@
   "MSG_DEBUG_MODE": {
     "message": "偵錯模式"
   },
+  "MSG_DETECT_FALLBACK": {
+    "message": "識別不到中文時仍然轉換"
+  },
   "MSG_IMPORT": {
     "message": "匯入"
   },

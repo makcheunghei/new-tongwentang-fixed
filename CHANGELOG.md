@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.0] - 2026-09-23
+
+### Features
+
+- Detective conversion now samples page text when the language tag is missing or only generic `zh`.
+- Unrecognized or explicit non-Chinese pages are no longer force-converted. A new preference restores the old fallback.
+- Dynamic conversion keeps updates that arrive while a conversion is writing, and rescans once at 1 second and 3 seconds after the initial automatic conversion.
+- A node that is reverted to its original text twice within 10 seconds is skipped for 30 seconds, without stopping conversion of other nodes.
+
+### Fixed
+
+- Oversized mutation queues now collapse into one full-page rescan instead of growing without a bound.
+- Hidden documents no longer run conversion scans until they are visible again.
+
 ## [2.6.0] - 2026-09-20
 
 ### Features

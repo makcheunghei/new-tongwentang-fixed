@@ -2,6 +2,8 @@ import { LangType } from 'tongwen-core/dictionaries';
 import { walkNode, type ParsedResult } from 'tongwen-core/walker';
 import { dispatchBgAction } from '../../service/runtime/background';
 import { ZhType } from '../../service/tabs/tabs.constant';
+import { isNodeSkipped } from '../mutation-observer/contest';
+import { rememberConversion } from '../mutation-observer/note-reversions';
 import { findOpenShadowRoots } from '../mutation-observer/shadow-roots';
 import type { CtState } from '../state';
 import { observeRoot } from '../state';
@@ -23,6 +25,8 @@ const uniqueParsedNodes = (nodes: ParsedResult[]): ParsedResult[] => {
   });
 };
 
+const slotOf = (parsed: ParsedResult): string => (parsed.type === 'TEXT' ? 'TEXT' : parsed.attr);
+
 const collectConversionRoots = (state: CtState, nodes: Node[]): Node[] => {
   const roots = new Set<Node>(nodes);
 
@@ -40,7 +44,11 @@ export const convertNode: SConvertNode = async (state, target, nodes) => {
   return (state.converting = state.converting
     .catch(() => undefined)
     .then(async () => {
-      const parsedNodes = uniqueParsedNodes(collectConversionRoots(state, nodes).flatMap(node => walkNode(node)));
+      const parsedNodes = uniqueParsedNodes(
+        collectConversionRoots(state, nodes).flatMap(node => walkNode(node)),
+      ).filter(
+        parsed => !isNodeSkipped(state.conversionSlots.get(parsed.node)?.get(slotOf(parsed))?.contest, Date.now()),
+      );
 
       if (parsedNodes.length === 0) return;
 
@@ -51,6 +59,9 @@ export const convertNode: SConvertNode = async (state, target, nodes) => {
 
       state.isUpdating = true;
       try {
+        parsedNodes.forEach((parsed, index) => {
+          if (parsed.text !== texts[index]) rememberConversion(state, parsed.node, slotOf(parsed), parsed.text);
+        });
         updateNodes(parsedNodes, texts);
         state.updateLangAttr &&
           document.querySelectorAll<HTMLElement>('[lang|="zh"]').forEach(element => {
@@ -69,6 +80,7 @@ export const convertNode: SConvertNode = async (state, target, nodes) => {
         }
       } finally {
         state.isUpdating = false;
+        state.afterDomUpdate?.();
       }
     }));
 };
