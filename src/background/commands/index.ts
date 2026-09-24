@@ -5,27 +5,22 @@ import { dispatchCtAction } from '../../service/runtime/content';
 import { convertClipboard } from '../clipboard';
 import { bgLog } from '../logger';
 
+const convertActiveTab = async (target: LangType) => {
+  const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+  const tabId = tab?.id;
+  if (typeof tabId !== 'number') return undefined;
+  return dispatchCtAction({ type: 'Webpage', payload: target }, tabId);
+};
+
 export const mountCommandListener = () => {
   browser.commands?.onCommand.addListener(async cmd => {
     bgLog('[BG_RECEIVE_COMMAND]:', cmd);
 
     switch (cmd) {
       case CommandType.wS2t:
-        return browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(async ([tab]) =>
-            typeof tab.id === 'number'
-              ? dispatchCtAction({ type: 'Webpage', payload: LangType.s2t }, tab.id)
-              : Promise.resolve(undefined),
-          );
+        return convertActiveTab(LangType.s2t);
       case CommandType.wT2s:
-        return browser.tabs
-          .query({ active: true, currentWindow: true })
-          .then(async ([tab]) =>
-            typeof tab.id === 'number'
-              ? dispatchCtAction({ type: 'Webpage', payload: LangType.t2s }, tab.id)
-              : Promise.resolve(undefined),
-          );
+        return convertActiveTab(LangType.t2s);
       case CommandType.cS2t:
         return convertClipboard(LangType.s2t);
       case CommandType.cT2s:

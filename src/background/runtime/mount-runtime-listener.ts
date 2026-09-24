@@ -1,6 +1,7 @@
 import { browser } from '../../service/browser';
 import type { BgReqAction } from '../../service/runtime/background';
 import { handleBgReqAction } from '../../service/runtime/background';
+import { isBackgroundMessage } from '../../service/runtime/message-target';
 import { convertClipboard } from '../clipboard';
 import { getConverter } from '../converter';
 import { bgLog } from '../logger';
@@ -12,14 +13,16 @@ import { getTarget } from './handle-get-target';
  * background message handler
  */
 export function mountRuntimeListener() {
-  browser.runtime.onMessage.addListener(async (message: unknown, sender: browser.Runtime.MessageSender) => {
+  browser.runtime.onMessage.addListener((message: unknown, sender: browser.Runtime.MessageSender) => {
+    if (!isBackgroundMessage(message)) return undefined;
+
     const action = message as BgReqAction;
     bgLog('[BG_RECEIVE_REQ] req:', action, 'sender:', sender);
 
     return bgGetPref().then(async pref => {
       switch (action.type) {
         case 'FilterTarget':
-          return handleBgReqAction(action, getTargetByFilter(pref, sender.url!));
+          return handleBgReqAction(action, getTargetByFilter(pref, sender.url ?? ''));
         case 'GetTarget':
           return handleBgReqAction(action, getTarget(pref, sender, action.payload.zhType));
         case 'NodesText':

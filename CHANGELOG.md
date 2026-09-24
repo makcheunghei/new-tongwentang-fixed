@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.1] - 2026-09-24
+
+### Fixed
+
+- Content scripts no longer claim replies for background messages, which closed the message channel on pages with many frames.
+- Keyboard shortcuts and the toolbar button no longer crash when the active tab has no id.
+
 ## [2.7.0] - 2026-09-23
 
 ### Features
