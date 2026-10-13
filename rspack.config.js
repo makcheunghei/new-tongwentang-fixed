@@ -20,6 +20,7 @@ module.exports = (env, argv) => {
       background: './src/background/main.ts',
       content: './src/content/main.ts',
       options: './src/options/index.tsx',
+      ...(vendor === 'chromium' ? { clipboard: './src/clipboard/main.ts' } : {}),
     },
     output: {
       path: distPath,
@@ -70,6 +71,15 @@ module.exports = (env, argv) => {
         template: './src/options/index.html',
         chunks: ['options'],
       }),
+      ...(vendor === 'chromium'
+        ? [
+            new rspack.HtmlRspackPlugin({
+              filename: 'clipboard.html',
+              template: './src/clipboard/index.html',
+              chunks: ['clipboard'],
+            }),
+          ]
+        : []),
       new rspack.CopyRspackPlugin({
         patterns: [
           { from: './src/_locales/', to: '_locales/', toType: 'dir' },

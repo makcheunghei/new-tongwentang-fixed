@@ -40,6 +40,10 @@ export const enqueueMutations = <T>(
     };
   }
 
+  if (queue.pendingFullRescan) {
+    return { queue: { items: [], pendingFullRescan: true, missedDuringUpdate: false }, action: 'rescan' };
+  }
+
   return {
     queue: { items, pendingFullRescan: false, missedDuringUpdate: false },
     action: items.length > 0 ? 'flush' : 'none',

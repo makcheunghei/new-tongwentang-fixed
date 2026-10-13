@@ -244,5 +244,26 @@
   },
   "MSG_LANG_CHS": {
     "message": "簡體中文標籤（以逗號分隔）"
+  },
+  "MSG_SETTINGS_CONFLICT": {
+    "message": "設定已在其他地方更改。你的編輯已保留；請先備份編輯內容，重新載入後再儲存。"
+  },
+  "MSG_SAVE_FAILED": {
+    "message": "無法儲存設定，請重試。"
+  },
+  "NT_PAGE_UNAVAILABLE": {
+    "message": "此頁面無法接收轉換指令。請重新載入網頁，或在一般網頁使用。"
+  },
+  "NT_CONVERSION_FAILED": {
+    "message": "轉換失敗，請重試。"
+  },
+  "NT_CLIPBOARD_CHANGED": {
+    "message": "轉換期間剪貼簿已更新，已保留較新的內容。"
+  },
+  "NT_CLIPBOARD_UNAVAILABLE": {
+    "message": "此瀏覽器環境無法使用剪貼簿轉換。"
+  },
+  "NT_CLIPBOARD_FAILED": {
+    "message": "無法讀取或寫入剪貼簿，請檢查剪貼簿權限後重試。"
   }
 }

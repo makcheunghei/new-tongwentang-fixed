@@ -244,5 +244,26 @@
   },
   "MSG_LANG_CHS": {
     "message": "Simplified Chinese tags (comma separated)"
+  },
+  "MSG_SETTINGS_CONFLICT": {
+    "message": "Settings changed elsewhere. Your edits were kept; reload this page before editing and saving again."
+  },
+  "MSG_SAVE_FAILED": {
+    "message": "Unable to save settings. Please try again."
+  },
+  "NT_PAGE_UNAVAILABLE": {
+    "message": "This page cannot receive conversion commands. Reload the page or use a normal web page."
+  },
+  "NT_CONVERSION_FAILED": {
+    "message": "Conversion failed. Please try again."
+  },
+  "NT_CLIPBOARD_CHANGED": {
+    "message": "Clipboard changed while converting. The newer content was preserved."
+  },
+  "NT_CLIPBOARD_UNAVAILABLE": {
+    "message": "Clipboard conversion is unavailable in this browser environment."
+  },
+  "NT_CLIPBOARD_FAILED": {
+    "message": "Could not read or write the clipboard. Check clipboard permissions and try again."
   }
 }

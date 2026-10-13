@@ -14,6 +14,7 @@ const mutationOpt: MutationObserverInit = {
 
 export interface CtState {
   zhType: ZhType;
+  detectedZhType: ZhType;
   updateLangAttr: boolean;
   debugMode: boolean;
   timeoutId: number | undefined;
@@ -60,6 +61,7 @@ export async function createCtState(): Promise<CtState> {
   return Promise.all([getDetectLanguage(), getUpdateLangAttr(), getDebugMode()]).then(
     ([zhType, updateLangAttr, debugMode]) => ({
       zhType,
+      detectedZhType: zhType,
       updateLangAttr,
       debugMode,
       timeoutId: undefined,

@@ -6,32 +6,41 @@ import { dispatchCtAction } from '../../service/runtime/content';
 import { convertClipboard } from '../clipboard';
 import { bgLog } from '../logger';
 import { addDomainToRules } from './browser-action';
+import { reportActionError } from '../report-action-error';
 
 export const listenMenusEvent = () => {
-  browser.contextMenus.onClicked.addListener(async (info, tab) => {
-    bgLog('[BG_RECEIVED_MENU_EVENT]: ', { info, tab });
+  browser.contextMenus.onClicked.addListener((info, tab) => {
+    void (async () => {
+      bgLog('[BG_RECEIVED_MENU_EVENT]: ', { info, tab });
 
-    switch (info.menuItemId as ActionMenuId | ContextMenuChildrenId) {
-      case 'domain_disabled':
-        return addDomainToRules('disabled', info.pageUrl);
-      case 'domain_s2t':
-        return addDomainToRules(LangType.s2t, info.pageUrl);
-      case 'domain_t2s':
-        return addDomainToRules(LangType.t2s, info.pageUrl);
-      case 'options':
-        return browser.runtime.openOptionsPage();
-      case 'clipboard_s2t':
-        return convertClipboard(LangType.s2t);
-      case 'clipboard_t2s':
-        return convertClipboard(LangType.t2s);
-      case 'textarea_s2t':
-        return typeof tab?.id === 'number' && dispatchCtAction({ type: 'Textarea', payload: LangType.s2t }, tab.id);
-      case 'textarea_t2s':
-        return typeof tab?.id === 'number' && dispatchCtAction({ type: 'Textarea', payload: LangType.t2s }, tab.id);
-      case 'webpage_s2t':
-        return typeof tab?.id === 'number' && dispatchCtAction({ type: 'Webpage', payload: LangType.s2t }, tab.id);
-      case 'webpage_t2s':
-        return typeof tab?.id === 'number' && dispatchCtAction({ type: 'Webpage', payload: LangType.t2s }, tab.id);
-    }
+      switch (info.menuItemId as ActionMenuId | ContextMenuChildrenId) {
+        case 'domain_disabled':
+          return addDomainToRules('disabled', info.pageUrl);
+        case 'domain_s2t':
+          return addDomainToRules(LangType.s2t, info.pageUrl);
+        case 'domain_t2s':
+          return addDomainToRules(LangType.t2s, info.pageUrl);
+        case 'options':
+          return browser.runtime.openOptionsPage();
+        case 'clipboard_s2t':
+          return convertClipboard(LangType.s2t);
+        case 'clipboard_t2s':
+          return convertClipboard(LangType.t2s);
+        case 'textarea_s2t':
+          return (
+            typeof tab?.id === 'number' &&
+            dispatchCtAction({ type: 'Textarea', payload: LangType.s2t }, tab.id, info.frameId)
+          );
+        case 'textarea_t2s':
+          return (
+            typeof tab?.id === 'number' &&
+            dispatchCtAction({ type: 'Textarea', payload: LangType.t2s }, tab.id, info.frameId)
+          );
+        case 'webpage_s2t':
+          return typeof tab?.id === 'number' && dispatchCtAction({ type: 'Webpage', payload: LangType.s2t }, tab.id);
+        case 'webpage_t2s':
+          return typeof tab?.id === 'number' && dispatchCtAction({ type: 'Webpage', payload: LangType.t2s }, tab.id);
+      }
+    })().catch(reportActionError);
   });
 };

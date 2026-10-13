@@ -14,9 +14,10 @@ export type CtReqAction = ReqAction<CtActionMap>;
 
 export const handleCtReqAction: ReqActionHandler<CtActionMap> = async (_, repP) => repP;
 
-export const dispatchCtAction: ReqActionDispatcher<CtActionMap, [tabId: NonNullable<Tabs.Tab['id']>]> = async (
-  action,
-  tabId,
-) => {
-  return browser.tabs.sendMessage(tabId, action);
+export const dispatchCtAction: ReqActionDispatcher<
+  CtActionMap,
+  [tabId: NonNullable<Tabs.Tab['id']>, frameId?: number]
+> = async (action, tabId, frameId) => {
+  const targetFrame = frameId ?? (action.type === 'ZhType' ? 0 : undefined);
+  return browser.tabs.sendMessage(tabId, action, targetFrame == null ? undefined : { frameId: targetFrame });
 };

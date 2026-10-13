@@ -9,7 +9,7 @@ const { getStorage, setStorage } = vi.hoisted(() => ({
   setStorage: vi.fn<(pref: Partial<Pref>) => Promise<void>>(async () => undefined),
 }));
 
-vi.mock('./storage', () => ({ getStorage, setStorage }));
+vi.mock('./storage', () => ({ getStorage, setStorage, writeStorage: setStorage }));
 
 import { deleteFilterRule, updateFilterRule } from './local';
 

@@ -23,13 +23,9 @@ jobs:
         run: npm ci
 
       - name: Verify
-        run: |
-          npm run test:tsc
-          npm run test:lint
-          npm run test:unit
-
-      - name: Build project
-        run: npm run build:all
+        run: npm test
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
 
       - name: Package extensions
         run: |

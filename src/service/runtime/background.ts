@@ -1,11 +1,13 @@
 import type { LangType } from 'tongwen-core/dictionaries';
 import type { MaybeTransTarget } from '../../preference/types/types';
 import type { FilterTarget } from '../../preference/types/v2';
+import type { PreferenceUpdate } from '../storage/preference-update';
 import { browser } from '../browser';
 import type { ZhType } from '../tabs/tabs.constant';
 import type { ReqAction, ReqActionDispatcher, ReqActionHandler, TActionMap, TActionPayload } from './action';
 
 export type BgActionMap = TActionMap<{
+  UpdatePreference: TActionPayload<PreferenceUpdate, boolean>;
   Convert: TActionPayload<{ target: LangType; text: string }, string>;
   NodesText: TActionPayload<{ target: LangType; texts: string[] }, string[]>;
   FilterTarget: TActionPayload<void, FilterTarget | undefined>;

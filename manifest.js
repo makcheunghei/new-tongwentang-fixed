@@ -30,7 +30,7 @@ const createManifest = vendor => {
 
   return {
     manifest_version: 3,
-    minimum_chrome_version: isSafari ? undefined : '102',
+    minimum_chrome_version: isSafari ? undefined : '109',
     name: '__MSG_MSG_EXT_NAME__',
     version: pkg.version,
     description: '__MSG_MSG_EXT_DESC__',
@@ -44,7 +44,9 @@ const createManifest = vendor => {
       48: 'icons/tongwen-icon-48.png',
       128: 'icons/tongwen-icon-128.png',
     },
-    permissions: isSafari ? ['contextMenus', 'storage'] : ['contextMenus', 'notifications', 'storage'],
+    permissions: isSafari
+      ? ['contextMenus', 'storage']
+      : ['contextMenus', 'notifications', 'storage', ...(!isFirefox ? ['offscreen'] : [])],
     optional_permissions: isSafari ? undefined : ['clipboardWrite', 'clipboardRead'],
     background,
     content_scripts: [
@@ -111,4 +113,5 @@ const writeManifest = (vendor, path) => {
   writeFileSync(resolve(path, 'manifest.json'), JSON.stringify(manifest, null, 2));
 };
 
-writeManifest(process.env.vendor || '', process.env.distPath || '');
+module.exports = { createManifest };
+if (require.main === module) writeManifest(process.env.vendor || '', process.env.distPath || '');

@@ -4,6 +4,15 @@
 
 > 本專案位於 [`makcheunghei/new-tongwentang-fixed`](https://github.com/makcheunghei/new-tongwentang-fixed)。上游專案為 [`tongwentang/tongwentang-extension`](https://github.com/tongwentang/tongwentang-extension)。
 
+## 2.7.2 修復重點
+
+- 偵測模式保留原始語言判定，首次轉換後新增的正文仍會繼續轉換。
+- 背景轉換等待期間，網站或使用者改過的文字不會被舊結果覆蓋；插件自身寫入不會再次排入動態轉換。
+- 設定由背景串行儲存。網域規則若已在其他頁面修改，會保留目前編輯並提示衝突，避免覆蓋新規則。
+- 工具列語言查詢固定讀取主文件；文字框右鍵操作會指定所在 iframe。
+- Chromium 剪貼簿轉換使用 offscreen 文件，並保留轉換期間被更新的剪貼簿內容。需要 Chrome 109 或以上及 `offscreen` 權限；讀寫剪貼簿仍在使用功能時才要求授權。
+- 發佈時核對 tag、插件版本及兩個瀏覽器的檔案引用；ZIP 每次重新建立，避免殘留舊檔案。
+
 ## 主要功能
 
 - 網頁載入後自動轉換。偵測模式會先看語言標籤；沒有標籤或只有籠統的 `zh` 時，先抽樣頁面文字。識別不到中文就不會自動轉換，可在設定改回舊行為。固定簡轉繁或繁轉簡不受影響。

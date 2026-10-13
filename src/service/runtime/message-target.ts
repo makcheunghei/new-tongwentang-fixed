@@ -1,5 +1,6 @@
 const CONTENT_ACTIONS = new Set(['Webpage', 'Textarea', 'ZhType']);
 const BACKGROUND_ACTIONS = new Set([
+  'UpdatePreference',
   'Convert',
   'NodesText',
   'FilterTarget',

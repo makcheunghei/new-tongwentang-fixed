@@ -3,7 +3,7 @@ import { rescanDocument } from '../convert/rescan-document';
 import type { CtState } from '../state';
 import { observeRoot } from '../state';
 import { exhaustMutations } from './exhaust-mutations';
-import { noteMutationReversions } from './note-reversions';
+import { isConversionMutation, noteMutationReversions } from './note-reversions';
 import { enqueueMutations, finishConversion, type MutationQueue, type QueueAction } from './queue-policy';
 import { findOpenShadowRoots } from './shadow-roots';
 
@@ -56,6 +56,11 @@ const runQueueAction = (state: CtState, action: QueueAction) => {
 const flushMutations = (state: CtState) => {
   clearScheduledFlush(state);
 
+  if (state.isUpdating) {
+    state.missedDuringUpdate = true;
+    return;
+  }
+
   if (document.hidden) {
     state.pendingFullRescan = true;
     state.mutations = [];
@@ -80,6 +85,8 @@ const scheduleFlush = (state: CtState) => {
 };
 
 const queueMutations = (state: CtState, mutations: MutationRecord[]) => {
+  mutations = mutations.filter(mutation => !isConversionMutation(state, mutation));
+  if (mutations.length === 0) return;
   noteMutationReversions(state, mutations);
   const result = enqueueMutations(queueSnapshot(state), mutations, {
     hidden: document.hidden,

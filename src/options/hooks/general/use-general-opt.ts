@@ -4,13 +4,14 @@ import type { LangType } from 'tongwen-core/dictionaries';
 import { getDefaultPref } from '../../../preference/default';
 import type { Pref } from '../../../preference/types/lastest';
 import type { AutoConvertOpt, BrowserActionOpt, PrefGeneral } from '../../../preference/types/v2';
-import { getStorage, listenStorage, setStorage } from '../../../service/storage/storage';
+import { getStorage, listenStorage } from '../../../service/storage/storage';
+import { updatePreference } from '../../../service/storage/preference-update';
 
 export const useGeneralOpt = () => {
   const [generalState, setGeneralState] = useState<PrefGeneral>(() => getDefaultPref().general);
 
   const setGeneral = async <T extends keyof PrefGeneral>(key: T, value: PrefGeneral[T]) =>
-    setStorage({ general: { ...generalState, [key]: value } });
+    updatePreference({ section: 'general', patch: { [key]: value } });
   const setAutoConvert: ChangeEventHandler<HTMLSelectElement> = e =>
     void setGeneral('autoConvert', e.currentTarget.value as AutoConvertOpt);
   const setBrowserAction: ChangeEventHandler<HTMLSelectElement> = e =>

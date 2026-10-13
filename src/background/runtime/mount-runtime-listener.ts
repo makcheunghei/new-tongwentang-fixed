@@ -6,6 +6,7 @@ import { convertClipboard } from '../clipboard';
 import { getConverter } from '../converter';
 import { bgLog } from '../logger';
 import { bgGetPref } from '../state/storage';
+import { updatePreference } from '../state/update-preference';
 import { getTargetByFilter } from './handle-get-filter-target';
 import { getTarget } from './handle-get-target';
 
@@ -21,6 +22,8 @@ export function mountRuntimeListener() {
 
     return bgGetPref().then(async pref => {
       switch (action.type) {
+        case 'UpdatePreference':
+          return handleBgReqAction(action, updatePreference(action.payload));
         case 'FilterTarget':
           return handleBgReqAction(action, getTargetByFilter(pref, sender.url ?? ''));
         case 'GetTarget':

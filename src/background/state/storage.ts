@@ -2,7 +2,13 @@ import { patchFilterRulesRegExp } from '../../preference/filter-rule';
 import type { Pref } from '../../preference/types/lastest';
 import { setBadge } from '../../service/browser-action/set-badge';
 import { rebuildMenus } from '../../service/menu/rebuild-menus';
-import { getStorage, initialStorage, setStorage, type StorageChanges } from '../../service/storage/storage';
+import {
+  getStorage,
+  initialStorage,
+  writeStorage as setStorage,
+  type StorageChanges,
+} from '../../service/storage/storage';
+import { serializeStorageMutation } from '../../service/storage/mutation-queue';
 import { resetConverter } from '../converter';
 
 let state: Pref | undefined;
@@ -26,7 +32,9 @@ export const bgGetPref = async () => {
 };
 
 export const bgSetPref = async (...args: Parameters<typeof setStorage>) => {
-  return setStorage(...args).then(async () => (queue = getStorage().then(pref => (state = applyRuntimeState(pref)))));
+  return serializeStorageMutation(() =>
+    setStorage(...args).then(async () => (queue = getStorage().then(pref => (state = applyRuntimeState(pref))))),
+  );
 };
 
 export const bgHandlePrefUpdate = (changes: StorageChanges): void => {

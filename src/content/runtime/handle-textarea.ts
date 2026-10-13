@@ -58,8 +58,9 @@ const dispatchInput = (element: Element, value: string) => {
 const convertTextControl = async (element: TextControl, target: LangType): Promise<void> => {
   if (element.disabled || element.readOnly || element.value.length === 0) return;
 
-  const converted = await dispatchBgAction({ type: 'Convert', payload: { target, text: element.value } });
-  if (converted === element.value) return;
+  const source = element.value;
+  const converted = await dispatchBgAction({ type: 'Convert', payload: { target, text: source } });
+  if (!element.isConnected || element.value !== source || converted === source) return;
 
   const selectionStart = element.selectionStart;
   const selectionEnd = element.selectionEnd;
@@ -91,8 +92,15 @@ const convertContentEditable = async (element: HTMLElement, target: LangType): P
   const selectedText = range?.toString() ?? '';
 
   if (selectedText.length > 0) {
+    const originalHtml = element.innerHTML;
     const converted = await dispatchBgAction({ type: 'Convert', payload: { target, text: selectedText } });
-    if (converted === selectedText) return;
+    if (
+      !element.isConnected ||
+      element.innerHTML !== originalHtml ||
+      range?.toString() !== selectedText ||
+      converted === selectedText
+    )
+      return;
 
     const textNode = document.createTextNode(converted);
     range!.deleteContents();
@@ -118,13 +126,15 @@ const convertContentEditable = async (element: HTMLElement, target: LangType): P
 
   if (textNodes.length === 0) return;
 
+  const sources = textNodes.map(node => node.nodeValue ?? '');
   const texts = await dispatchBgAction({
     type: 'NodesText',
-    payload: { target, texts: textNodes.map(node => node.nodeValue ?? '') },
+    payload: { target, texts: sources },
   });
 
   textNodes.forEach((node, index) => {
-    if (node.nodeValue !== texts[index]) node.nodeValue = texts[index];
+    if (node.isConnected && node.nodeValue === sources[index] && node.nodeValue !== texts[index])
+      node.nodeValue = texts[index];
   });
 
   dispatchInput(element, texts.join(''));

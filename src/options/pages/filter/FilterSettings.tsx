@@ -1,11 +1,9 @@
 import type { ChangeEventHandler, FC } from 'react';
 import { Fragment, useCallback, useState } from 'react';
 import { createFilterRule } from '../../../preference/filter-rule';
-import { parseLanguageTags } from '../../../preference/language-tags';
 import type { PrefFilterRule } from '../../../preference/types/v2';
 import { i18n } from '../../../service/i18n/i18n';
 import { createNoti } from '../../../service/notification/create-noti';
-import { setStorage } from '../../../service/storage/storage';
 import { Button, Checkbox, Divider, Modal } from '../../components';
 import { useFilter } from '../../hooks/filter';
 import { useToggle } from '../../hooks/state/use-toggle';
@@ -13,8 +11,19 @@ import { FilterRuleEditor } from './FilterRuleEditor';
 import { FilterRules } from './FilterRules';
 
 export const FilterSettings: FC = () => {
-  const { enabled, setEnabled, rules, setRules, chtTagsText, setChtTagsText, chsTagsText, setChsTagsText } =
-    useFilter();
+  const {
+    enabled,
+    setEnabled,
+    rules,
+    setRules,
+    chtTagsText,
+    setChtTagsText,
+    chsTagsText,
+    setChsTagsText,
+    ready,
+    externalChange,
+    saveFilter,
+  } = useFilter();
 
   const handleEnabledChange: ChangeEventHandler<HTMLInputElement> = useCallback(
     e => {
@@ -65,21 +74,22 @@ export const FilterSettings: FC = () => {
     [toEdit, setRules, off],
   );
 
-  const save = useCallback(
-    async () =>
-      setStorage({
-        filter: {
-          enabled,
-          rules,
-          chtTags: parseLanguageTags(chtTagsText),
-          chsTags: parseLanguageTags(chsTagsText),
-        },
-      }).then(async () => createNoti(i18n.getMessage('MSG_UPDATE_COMPLETED'))),
-    [enabled, rules, chtTagsText, chsTagsText],
-  );
+  const save = async () => {
+    try {
+      const saved = await saveFilter();
+      await createNoti(i18n.getMessage(saved ? 'MSG_UPDATE_COMPLETED' : 'MSG_SETTINGS_CONFLICT'));
+    } catch {
+      await createNoti(i18n.getMessage('MSG_SAVE_FAILED'));
+    }
+  };
 
   return (
     <Fragment>
+      {externalChange && (
+        <p role="alert" className="text-warning">
+          {i18n.getMessage('MSG_SETTINGS_CONFLICT')}
+        </p>
+      )}
       <div className="panel">
         <div className="panel-nav" style={{ padding: '1em' }}>
           <div className="columns">
@@ -97,7 +107,7 @@ export const FilterSettings: FC = () => {
               </Button>
             </div>
             <div className="column col-auto">
-              <Button type="primary" onClick={save}>
+              <Button type="primary" disabled={!ready} onClick={save}>
                 {i18n.getMessage('MSG_SAVE')}
               </Button>
             </div>

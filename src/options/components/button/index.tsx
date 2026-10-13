@@ -6,7 +6,7 @@ export const Button: FC<{
   tooltip?: string;
   fullWidth?: boolean;
   disabled?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }> = ({ type, tooltip, fullWidth, children, onClick: handleClick, disabled }) => {
   const className = classEntries({
@@ -18,7 +18,14 @@ export const Button: FC<{
   const style = fullWidth ? { width: '100%' } : {};
 
   return (
-    <button className={className} style={style} onClick={handleClick} data-tooltip={tooltip}>
+    <button
+      type="button"
+      disabled={disabled}
+      className={className}
+      style={style}
+      onClick={handleClick}
+      data-tooltip={tooltip}
+    >
       {children}
     </button>
   );

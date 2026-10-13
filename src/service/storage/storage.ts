@@ -1,9 +1,9 @@
 import type { Storage } from 'webextension-polyfill';
 import browser from 'webextension-polyfill';
-import { getDefaultPref } from '../../preference/default';
 import type { Pref, PrefKeys, PrefPick } from '../../preference/types/lastest';
 import { safeUpgradePref, validatePref } from '../../preference/upgrade';
 import { BROWSER_TYPE } from '../types';
+import { updatePreference } from './preference-update';
 
 type StorageAreaName = Exclude<keyof Storage.Static, 'onChanged'>;
 export type StorageChanges = Partial<{ [P in PrefKeys]: Storage.StorageChange }>;
@@ -18,15 +18,18 @@ export const getStorage = async <T extends PrefKeys>(
   return browser.storage.local.get(keys) as any;
 };
 
-export const setStorage = async (data: Partial<Pref>): Promise<void> => browser.storage.local.set(updatePrefTime(data));
+// Background-only primitive; UI writes must go through the single background queue.
+export const writeStorage = async (data: Partial<Pref>): Promise<void> =>
+  browser.storage.local.set(updatePrefTime(data));
+export const setStorage = async (data: Partial<Pref>): Promise<void> => {
+  await updatePreference({ section: 'replace', value: data });
+};
 
 /**
  * reset pref, if undefined or null given, reset to default pref
  */
-export const resetStorage = async (pref?: Pref) => {
-  return browser.storage.local
-    .clear()
-    .then(async () => browser.storage.local.set((pref as unknown as Record<string, unknown>) || getDefaultPref()));
+export const resetStorage = async (pref?: Pref): Promise<void> => {
+  await updatePreference({ section: 'reset', ...(pref ? { value: pref } : {}) });
 };
 
 export const listenStorage = <PKey extends PrefKeys, AreaName extends StorageAreaName>(

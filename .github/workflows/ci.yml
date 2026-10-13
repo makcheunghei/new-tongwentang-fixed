@@ -37,7 +37,9 @@ jobs:
         run: npm run build:all
 
       - name: Validate WebExtension manifest
-        run: npm run test:webext
+        run: |
+          npm run test:webext
+          npm run test:build
 
       - name: Build extension archives
         run: |

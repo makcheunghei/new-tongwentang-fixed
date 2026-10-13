@@ -15,6 +15,24 @@ describe('handleTextarea', () => {
     dispatchBgAction.mockClear();
   });
 
+  it('does not overwrite typing while conversion is pending', async () => {
+    const textarea = document.querySelector('textarea')!;
+    textarea.value = '简体';
+    textarea.focus();
+    let finish!: (value: string) => void;
+    dispatchBgAction.mockImplementationOnce(
+      () =>
+        new Promise<string>(resolve => {
+          finish = resolve;
+        }),
+    );
+    const pending = handleTextarea(LangType.s2t);
+    textarea.value = 'new typing';
+    finish('繁體');
+    await pending;
+    expect(textarea.value).toBe('new typing');
+  });
+
   it('converts the active text control, preserves the caret, and emits input', async () => {
     const textarea = document.querySelector('textarea')!;
     textarea.value = '简体';

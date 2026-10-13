@@ -1,10 +1,11 @@
 import type { Pref } from '../../preference/types/lastest';
 import type { PrefFilterRule } from '../../preference/types/v2';
-import { getStorage, setStorage } from './storage';
+import { getStorage, writeStorage as setStorage } from './storage';
+import { serializeStorageMutation } from './mutation-queue';
 
 export type StoreReducer = (store: Pref) => Partial<Pref>;
 export const patchLocalStorage = async (reducer: StoreReducer): Promise<void> =>
-  getStorage().then(reducer).then(setStorage);
+  serializeStorageMutation(() => getStorage().then(reducer).then(setStorage));
 
 export const addFilterRule = async (rule: PrefFilterRule): Promise<void> => {
   return patchLocalStorage(({ filter: { rules, ...rest } }) => ({

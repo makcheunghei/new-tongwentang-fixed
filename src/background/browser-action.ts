@@ -4,6 +4,7 @@ import { dispatchCtAction } from '../service/runtime/content';
 import { ZhType } from '../service/tabs/tabs.constant';
 import { bgLog } from './logger';
 import { bgGetPref } from './state/storage';
+import { reportActionError } from './report-action-error';
 
 type GetTargetByDetection = (id: number, f: LangType) => Promise<LangType>;
 const getTargetByDetection: GetTargetByDetection = async (id, fallback) => {
@@ -31,6 +32,7 @@ export function mountBrowserActionListener(): void {
           ? getTargetByDetection(tabId, pref.general.defaultTarget)
           : pref.general.browserAction,
       )
-      .then(async target => dispatchCtAction({ type: 'Webpage', payload: target }, tabId));
+      .then(async target => dispatchCtAction({ type: 'Webpage', payload: target }, tabId))
+      .catch(reportActionError);
   });
 }

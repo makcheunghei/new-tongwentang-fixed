@@ -52,17 +52,15 @@ export const convertNode: SConvertNode = async (state, target, nodes) => {
 
       if (parsedNodes.length === 0) return;
 
-      const texts = await dispatchBgAction({
-        type: 'NodesText',
-        payload: { target, texts: parsedNodes.map(node => node.text) },
-      });
-
       state.isUpdating = true;
       try {
-        parsedNodes.forEach((parsed, index) => {
-          if (parsed.text !== texts[index]) rememberConversion(state, parsed.node, slotOf(parsed), parsed.text);
+        const texts = await dispatchBgAction({
+          type: 'NodesText',
+          payload: { target, texts: parsedNodes.map(node => node.text) },
         });
-        updateNodes(parsedNodes, texts);
+        updateNodes(parsedNodes, texts, (parsed, converted) => {
+          rememberConversion(state, parsed.node, slotOf(parsed), parsed.text, converted);
+        });
         state.updateLangAttr &&
           document.querySelectorAll<HTMLElement>('[lang|="zh"]').forEach(element => {
             updateLangAttr(element, target);

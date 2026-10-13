@@ -1,11 +1,11 @@
-import { getTarget } from '../services';
+import { getAutomaticTarget } from '../services';
 import type { CtState } from '../state';
 import { convertNode } from './convert-nodes';
 
 export const SETTLE_RESCAN_DELAYS = [1_000, 3_000] as const;
 
 export const rescanDocument = (state: CtState): void => {
-  getTarget(state.zhType)
+  getAutomaticTarget(state)
     .then(target => (target != null ? convertNode(state, target, [document]) : undefined))
     .catch(console.error);
 };
