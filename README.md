@@ -4,6 +4,10 @@
 
 > 本專案位於 [`makcheunghei/new-tongwentang-fixed`](https://github.com/makcheunghei/new-tongwentang-fixed)。上游專案為 [`tongwentang/tongwentang-extension`](https://github.com/tongwentang/tongwentang-extension)。
 
+## 2.8.2：設定頁加入關閉按鈕
+
+所有設定分頁頂部設有「關閉設定」按鈕，手機、平板及桌面版均可使用。按鈕會關閉設定分頁或設定彈出視窗。
+
 ## 2.8.1：按平台提供可用功能
 
 - iPhone／iPad 隱藏並停用右鍵選單及文字框右鍵轉換。以 Safari 實際回報的作業系統識別 iPad，桌面版網站模式亦不會誤開桌面功能。

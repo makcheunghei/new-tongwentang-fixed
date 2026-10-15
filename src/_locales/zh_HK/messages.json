@@ -265,5 +265,8 @@
   },
   "NT_CLIPBOARD_FAILED": {
     "message": "無法讀取或寫入剪貼簿，請檢查剪貼簿權限後重試。"
+  },
+  "MSG_CLOSE_OPTIONS": {
+    "message": "關閉設定"
   }
 }

@@ -265,5 +265,8 @@
   },
   "NT_CLIPBOARD_FAILED": {
     "message": "Could not read or write the clipboard. Check clipboard permissions and try again."
+  },
+  "MSG_CLOSE_OPTIONS": {
+    "message": "Close settings"
   }
 }

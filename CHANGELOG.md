@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.2] - 2026-10-15
+
+### 設定頁
+
+- 在所有設定分頁頂部加入「關閉設定」按鈕，支援手機、平板及桌面瀏覽器。
+- 按鈕只關閉設定頁所屬分頁；彈出視窗則關閉該視窗，不會查詢或關閉背後的網頁。
+
 ## [2.8.1] - 2026-10-15
 
 ### iOS／iPadOS 功能適配

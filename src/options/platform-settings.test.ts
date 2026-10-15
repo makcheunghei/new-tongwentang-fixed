@@ -8,6 +8,7 @@ import { PageType } from './hooks/page';
 import { GeneralSettings } from './pages/general/GeneralSettings';
 
 vi.mock('../service/i18n/i18n', () => ({ i18n: { getMessage: (key: string) => key } }));
+vi.mock('./close-options', () => ({ closeOptionsPage: vi.fn() }));
 vi.mock('./hooks/general/use-general-opt', () => ({
   useGeneralOpt: () => ({ general: getDefaultPref().general }),
 }));
