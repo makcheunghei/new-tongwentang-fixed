@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { LangType } from 'tongwen-core/dictionaries';
 
-const { browser, createNoti, phrase, request } = vi.hoisted(() => {
+const { browser, createNoti, phrase, request, environment } = vi.hoisted(() => {
   const request = vi.fn();
   const phrase = vi.fn((_target: LangType, _text: string) => '繁體');
   return {
@@ -9,23 +9,29 @@ const { browser, createNoti, phrase, request } = vi.hoisted(() => {
     createNoti: vi.fn(async () => 'notice'),
     phrase,
     request,
+    environment: { safari: false },
   };
 });
 
 vi.mock('../../service/browser', () => ({ browser }));
 vi.mock('../../service/i18n/i18n', () => ({ i18n: { getMessage: (key: string) => key } }));
 vi.mock('../../service/notification/create-noti', () => ({ createNoti }));
-vi.mock('../../service/types', () => ({ IS_SAFARI: true }));
+vi.mock('../../service/types', () => ({
+  get IS_SAFARI() {
+    return environment.safari;
+  },
+}));
 vi.mock('../converter', () => ({ getConverter: vi.fn(async () => ({ phrase })) }));
 
 import { convertClipboard } from '.';
 
-describe('convertClipboard Safari fallback', () => {
+describe('background clipboard conversion capabilities', () => {
   const readText = vi.fn(async () => '简体');
   const writeText = vi.fn(async () => undefined);
 
   beforeEach(() => {
-    request.mockClear();
+    request.mockReset().mockResolvedValue(true);
+    environment.safari = false;
     createNoti.mockClear();
     phrase.mockClear();
     readText.mockClear();
@@ -36,13 +42,27 @@ describe('convertClipboard Safari fallback', () => {
     });
   });
 
-  it('uses navigator.clipboard without requesting optional permissions', async () => {
+  it('uses navigator.clipboard after requesting optional permissions', async () => {
     await convertClipboard(LangType.s2t);
 
-    expect(request).not.toHaveBeenCalled();
+    expect(request).toHaveBeenCalledWith({ permissions: ['clipboardRead', 'clipboardWrite'] });
     expect(readText).toHaveBeenCalledTimes(2);
     expect(writeText).toHaveBeenCalledWith('繁體');
     expect(createNoti).toHaveBeenCalledWith('NT_CLB_TO_S2T');
+  });
+  it('does not access the clipboard or request permissions on unsupported Safari backgrounds', async () => {
+    environment.safari = true;
+    await convertClipboard(LangType.s2t);
+    expect(request).not.toHaveBeenCalled();
+    expect(readText).not.toHaveBeenCalled();
+    expect(writeText).not.toHaveBeenCalled();
+    expect(phrase).not.toHaveBeenCalled();
+    expect(createNoti).not.toHaveBeenCalled();
+  });
+  it('requests permission before yielding the desktop user gesture', async () => {
+    const task = convertClipboard(LangType.s2t);
+    expect(request).toHaveBeenCalledOnce();
+    await task;
   });
 
   it('preserves clipboard text changed during conversion', async () => {

@@ -16,6 +16,11 @@ export function verifyBuild(vendor) {
   assert.deepEqual(manifest, JSON.parse(JSON.stringify(createManifest(vendor))), 'Built manifest differs from source');
   assert.equal(manifest.version, pkg.version);
   assert.equal(manifest.manifest_version, 3);
+  if (vendor === 'safari') {
+    assert.deepEqual(Object.keys(manifest.commands).sort(), ['w_s2t', 'w_t2s']);
+    assert.ok(!manifest.optional_permissions?.some(permission => permission.startsWith('clipboard')));
+    assert.equal(manifest.action.default_popup, 'popup.html');
+  }
   const files = [
     ...Object.values(manifest.icons),
     ...(manifest.background.scripts ?? [manifest.background.service_worker]),

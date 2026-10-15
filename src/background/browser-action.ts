@@ -2,6 +2,7 @@ import { LangType } from 'tongwen-core/dictionaries';
 import { browser } from '../service/browser';
 import { dispatchCtAction } from '../service/runtime/content';
 import { ZhType } from '../service/tabs/tabs.constant';
+import { IS_SAFARI } from '../service/types';
 import { bgLog } from './logger';
 import { bgGetPref } from './state/storage';
 import { reportActionError } from './report-action-error';
@@ -21,6 +22,7 @@ const getTargetByDetection: GetTargetByDetection = async (id, fallback) => {
 };
 
 export function mountBrowserActionListener(): void {
+  if (IS_SAFARI) return;
   browser.action?.onClicked?.addListener(async tab => {
     bgLog('[ACTION_RECEIVE_REQ] req:', { tab });
     const tabId = tab?.id;

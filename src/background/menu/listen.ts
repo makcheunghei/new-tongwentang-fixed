@@ -1,5 +1,7 @@
 import { LangType } from 'tongwen-core/dictionaries';
 import { browser } from '../../service/browser';
+import { getBrowserCapabilities } from '../../service/browser/capabilities';
+import { IS_SAFARI } from '../../service/types';
 import type { ActionMenuId } from '../../service/menu/browser-action';
 import type { ContextMenuChildrenId } from '../../service/menu/create-menu';
 import { dispatchCtAction } from '../../service/runtime/content';
@@ -11,6 +13,7 @@ import { reportActionError } from '../report-action-error';
 export const listenMenusEvent = () => {
   browser.contextMenus?.onClicked?.addListener((info, tab) => {
     void (async () => {
+      if (IS_SAFARI && !(await getBrowserCapabilities()).contextMenus) return;
       bgLog('[BG_RECEIVED_MENU_EVENT]: ', { info, tab });
 
       switch (info.menuItemId as ActionMenuId | ContextMenuChildrenId) {

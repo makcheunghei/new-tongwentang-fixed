@@ -1,10 +1,11 @@
 import type { FC } from 'react';
+import type { BrowserCapabilities } from '../../../service/browser/capabilities';
 import { i18n } from '../../../service/i18n/i18n';
 import { Checkbox, Select } from '../../components';
 import { autoConvertOptions, browserActionOptions, defaultTargetOptions } from '../../hooks/general/options';
 import { useGeneralOpt } from '../../hooks/general/use-general-opt';
 
-export const GeneralSettings: FC = () => {
+export const GeneralSettings: FC<{ capabilities: BrowserCapabilities }> = ({ capabilities }) => {
   const {
     general,
     setAutoConvert,
@@ -32,14 +33,16 @@ export const GeneralSettings: FC = () => {
         checked={general.detectFallback === 'convert'}
         onChange={setDetectFallback}
       />
-      <Select
-        id="BrowserAction"
-        label={i18n.getMessage('MSG_BROWSER_ACTION')}
-        value={general.browserAction}
-        onChange={setBrowserAction}
-      >
-        {browserActionOptions()}
-      </Select>
+      {capabilities.toolbarClick && (
+        <Select
+          id="BrowserAction"
+          label={i18n.getMessage('MSG_BROWSER_ACTION')}
+          value={general.browserAction}
+          onChange={setBrowserAction}
+        >
+          {browserActionOptions()}
+        </Select>
+      )}
       <Select
         id="DefaultLanguage"
         label={i18n.getMessage('MSG_DEFAULT_CONVERT')}

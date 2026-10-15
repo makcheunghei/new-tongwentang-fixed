@@ -7,6 +7,7 @@ const { contextMenus, menuIds } = vi.hoisted(() => {
   return {
     menuIds: ids,
     contextMenus: {
+      onClicked: { addListener: vi.fn() },
       create: vi.fn((properties: { id: string }) => {
         if (ids.has(properties.id)) throw new Error(`duplicate menu id: ${properties.id}`);
         ids.add(properties.id);

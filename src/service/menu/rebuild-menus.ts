@@ -1,5 +1,6 @@
 import type { Pref } from '../../preference/types/lastest';
 import { browser } from '../browser';
+import { getBrowserCapabilities } from '../browser/capabilities';
 import { IS_SAFARI } from '../types';
 import { createBrowserActionMenuItems } from './browser-action';
 import { createContextMenuItem } from './context-menu-item';
@@ -8,7 +9,7 @@ import { createContextMenu } from './create-menu';
 let menuQueue: Promise<unknown> = Promise.resolve();
 
 async function rebuildMenusNow(menu: Pref['menu']): Promise<void> {
-  if (!browser.contextMenus?.removeAll) return;
+  if (!(await getBrowserCapabilities()).contextMenus) return;
   await browser.contextMenus.removeAll();
 
   if (!IS_SAFARI) {

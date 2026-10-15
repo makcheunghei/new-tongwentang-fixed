@@ -23,8 +23,10 @@ const requestClipboardPermission = async (): Promise<boolean> => {
   return browser.permissions.request({ permissions: ['clipboardRead', 'clipboardWrite'] });
 };
 
-export const convertClipboard = async (target: LangType): Promise<void> =>
-  requestClipboardPermission()
+export const convertClipboard = async (target: LangType): Promise<void> => {
+  // Keep permission requests in the original user gesture on Firefox / Chromium.
+  if (IS_SAFARI) return;
+  return requestClipboardPermission()
     .then(async isGet => (isGet && (await convertClipboardContent(target)), isGet))
     .then(async isGet => {
       await createNoti(
@@ -42,3 +44,4 @@ export const convertClipboard = async (target: LangType): Promise<void> =>
             : 'NT_CLIPBOARD_FAILED';
       await createNoti(i18n.getMessage(key)).catch(console.error);
     });
+};

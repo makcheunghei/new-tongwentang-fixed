@@ -44,6 +44,7 @@ const createManifest = vendor => {
       48: 'icons/tongwen-icon-48.png',
       128: 'icons/tongwen-icon-128.png',
     },
+    // The shared Safari bundle uses contextMenus on macOS only; capability checks disable it on iOS / iPadOS.
     permissions: isSafari
       ? ['contextMenus', 'storage']
       : ['contextMenus', 'notifications', 'storage', ...(!isFirefox ? ['offscreen'] : [])],
@@ -88,18 +89,22 @@ const createManifest = vendor => {
           default: 'Shift+Alt+V',
         },
       },
-      c_s2t: {
-        description: '__MSG_MSG_CONVERT_CLIPBOARD_S2T__',
-        suggested_key: {
-          default: 'Shift+Alt+Z',
-        },
-      },
-      c_t2s: {
-        description: '__MSG_MSG_CONVERT_CLIPBOARD_T2S__',
-        suggested_key: {
-          default: 'Shift+Alt+X',
-        },
-      },
+      ...(!isSafari
+        ? {
+            c_s2t: {
+              description: '__MSG_MSG_CONVERT_CLIPBOARD_S2T__',
+              suggested_key: {
+                default: 'Shift+Alt+Z',
+              },
+            },
+            c_t2s: {
+              description: '__MSG_MSG_CONVERT_CLIPBOARD_T2S__',
+              suggested_key: {
+                default: 'Shift+Alt+X',
+              },
+            },
+          }
+        : {}),
     },
   };
 };

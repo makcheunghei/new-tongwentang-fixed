@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.1] - 2026-10-15
+
+### iOS／iPadOS 功能適配
+
+- iPhone／iPad 設定頁隱藏不支援的右鍵選單及文字框右鍵轉換，背景亦停用相關選單操作。macOS Safari 保留右鍵功能。
+- 優先使用 Safari 回報的作業系統識別 iPad，避免桌面版網站模式被誤判為 Mac；舊版 API 不可用時使用觸控及裝置資訊。
+- Safari 使用操作面板，隱藏不會生效的「工具列按鈕功能」設定，並停用與該設定相關的 badge 及點擊監聽。
+- 停用 Safari 背景服務無法執行的剪貼簿轉換，移除相應快速鍵宣告。保留 iOS／iPadOS 外接鍵盤的網頁轉換快速鍵。
+- 保留自動轉換、動態轉換、網域規則、自訂詞庫及設定匯入匯出；被隱藏的桌面設定仍會保存在偏好檔，方便跨平台使用。
+
 ## [2.8.0] - 2026-10-15
 
 ### Safari 與 Apple 平台
@@ -9,7 +19,7 @@ All notable changes to this project will be documented in this file.
 - 加入可追蹤的 iOS／iPadOS 及 macOS Xcode 專案，主 App 與 extension 使用一致 Team、bundle identifier、版本及開發簽署。
 - iOS／iPadOS 17 起支援 iPhone 與 iPad；加入繁體啟用頁、觸控操作面板、窄螢幕設定頁及安全區域。
 - iOS／iPadOS 26.2 起可由主 App 直接開啟 Safari 延伸功能設定，較舊系統提供手動指引。
-- 對手機 Safari 缺少的右鍵選單、鍵盤命令及 badge API 加入能力檢查，避免初始化中斷。
+- 對手機 Safari 可能缺少的右鍵選單、鍵盤命令及 badge API 加入存在檢查，避免初始化中斷。
 - 加入原生建置、archive、開發版及 Apple Distribution 匯出指令；每次建置核對全部 extension 資源，匯出只保存本機檔案。
 - CI 加入 iPhone／iPad 模擬器及 macOS 原生建置，簽署憑證、私鑰、profile 及 IPA 排除於版本控制。
 

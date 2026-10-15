@@ -1,6 +1,7 @@
 import { lazy, Suspense, useMemo } from 'react';
 import { createRoot } from 'react-dom/client';
 import { browser } from '../service/browser';
+import { getBrowserCapabilities, type BrowserCapabilities } from '../service/browser/capabilities';
 import { i18n } from '../service/i18n/i18n';
 import { Header, Navbar } from './components';
 import { PageType, usePage } from './hooks/page';
@@ -11,14 +12,14 @@ const FilterPage = lazy(() => import('./pages/filter/FilterPage').then(module =>
 const WordPage = lazy(() => import('./pages/word/WordPage').then(module => ({ default: module.WordPage })));
 const AboutPage = lazy(() => import('./pages/about/AboutPage').then(module => ({ default: module.AboutPage })));
 
-function App() {
+function App({ capabilities }: { capabilities: BrowserCapabilities }) {
   const [page, setPage] = usePage();
   const pageContent = useMemo(() => {
     switch (page.type) {
       case PageType.general:
-        return <GeneralPage />;
+        return <GeneralPage capabilities={capabilities} />;
       case PageType.menu:
-        return <MenuPage />;
+        return capabilities.contextMenus ? <MenuPage /> : <GeneralPage capabilities={capabilities} />;
       case PageType.filter:
         return <FilterPage />;
       case PageType.word:
@@ -26,12 +27,12 @@ function App() {
       case PageType.about:
         return <AboutPage />;
     }
-  }, [page.type]);
+  }, [page.type, capabilities]);
 
   return (
     <main className="options-main">
       <Header />
-      <Navbar page={page} setPage={setPage} />
+      <Navbar page={page} setPage={setPage} capabilities={capabilities} />
       <Suspense fallback={<p className="text-center">Loading…</p>}>{pageContent}</Suspense>
     </main>
   );
@@ -40,4 +41,6 @@ function App() {
 document.documentElement.lang = browser.i18n.getUILanguage?.() ?? document.documentElement.lang;
 document.title = i18n.getMessage('MSG_EXT_NAME');
 
-createRoot(document.querySelector('#app')!).render(<App />);
+void getBrowserCapabilities().then(capabilities => {
+  createRoot(document.querySelector('#app')!).render(<App capabilities={capabilities} />);
+});

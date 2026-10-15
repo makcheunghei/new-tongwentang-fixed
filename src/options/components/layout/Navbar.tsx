@@ -1,10 +1,15 @@
 import type { Dispatch, FC } from 'react';
 import { useCallback } from 'react';
 import { i18n } from '../../../service/i18n/i18n';
+import type { BrowserCapabilities } from '../../../service/browser/capabilities';
 import type { PageAction, PageState } from '../../hooks/page';
 import { PageType } from '../../hooks/page';
 
-export const Navbar: FC<{ page: PageState; setPage: Dispatch<PageAction> }> = ({ page, setPage }) => {
+export const Navbar: FC<{
+  page: PageState;
+  setPage: Dispatch<PageAction>;
+  capabilities: BrowserCapabilities;
+}> = ({ page, setPage, capabilities }) => {
   const toGeneral = useCallback(() => setPage({ type: PageType.general }), [setPage]);
   const toMenu = useCallback(() => setPage({ type: PageType.menu }), [setPage]);
   const toFilter = useCallback(() => setPage({ type: PageType.filter }), [setPage]);
@@ -21,11 +26,13 @@ export const Navbar: FC<{ page: PageState; setPage: Dispatch<PageAction> }> = ({
             {i18n.getMessage('MSG_GENERAL')}
           </button>
         </li>
-        <li className="tab-item">
-          <button type="button" className={'c-hand ' + isActive(PageType.menu)} onClick={toMenu}>
-            {i18n.getMessage('MSG_MENU')}
-          </button>
-        </li>
+        {capabilities.contextMenus && (
+          <li className="tab-item">
+            <button type="button" className={'c-hand ' + isActive(PageType.menu)} onClick={toMenu}>
+              {i18n.getMessage('MSG_MENU')}
+            </button>
+          </li>
+        )}
         <li className="tab-item">
           <button type="button" className={'c-hand ' + isActive(PageType.filter)} onClick={toFilter}>
             {i18n.getMessage('MSG_DOMAIN_RULE')}
