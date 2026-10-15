@@ -1,20 +1,17 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const rootDir = process.cwd();
+const rootDir = fileURLToPath(new URL('../', import.meta.url));
 const extensionPath = resolve(rootDir, 'dist', 'safari');
-const projectLocation = resolve(rootDir, process.env.SAFARI_PROJECT_LOCATION || 'safari');
+const projectLocation = resolve(rootDir, process.env.SAFARI_PROJECT_LOCATION || 'apple');
 const appName = process.env.SAFARI_APP_NAME || 'TongWenTangFixed';
 const bundleIdentifier = process.env.SAFARI_BUNDLE_ID || 'com.makcheunghei.tongwentangfixed';
-const projectFile = resolve(projectLocation, appName, `${appName}.xcodeproj`, 'project.pbxproj');
-
-if (!existsSync(extensionPath)) {
-  console.error(`Safari extension bundle not found at ${extensionPath}`);
-  process.exit(1);
-}
-
-try {
+const project = resolve(projectLocation, appName, `${appName}.xcodeproj`);
+if (!existsSync(resolve(extensionPath, 'manifest.json')))
+  throw new Error(`Build the Safari extension first: ${extensionPath}`);
+if (!existsSync(project)) {
   execFileSync(
     'xcrun',
     [
@@ -27,26 +24,11 @@ try {
       '--bundle-identifier',
       bundleIdentifier,
       '--swift',
-      '--macos-only',
       '--no-open',
       '--no-prompt',
-      '--force',
     ],
     { stdio: 'inherit' },
   );
-} catch (error) {
-  const message = error instanceof Error ? error.message : String(error);
-  console.error(`Unable to generate the Safari Xcode project: ${message}`);
-  process.exit(1);
 }
-
-if (existsSync(projectFile)) {
-  const source = readFileSync(projectFile, 'utf8');
-  const patched = source.replace(/PRODUCT_BUNDLE_IDENTIFIER = ?"?([^";]+)"?;/g, (_, value) =>
-    value.endsWith('.Extension')
-      ? `PRODUCT_BUNDLE_IDENTIFIER = ${bundleIdentifier}.Extension;`
-      : `PRODUCT_BUNDLE_IDENTIFIER = "${bundleIdentifier}";`,
-  );
-
-  writeFileSync(projectFile, patched);
-}
+// Preserve the native sources, signing configuration and all four targets.
+console.log(`Safari iOS / iPadOS / macOS project: ${project}`);

@@ -17,29 +17,29 @@ export const Navbar: FC<{ page: PageState; setPage: Dispatch<PageAction> }> = ({
     <nav>
       <ul className="tab tab-block">
         <li className="tab-item">
-          <a className={'c-hand ' + isActive(PageType.general)} onClick={toGeneral}>
+          <button type="button" className={'c-hand ' + isActive(PageType.general)} onClick={toGeneral}>
             {i18n.getMessage('MSG_GENERAL')}
-          </a>
+          </button>
         </li>
         <li className="tab-item">
-          <a className={'c-hand ' + isActive(PageType.menu)} onClick={toMenu}>
+          <button type="button" className={'c-hand ' + isActive(PageType.menu)} onClick={toMenu}>
             {i18n.getMessage('MSG_MENU')}
-          </a>
+          </button>
         </li>
         <li className="tab-item">
-          <a className={'c-hand ' + isActive(PageType.filter)} onClick={toFilter}>
+          <button type="button" className={'c-hand ' + isActive(PageType.filter)} onClick={toFilter}>
             {i18n.getMessage('MSG_DOMAIN_RULE')}
-          </a>
+          </button>
         </li>
         <li className="tab-item">
-          <a className={'c-hand ' + isActive(PageType.word)} onClick={toWord}>
+          <button type="button" className={'c-hand ' + isActive(PageType.word)} onClick={toWord}>
             {i18n.getMessage('MSG_WORD')}
-          </a>
+          </button>
         </li>
         <li className="tab-item">
-          <a className={'c-hand ' + isActive(PageType.about)} onClick={toAbout}>
+          <button type="button" className={'c-hand ' + isActive(PageType.about)} onClick={toAbout}>
             {i18n.getMessage('MSG_ABOUT')}
-          </a>
+          </button>
         </li>
       </ul>
     </nav>

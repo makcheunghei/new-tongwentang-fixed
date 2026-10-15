@@ -1,6 +1,6 @@
 {
   "name": "new-tongwentang-fixed",
-  "version": "2.7.2",
+  "version": "2.8.0",
   "description": "新同文堂（修復）係持續維護的繁簡中文轉換瀏覽器擴充功能。",
   "keywords": [
     "browser-extension",
@@ -36,7 +36,15 @@
     "dev:safari": "rspack build --mode=development --env vendor=safari",
     "build:safari": "rspack build --mode=production --env vendor=safari",
     "safari:convert": "npm run build:safari && node ./scripts/safari-convert.mjs",
-    "test:build": "node scripts/verify-build.mjs"
+    "test:build": "node scripts/verify-build.mjs",
+    "safari:build:ios": "npm run safari:convert && node scripts/safari-build.mjs ios build",
+    "safari:build:macos": "npm run safari:convert && node scripts/safari-build.mjs macos build",
+    "safari:build:simulator": "npm run safari:convert && node scripts/safari-build.mjs ios simulator",
+    "safari:archive:ios": "npm run safari:convert && node scripts/safari-build.mjs ios archive",
+    "safari:export:ios": "node scripts/safari-build.mjs ios export-development",
+    "safari:export:appstore": "node scripts/safari-build.mjs ios export-distribution",
+    "safari:archive:macos": "npm run safari:convert && node scripts/safari-build.mjs macos archive",
+    "safari:export:macos": "node scripts/safari-build.mjs macos export-distribution"
   },
   "nano-staged": {
     "*.{js,jsx,ts,tsx,json,md}": [

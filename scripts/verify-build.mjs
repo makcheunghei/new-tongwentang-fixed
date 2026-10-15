@@ -23,6 +23,7 @@ export function verifyBuild(vendor) {
     manifest.options_ui.page,
     `_locales/${manifest.default_locale}/messages.json`,
     ...(vendor === 'chromium' ? ['clipboard.html', 'clipboard.js'] : []),
+    ...(vendor === 'safari' ? ['popup.html', 'popup.js', 'popup.css'] : []),
   ];
   for (const file of files) {
     const name = resolve(dir, file);

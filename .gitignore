@@ -250,7 +250,14 @@ dict
 # Xcode / Safari
 DerivedData/
 *.xcuserstate
-*.xcodeproj/xcuserdata/
-*.xcworkspace/xcuserdata/
-*.xcodeproj/project.xcworkspace/
+**/*.xcodeproj/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+**/*.xcodeproj/project.xcworkspace/
 safari/
+build/apple/
+*.xcarchive/
+*.ipa
+*.mobileprovision
+*.provisionprofile
+*.p12
+apple/Signing.local.xcconfig

@@ -9,7 +9,7 @@ import { addDomainToRules } from './browser-action';
 import { reportActionError } from '../report-action-error';
 
 export const listenMenusEvent = () => {
-  browser.contextMenus.onClicked.addListener((info, tab) => {
+  browser.contextMenus?.onClicked?.addListener((info, tab) => {
     void (async () => {
       bgLog('[BG_RECEIVED_MENU_EVENT]: ', { info, tab });
 

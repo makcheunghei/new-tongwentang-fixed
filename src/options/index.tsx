@@ -29,7 +29,7 @@ function App() {
   }, [page.type]);
 
   return (
-    <main style={{ padding: '5em 10%' }}>
+    <main className="options-main">
       <Header />
       <Navbar page={page} setPage={setPage} />
       <Suspense fallback={<p className="text-center">Loading…</p>}>{pageContent}</Suspense>

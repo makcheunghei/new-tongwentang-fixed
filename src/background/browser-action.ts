@@ -21,7 +21,7 @@ const getTargetByDetection: GetTargetByDetection = async (id, fallback) => {
 };
 
 export function mountBrowserActionListener(): void {
-  browser.action.onClicked.addListener(async tab => {
+  browser.action?.onClicked?.addListener(async tab => {
     bgLog('[ACTION_RECEIVE_REQ] req:', { tab });
     const tabId = tab?.id;
     if (typeof tabId !== 'number') return;

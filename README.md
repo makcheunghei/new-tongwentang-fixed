@@ -63,7 +63,26 @@ npm run build:safari
 npm run safari:convert
 ```
 
-`safari:convert` 會在 `safari/` 產生本機 Xcode 專案；該目錄不會提交到版本控制。可用 `SAFARI_APP_NAME`、`SAFARI_BUNDLE_ID` 及 `SAFARI_PROJECT_LOCATION` 覆寫預設值。
+Xcode 專案位於 `apple/TongWenTangFixed/TongWenTangFixed.xcodeproj`，包含 iOS／iPadOS、macOS 的主 App 及 Safari extension 共四個 target。支援 iOS／iPadOS 17 或以上。`safari:convert` 會更新網頁資源建置，並保留原生介面及簽署設定。
+
+本機開發及簽署指令：
+
+```sh
+npm run safari:build:ios
+npm run safari:build:simulator
+npm run safari:build:macos
+npm run safari:archive:ios
+npm run safari:export:ios
+npm run safari:export:appstore
+```
+
+`build/apple/` 保存建置、archive、開發版 IPA 及 Apple Distribution 匯出檔；這些檔案及 provisioning profile 不會提交。`safari:export:appstore` 只匯出本機檔案，不會上傳到 App Store Connect。實機開發版只可安裝於 provisioning profile 已登記的裝置。
+
+預設 Team 為本專案持有人 `C367M6C798`，開發建置使用 Apple Development；App Store 匯出由 Xcode 使用 Apple Distribution 重新簽署。可用 `SAFARI_DEVELOPMENT_TEAM`、`SAFARI_DESTINATION` 及 `SAFARI_XCCONFIG` 覆寫本機建置設定。憑證與私鑰保留在 Keychain，程式碼不包含簽署憑證、私鑰或帳號登入資料。
+
+iPhone／iPad 安裝主 App 後，依啟用頁前往 Safari 延伸功能設定，並允許指定網站存取。iOS／iPadOS 26.2 或以上可使用主 App 的按鈕直接開啟延伸功能設定；較舊系統會顯示手動步驟。Safari 操作面板提供兩個轉換方向、自動判斷及設定入口；設定頁支援窄螢幕、觸控及 iPad 視窗調整。
+
+修改 Safari 建置檔案清單後，須在 Xcode 更新 extension 的 Resources 引用；原生建置及匯出前會逐檔比對產物，避免出現有簽章但漏包操作面板或詞庫的情況。
 
 執行完整驗證：
 
@@ -90,4 +109,6 @@ npm run build:zip:chromium
 - `src/content`：網頁轉換、動態節點監察及可直接編輯控制項。
 - `src/options`：偏好設定介面。
 - `src/preference`：偏好設定結構、版本遷移及過濾規則。
+- `apple`：iOS／iPadOS、macOS 原生主 App 及 Safari extension Xcode 專案。
+- `src/popup`：Safari 觸控操作面板。
 - `docs`：權限、建置及偏好設定文件。

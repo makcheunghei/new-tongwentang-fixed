@@ -9,13 +9,14 @@ const scripts = [
   '**/web-ext-config*.{js,mjs}',
   '**/web-ext-env.mjs',
   '**/scripts/**/*.{js,mjs,cjs}',
+  '**/apple/**/Script.js',
 ];
 
 /**
  * @type {import('typescript-eslint').Config}
  */
 export default [
-  { ignores: ['**/dist/', '**/web-ext-artifacts/'] },
+  { ignores: ['**/dist/', '**/web-ext-artifacts/', '**/build/'] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -35,6 +36,11 @@ export default [
   {
     ...eslintReact.configs['recommended-typescript'],
     files: ['**/src/**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+  },
+  {
+    files: ['**/apple/**/Script.js'],
+    languageOptions: { globals: globals.browser },
+    rules: { 'no-unused-vars': ['error', { varsIgnorePattern: '^(show|settingsFailed)$' }] },
   },
   {
     name: 'extension',

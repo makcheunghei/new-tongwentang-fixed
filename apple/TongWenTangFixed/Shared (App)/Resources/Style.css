@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light dark;
+  font: -apple-system-body;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f7f8fc;
+  color: #1e2b41;
+}
+main {
+  max-width: 680px;
+  margin: auto;
+  padding: max(32px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+    max(32px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+}
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+h2 {
+  font-size: 1.15em;
+}
+p,
+li {
+  line-height: 1.65;
+}
+li + li {
+  margin-top: 0.75em;
+}
+ol {
+  padding-left: 1.5em;
+}
+section {
+  margin: 28px 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e1e6f1;
+  border-radius: 16px;
+}
+button {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+  background: #304ab0;
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  cursor: pointer;
+}
+button:focus-visible {
+  outline: 3px solid #bc8420;
+  outline-offset: 4px;
+}
+footer {
+  margin-top: 24px;
+  color: #59667d;
+  font-size: 0.9em;
+}
+.platform-ios,
+.platform-mac {
+  display: none;
+}
+body[data-platform='ios'] .platform-ios,
+body[data-platform='mac'] .platform-mac {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121a28;
+    color: #ecf0f8;
+  }
+  section {
+    background: #202b3d;
+    border-color: #36435a;
+  }
+  footer {
+    color: #b7c4db;
+  }
+}

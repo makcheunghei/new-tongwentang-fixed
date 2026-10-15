@@ -9,8 +9,8 @@ const color = '#C0C0C0';
 
 export const setBadge = async (general: Pref['general']) => {
   const text = browserActionToBadge(general.browserAction);
-  const setText = browser.action.setBadgeText({ text });
-  const setBg = browser.action.setBadgeBackgroundColor({ color });
+  const setText = browser.action?.setBadgeText?.({ text });
+  const setBg = browser.action?.setBadgeBackgroundColor?.({ color });
 
   return Promise.all([setText, setBg]);
 };

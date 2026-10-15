@@ -1,0 +1,63 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+.options-main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 4rem 5%;
+}
+.options-main nav {
+  overflow-x: auto;
+}
+.options-main .tab {
+  min-width: max-content;
+}
+.options-main .tab button {
+  background: none;
+  border: 0;
+  border-bottom: 0.1rem solid transparent;
+  padding: 0.4rem 0.6rem;
+  font: inherit;
+  color: inherit;
+  min-height: 44px;
+  cursor: pointer;
+}
+.options-main .tab button.active {
+  border-bottom-color: #5755d9;
+  color: #5755d9;
+}
+.options-main .table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+@media (max-width: 680px) {
+  .options-main {
+    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+      max(2rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  }
+  .options-main h1 {
+    font-size: 1.4rem;
+  }
+  .options-main .columns {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+  .options-main .column {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+  .options-main .form-input,
+  .options-main .form-select {
+    font-size: max(16px, 1rem);
+    min-height: 44px;
+  }
+  .options-main .btn {
+    min-height: 44px;
+    white-space: normal;
+  }
+  .modal .modal-container {
+    max-height: 90dvh;
+    width: calc(100vw - 2rem);
+  }
+}

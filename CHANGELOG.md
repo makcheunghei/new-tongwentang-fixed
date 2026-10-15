@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.0] - 2026-10-15
+
+### Safari 與 Apple 平台
+
+- 加入可追蹤的 iOS／iPadOS 及 macOS Xcode 專案，主 App 與 extension 使用一致 Team、bundle identifier、版本及開發簽署。
+- iOS／iPadOS 17 起支援 iPhone 與 iPad；加入繁體啟用頁、觸控操作面板、窄螢幕設定頁及安全區域。
+- iOS／iPadOS 26.2 起可由主 App 直接開啟 Safari 延伸功能設定，較舊系統提供手動指引。
+- 對手機 Safari 缺少的右鍵選單、鍵盤命令及 badge API 加入能力檢查，避免初始化中斷。
+- 加入原生建置、archive、開發版及 Apple Distribution 匯出指令；每次建置核對全部 extension 資源，匯出只保存本機檔案。
+- CI 加入 iPhone／iPad 模擬器及 macOS 原生建置，簽署憑證、私鑰、profile 及 IPA 排除於版本控制。
+
 ## [2.7.2] - 2026-10-13
 
 ### 修復

@@ -71,7 +71,13 @@ jobs:
       - name: Generate Safari Xcode project
         run: npm run safari:convert
 
-      - name: Build Safari wrapper
-        run: >-
-          xcodebuild -project 'safari/TongWenTangFixed/TongWenTangFixed.xcodeproj' -scheme TongWenTangFixed
-          -configuration Debug -destination 'platform=macOS' CODE_SIGNING_ALLOWED=NO build
+      - name: Validate Safari extension bundle
+        run: node scripts/verify-build.mjs safari
+
+      - name: Build macOS wrapper without signing
+        run: node scripts/safari-build.mjs macos build
+        env:
+          SAFARI_UNSIGNED: '1'
+
+      - name: Build iPhone and iPad simulator wrapper
+        run: node scripts/safari-build.mjs ios simulator

@@ -8,6 +8,7 @@ import { createContextMenu } from './create-menu';
 let menuQueue: Promise<unknown> = Promise.resolve();
 
 async function rebuildMenusNow(menu: Pref['menu']): Promise<void> {
+  if (!browser.contextMenus?.removeAll) return;
   await browser.contextMenus.removeAll();
 
   if (!IS_SAFARI) {

@@ -21,6 +21,7 @@ module.exports = (env, argv) => {
       content: './src/content/main.ts',
       options: './src/options/index.tsx',
       ...(vendor === 'chromium' ? { clipboard: './src/clipboard/main.ts' } : {}),
+      ...(vendor === 'safari' ? { popup: './src/popup/main.ts' } : {}),
     },
     output: {
       path: distPath,
@@ -80,6 +81,15 @@ module.exports = (env, argv) => {
             }),
           ]
         : []),
+      ...(vendor === 'safari'
+        ? [
+            new rspack.HtmlRspackPlugin({
+              filename: 'popup.html',
+              template: './src/popup/index.html',
+              chunks: ['popup'],
+            }),
+          ]
+        : []),
       new rspack.CopyRspackPlugin({
         patterns: [
           { from: './src/_locales/', to: '_locales/', toType: 'dir' },
@@ -87,6 +97,8 @@ module.exports = (env, argv) => {
           { from: './node_modules/spectre.css/dist/spectre-icons.min.css' },
           { from: './node_modules/spectre.css/dist/spectre-exp.min.css' },
           { from: './src/icons', to: 'icons' },
+          { from: './src/options/mobile.css', to: 'mobile.css' },
+          ...(vendor === 'safari' ? [{ from: './src/popup/popup.css', to: 'popup.css' }] : []),
           { from: './node_modules/tongwen-dict/dist/*.min.json', to: 'dictionaries/[name][ext]' },
         ],
       }),

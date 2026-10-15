@@ -1,0 +1,1061 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2519FAE308079A8001F4F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FAD308079A8001F4F63 /* AppDelegate.swift */; };
+		C2519FB0308079A8001F4F63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FAF308079A8001F4F63 /* SceneDelegate.swift */; };
+		C2519FB3308079A8001F4F63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2519FB1308079A8001F4F63 /* LaunchScreen.storyboard */; };
+		C2519FB6308079A8001F4F63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2519FB4308079A8001F4F63 /* Main.storyboard */; };
+		C2519FBF308079A8001F4F63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FBE308079A8001F4F63 /* AppDelegate.swift */; };
+		C2519FC2308079A8001F4F63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2519FC0308079A8001F4F63 /* Main.storyboard */; };
+		C2519FC9308079A8001F4F63 /* TongWenTangFixed Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C2519FC8308079A8001F4F63 /* TongWenTangFixed Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C2519FD3308079A8001F4F63 /* TongWenTangFixed Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C2519FD2308079A8001F4F63 /* TongWenTangFixed Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C2519FD8308079A8001F4F63 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = C2519F9D308079A7001F4F63 /* Main.html */; };
+		C2519FD9308079A8001F4F63 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = C2519F9D308079A7001F4F63 /* Main.html */; };
+		C2519FDA308079A8001F4F63 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2519F9F308079A7001F4F63 /* Icon.png */; };
+		C2519FDB308079A8001F4F63 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2519F9F308079A7001F4F63 /* Icon.png */; };
+		C2519FDC308079A8001F4F63 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FA0308079A7001F4F63 /* Style.css */; };
+		C2519FDD308079A8001F4F63 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FA0308079A7001F4F63 /* Style.css */; };
+		C2519FDE308079A8001F4F63 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FA1308079A7001F4F63 /* Script.js */; };
+		C2519FDF308079A8001F4F63 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FA1308079A7001F4F63 /* Script.js */; };
+		C2519FE0308079A8001F4F63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FA2308079A7001F4F63 /* ViewController.swift */; };
+		C2519FE1308079A8001F4F63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FA2308079A7001F4F63 /* ViewController.swift */; };
+		C2519FE2308079A8001F4F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2519FA3308079A8001F4F63 /* Assets.xcassets */; };
+		C2519FE3308079A8001F4F63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2519FA3308079A8001F4F63 /* Assets.xcassets */; };
+		C2519FE4308079A8001F4F63 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FA5308079A8001F4F63 /* SafariWebExtensionHandler.swift */; };
+		C2519FE5308079A8001F4F63 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2519FA5308079A8001F4F63 /* SafariWebExtensionHandler.swift */; };
+		C251A00D308079A8001F4F63 /* spectre-icons.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FF7308079A8001F4F63 /* spectre-icons.min.css */; };
+		C251A00E308079A8001F4F63 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FF8308079A8001F4F63 /* popup.js */; };
+		C251A00F308079A8001F4F63 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FF9308079A8001F4F63 /* background.js */; };
+		C251A010308079A8001F4F63 /* spectre-exp.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFA308079A8001F4F63 /* spectre-exp.min.css */; };
+		C251A011308079A8001F4F63 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFB308079A8001F4F63 /* popup.html */; };
+		C251A012308079A8001F4F63 /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFC308079A8001F4F63 /* options.js */; };
+		C251A013308079A8001F4F63 /* 743.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFD308079A8001F4F63 /* 743.js */; };
+		C251A014308079A8001F4F63 /* 65.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFE308079A8001F4F63 /* 65.js */; };
+		C251A015308079A8001F4F63 /* spectre.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFF308079A8001F4F63 /* spectre.min.css */; };
+		C251A016308079A8001F4F63 /* 822.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A000308079A8001F4F63 /* 822.js */; };
+		C251A017308079A8001F4F63 /* 77.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A001308079A8001F4F63 /* 77.js */; };
+		C251A018308079A8001F4F63 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = C251A002308079A8001F4F63 /* icons */; };
+		C251A019308079A8001F4F63 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = C251A003308079A8001F4F63 /* manifest.json */; };
+		C251A01A308079A8001F4F63 /* 881.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A004308079A8001F4F63 /* 881.js */; };
+		C251A01B308079A8001F4F63 /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = C251A005308079A8001F4F63 /* options.html */; };
+		C251A01C308079A8001F4F63 /* dictionaries in Resources */ = {isa = PBXBuildFile; fileRef = C251A006308079A8001F4F63 /* dictionaries */; };
+		C251A01D308079A8001F4F63 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = C251A007308079A8001F4F63 /* popup.css */; };
+		C251A01E308079A8001F4F63 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = C251A008308079A8001F4F63 /* _locales */; };
+		C251A01F308079A8001F4F63 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A009308079A8001F4F63 /* content.js */; };
+		C251A020308079A8001F4F63 /* 303.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A00A308079A8001F4F63 /* 303.js */; };
+		C251A021308079A8001F4F63 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = C251A00B308079A8001F4F63 /* mobile.css */; };
+		C251A022308079A8001F4F63 /* 100.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A00C308079A8001F4F63 /* 100.js */; };
+		C251A023308079A8001F4F63 /* spectre-icons.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FF7308079A8001F4F63 /* spectre-icons.min.css */; };
+		C251A024308079A8001F4F63 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FF8308079A8001F4F63 /* popup.js */; };
+		C251A025308079A8001F4F63 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FF9308079A8001F4F63 /* background.js */; };
+		C251A026308079A8001F4F63 /* spectre-exp.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFA308079A8001F4F63 /* spectre-exp.min.css */; };
+		C251A027308079A8001F4F63 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFB308079A8001F4F63 /* popup.html */; };
+		C251A028308079A8001F4F63 /* options.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFC308079A8001F4F63 /* options.js */; };
+		C251A029308079A8001F4F63 /* 743.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFD308079A8001F4F63 /* 743.js */; };
+		C251A02A308079A8001F4F63 /* 65.js in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFE308079A8001F4F63 /* 65.js */; };
+		C251A02B308079A8001F4F63 /* spectre.min.css in Resources */ = {isa = PBXBuildFile; fileRef = C2519FFF308079A8001F4F63 /* spectre.min.css */; };
+		C251A02C308079A8001F4F63 /* 822.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A000308079A8001F4F63 /* 822.js */; };
+		C251A02D308079A8001F4F63 /* 77.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A001308079A8001F4F63 /* 77.js */; };
+		C251A02E308079A8001F4F63 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = C251A002308079A8001F4F63 /* icons */; };
+		C251A02F308079A8001F4F63 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = C251A003308079A8001F4F63 /* manifest.json */; };
+		C251A030308079A8001F4F63 /* 881.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A004308079A8001F4F63 /* 881.js */; };
+		C251A031308079A8001F4F63 /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = C251A005308079A8001F4F63 /* options.html */; };
+		C251A032308079A8001F4F63 /* dictionaries in Resources */ = {isa = PBXBuildFile; fileRef = C251A006308079A8001F4F63 /* dictionaries */; };
+		C251A033308079A8001F4F63 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = C251A007308079A8001F4F63 /* popup.css */; };
+		C251A034308079A8001F4F63 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = C251A008308079A8001F4F63 /* _locales */; };
+		C251A035308079A8001F4F63 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A009308079A8001F4F63 /* content.js */; };
+		C251A036308079A8001F4F63 /* 303.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A00A308079A8001F4F63 /* 303.js */; };
+		C251A037308079A8001F4F63 /* mobile.css in Resources */ = {isa = PBXBuildFile; fileRef = C251A00B308079A8001F4F63 /* mobile.css */; };
+		C251A038308079A8001F4F63 /* 100.js in Resources */ = {isa = PBXBuildFile; fileRef = C251A00C308079A8001F4F63 /* 100.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2519FCA308079A8001F4F63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2519F97308079A7001F4F63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2519FC7308079A8001F4F63;
+			remoteInfo = "TongWenTangFixed Extension (iOS)";
+		};
+		C2519FD4308079A8001F4F63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2519F97308079A7001F4F63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2519FD1308079A8001F4F63;
+			remoteInfo = "TongWenTangFixed Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C2519FEB308079A8001F4F63 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				C2519FC9308079A8001F4F63 /* TongWenTangFixed Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+		C2519FF2308079A8001F4F63 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				C2519FD3308079A8001F4F63 /* TongWenTangFixed Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C2519F9E308079A7001F4F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		C2519F9F308079A7001F4F63 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		C2519FA0308079A7001F4F63 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		C2519FA1308079A7001F4F63 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		C2519FA2308079A7001F4F63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C2519FA3308079A8001F4F63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2519FA5308079A8001F4F63 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		C2519FAA308079A8001F4F63 /* TongWenTangFixed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TongWenTangFixed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2519FAD308079A8001F4F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C2519FAF308079A8001F4F63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C2519FB2308079A8001F4F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2519FB5308079A8001F4F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2519FB7308079A8001F4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2519FBC308079A8001F4F63 /* TongWenTangFixed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TongWenTangFixed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2519FBE308079A8001F4F63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C2519FC1308079A8001F4F63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C2519FC3308079A8001F4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2519FC8308079A8001F4F63 /* TongWenTangFixed Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TongWenTangFixed Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2519FCD308079A8001F4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2519FD2308079A8001F4F63 /* TongWenTangFixed Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TongWenTangFixed Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2519FD7308079A8001F4F63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2519FF7308079A8001F4F63 /* spectre-icons.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = "spectre-icons.min.css"; path = "../../../dist/safari/spectre-icons.min.css"; sourceTree = "<group>"; };
+		C2519FF8308079A8001F4F63 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = ../../../dist/safari/popup.js; sourceTree = "<group>"; };
+		C2519FF9308079A8001F4F63 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../../dist/safari/background.js; sourceTree = "<group>"; };
+		C2519FFA308079A8001F4F63 /* spectre-exp.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = "spectre-exp.min.css"; path = "../../../dist/safari/spectre-exp.min.css"; sourceTree = "<group>"; };
+		C2519FFB308079A8001F4F63 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = ../../../dist/safari/popup.html; sourceTree = "<group>"; };
+		C2519FFC308079A8001F4F63 /* options.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.js; path = ../../../dist/safari/options.js; sourceTree = "<group>"; };
+		C2519FFD308079A8001F4F63 /* 743.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 743.js; path = ../../../dist/safari/743.js; sourceTree = "<group>"; };
+		C2519FFE308079A8001F4F63 /* 65.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 65.js; path = ../../../dist/safari/65.js; sourceTree = "<group>"; };
+		C2519FFF308079A8001F4F63 /* spectre.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = spectre.min.css; path = ../../../dist/safari/spectre.min.css; sourceTree = "<group>"; };
+		C251A000308079A8001F4F63 /* 822.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 822.js; path = ../../../dist/safari/822.js; sourceTree = "<group>"; };
+		C251A001308079A8001F4F63 /* 77.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 77.js; path = ../../../dist/safari/77.js; sourceTree = "<group>"; };
+		C251A002308079A8001F4F63 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../../dist/safari/icons; sourceTree = "<group>"; };
+		C251A003308079A8001F4F63 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../dist/safari/manifest.json; sourceTree = "<group>"; };
+		C251A004308079A8001F4F63 /* 881.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 881.js; path = ../../../dist/safari/881.js; sourceTree = "<group>"; };
+		C251A005308079A8001F4F63 /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = options.html; path = ../../../dist/safari/options.html; sourceTree = "<group>"; };
+		C251A006308079A8001F4F63 /* dictionaries */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dictionaries; path = ../../../dist/safari/dictionaries; sourceTree = "<group>"; };
+		C251A007308079A8001F4F63 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.css; path = ../../../dist/safari/popup.css; sourceTree = "<group>"; };
+		C251A008308079A8001F4F63 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = ../../../dist/safari/_locales; sourceTree = "<group>"; };
+		C251A009308079A8001F4F63 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = ../../../dist/safari/content.js; sourceTree = "<group>"; };
+		C251A00A308079A8001F4F63 /* 303.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 303.js; path = ../../../dist/safari/303.js; sourceTree = "<group>"; };
+		C251A00B308079A8001F4F63 /* mobile.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = mobile.css; path = ../../../dist/safari/mobile.css; sourceTree = "<group>"; };
+		C251A00C308079A8001F4F63 /* 100.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 100.js; path = ../../../dist/safari/100.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2519FA7308079A8001F4F63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		C2519FB9308079A8001F4F63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		C2519FC5308079A8001F4F63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		C2519FCF308079A8001F4F63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2519F96308079A7001F4F63 = {
+			isa = PBXGroup;
+			children = (
+				C2519F9B308079A7001F4F63 /* Shared (App) */,
+				C2519FA4308079A8001F4F63 /* Shared (Extension) */,
+				C2519FAC308079A8001F4F63 /* iOS (App) */,
+				C2519FBD308079A8001F4F63 /* macOS (App) */,
+				C2519FCC308079A8001F4F63 /* iOS (Extension) */,
+				C2519FD6308079A8001F4F63 /* macOS (Extension) */,
+				C2519FAB308079A8001F4F63 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C2519F9B308079A7001F4F63 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FA2308079A7001F4F63 /* ViewController.swift */,
+				C2519FA3308079A8001F4F63 /* Assets.xcassets */,
+				C2519F9C308079A7001F4F63 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		C2519F9C308079A7001F4F63 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2519F9D308079A7001F4F63 /* Main.html */,
+				C2519F9F308079A7001F4F63 /* Icon.png */,
+				C2519FA0308079A7001F4F63 /* Style.css */,
+				C2519FA1308079A7001F4F63 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C2519FA4308079A8001F4F63 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FF6308079A8001F4F63 /* Resources */,
+				C2519FA5308079A8001F4F63 /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		C2519FAB308079A8001F4F63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FAA308079A8001F4F63 /* TongWenTangFixed.app */,
+				C2519FBC308079A8001F4F63 /* TongWenTangFixed.app */,
+				C2519FC8308079A8001F4F63 /* TongWenTangFixed Extension.appex */,
+				C2519FD2308079A8001F4F63 /* TongWenTangFixed Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2519FAC308079A8001F4F63 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FAD308079A8001F4F63 /* AppDelegate.swift */,
+				C2519FAF308079A8001F4F63 /* SceneDelegate.swift */,
+				C2519FB1308079A8001F4F63 /* LaunchScreen.storyboard */,
+				C2519FB4308079A8001F4F63 /* Main.storyboard */,
+				C2519FB7308079A8001F4F63 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		C2519FBD308079A8001F4F63 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FBE308079A8001F4F63 /* AppDelegate.swift */,
+				C2519FC0308079A8001F4F63 /* Main.storyboard */,
+				C2519FC3308079A8001F4F63 /* Info.plist */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		C2519FCC308079A8001F4F63 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FCD308079A8001F4F63 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		C2519FD6308079A8001F4F63 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FD7308079A8001F4F63 /* Info.plist */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		C2519FF6308079A8001F4F63 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2519FF7308079A8001F4F63 /* spectre-icons.min.css */,
+				C2519FF8308079A8001F4F63 /* popup.js */,
+				C2519FF9308079A8001F4F63 /* background.js */,
+				C2519FFA308079A8001F4F63 /* spectre-exp.min.css */,
+				C2519FFB308079A8001F4F63 /* popup.html */,
+				C2519FFC308079A8001F4F63 /* options.js */,
+				C2519FFD308079A8001F4F63 /* 743.js */,
+				C2519FFE308079A8001F4F63 /* 65.js */,
+				C2519FFF308079A8001F4F63 /* spectre.min.css */,
+				C251A000308079A8001F4F63 /* 822.js */,
+				C251A001308079A8001F4F63 /* 77.js */,
+				C251A002308079A8001F4F63 /* icons */,
+				C251A003308079A8001F4F63 /* manifest.json */,
+				C251A004308079A8001F4F63 /* 881.js */,
+				C251A005308079A8001F4F63 /* options.html */,
+				C251A006308079A8001F4F63 /* dictionaries */,
+				C251A007308079A8001F4F63 /* popup.css */,
+				C251A008308079A8001F4F63 /* _locales */,
+				C251A009308079A8001F4F63 /* content.js */,
+				C251A00A308079A8001F4F63 /* 303.js */,
+				C251A00B308079A8001F4F63 /* mobile.css */,
+				C251A00C308079A8001F4F63 /* 100.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2519FA9308079A8001F4F63 /* TongWenTangFixed (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2519FEC308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed (iOS)" */;
+			buildPhases = (
+				C2519FA6308079A8001F4F63 /* Sources */,
+				C2519FA7308079A8001F4F63 /* Frameworks */,
+				C2519FA8308079A8001F4F63 /* Resources */,
+				C2519FEB308079A8001F4F63 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2519FCB308079A8001F4F63 /* PBXTargetDependency */,
+			);
+			name = "TongWenTangFixed (iOS)";
+			productName = "TongWenTangFixed (iOS)";
+			productReference = C2519FAA308079A8001F4F63 /* TongWenTangFixed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2519FBB308079A8001F4F63 /* TongWenTangFixed (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2519FF3308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed (macOS)" */;
+			buildPhases = (
+				C2519FB8308079A8001F4F63 /* Sources */,
+				C2519FB9308079A8001F4F63 /* Frameworks */,
+				C2519FBA308079A8001F4F63 /* Resources */,
+				C2519FF2308079A8001F4F63 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2519FD5308079A8001F4F63 /* PBXTargetDependency */,
+			);
+			name = "TongWenTangFixed (macOS)";
+			productName = "TongWenTangFixed (macOS)";
+			productReference = C2519FBC308079A8001F4F63 /* TongWenTangFixed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C2519FC7308079A8001F4F63 /* TongWenTangFixed Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2519FE8308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed Extension (iOS)" */;
+			buildPhases = (
+				C2519FC4308079A8001F4F63 /* Sources */,
+				C2519FC5308079A8001F4F63 /* Frameworks */,
+				C2519FC6308079A8001F4F63 /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "TongWenTangFixed Extension (iOS)";
+			productName = "TongWenTangFixed Extension (iOS)";
+			productReference = C2519FC8308079A8001F4F63 /* TongWenTangFixed Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C2519FD1308079A8001F4F63 /* TongWenTangFixed Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2519FEF308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed Extension (macOS)" */;
+			buildPhases = (
+				C2519FCE308079A8001F4F63 /* Sources */,
+				C2519FCF308079A8001F4F63 /* Frameworks */,
+				C2519FD0308079A8001F4F63 /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "TongWenTangFixed Extension (macOS)";
+			productName = "TongWenTangFixed Extension (macOS)";
+			productReference = C2519FD2308079A8001F4F63 /* TongWenTangFixed Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2519F97308079A7001F4F63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					C2519FA9308079A8001F4F63 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					C2519FBB308079A8001F4F63 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					C2519FC7308079A8001F4F63 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					C2519FD1308079A8001F4F63 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+				};
+			};
+			buildConfigurationList = C2519F9A308079A7001F4F63 /* Build configuration list for PBXProject "TongWenTangFixed" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2519F96308079A7001F4F63;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C2519FAB308079A8001F4F63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2519FA9308079A8001F4F63 /* TongWenTangFixed (iOS) */,
+				C2519FBB308079A8001F4F63 /* TongWenTangFixed (macOS) */,
+				C2519FC7308079A8001F4F63 /* TongWenTangFixed Extension (iOS) */,
+				C2519FD1308079A8001F4F63 /* TongWenTangFixed Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2519FA8308079A8001F4F63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				C2519FDA308079A8001F4F63 /* Icon.png in Resources */,
+				C2519FB3308079A8001F4F63 /* LaunchScreen.storyboard in Resources */,
+				C2519FD8308079A8001F4F63 /* Main.html in Resources */,
+				C2519FDE308079A8001F4F63 /* Script.js in Resources */,
+				C2519FE2308079A8001F4F63 /* Assets.xcassets in Resources */,
+				C2519FB6308079A8001F4F63 /* Main.storyboard in Resources */,
+				C2519FDC308079A8001F4F63 /* Style.css in Resources */,
+			);
+		};
+		C2519FBA308079A8001F4F63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				C2519FDB308079A8001F4F63 /* Icon.png in Resources */,
+				C2519FDD308079A8001F4F63 /* Style.css in Resources */,
+				C2519FC2308079A8001F4F63 /* Main.storyboard in Resources */,
+				C2519FDF308079A8001F4F63 /* Script.js in Resources */,
+				C2519FE3308079A8001F4F63 /* Assets.xcassets in Resources */,
+				C2519FD9308079A8001F4F63 /* Main.html in Resources */,
+			);
+		};
+		C2519FC6308079A8001F4F63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				C251A038308079A8001F4F63 /* 100.js in Resources */,
+				C251A037308079A8001F4F63 /* mobile.css in Resources */,
+				C251A034308079A8001F4F63 /* _locales in Resources */,
+				C251A02D308079A8001F4F63 /* 77.js in Resources */,
+				C251A026308079A8001F4F63 /* spectre-exp.min.css in Resources */,
+				C251A031308079A8001F4F63 /* options.html in Resources */,
+				C251A028308079A8001F4F63 /* options.js in Resources */,
+				C251A02F308079A8001F4F63 /* manifest.json in Resources */,
+				C251A027308079A8001F4F63 /* popup.html in Resources */,
+				C251A02A308079A8001F4F63 /* 65.js in Resources */,
+				C251A029308079A8001F4F63 /* 743.js in Resources */,
+				C251A02C308079A8001F4F63 /* 822.js in Resources */,
+				C251A030308079A8001F4F63 /* 881.js in Resources */,
+				C251A032308079A8001F4F63 /* dictionaries in Resources */,
+				C251A035308079A8001F4F63 /* content.js in Resources */,
+				C251A023308079A8001F4F63 /* spectre-icons.min.css in Resources */,
+				C251A033308079A8001F4F63 /* popup.css in Resources */,
+				C251A036308079A8001F4F63 /* 303.js in Resources */,
+				C251A02B308079A8001F4F63 /* spectre.min.css in Resources */,
+				C251A02E308079A8001F4F63 /* icons in Resources */,
+				C251A025308079A8001F4F63 /* background.js in Resources */,
+				C251A024308079A8001F4F63 /* popup.js in Resources */,
+			);
+		};
+		C2519FD0308079A8001F4F63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				C251A022308079A8001F4F63 /* 100.js in Resources */,
+				C251A021308079A8001F4F63 /* mobile.css in Resources */,
+				C251A01E308079A8001F4F63 /* _locales in Resources */,
+				C251A017308079A8001F4F63 /* 77.js in Resources */,
+				C251A010308079A8001F4F63 /* spectre-exp.min.css in Resources */,
+				C251A01B308079A8001F4F63 /* options.html in Resources */,
+				C251A012308079A8001F4F63 /* options.js in Resources */,
+				C251A019308079A8001F4F63 /* manifest.json in Resources */,
+				C251A011308079A8001F4F63 /* popup.html in Resources */,
+				C251A014308079A8001F4F63 /* 65.js in Resources */,
+				C251A013308079A8001F4F63 /* 743.js in Resources */,
+				C251A016308079A8001F4F63 /* 822.js in Resources */,
+				C251A01A308079A8001F4F63 /* 881.js in Resources */,
+				C251A01C308079A8001F4F63 /* dictionaries in Resources */,
+				C251A01F308079A8001F4F63 /* content.js in Resources */,
+				C251A00D308079A8001F4F63 /* spectre-icons.min.css in Resources */,
+				C251A01D308079A8001F4F63 /* popup.css in Resources */,
+				C251A020308079A8001F4F63 /* 303.js in Resources */,
+				C251A015308079A8001F4F63 /* spectre.min.css in Resources */,
+				C251A018308079A8001F4F63 /* icons in Resources */,
+				C251A00F308079A8001F4F63 /* background.js in Resources */,
+				C251A00E308079A8001F4F63 /* popup.js in Resources */,
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2519FA6308079A8001F4F63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				C2519FE0308079A8001F4F63 /* ViewController.swift in Sources */,
+				C2519FAE308079A8001F4F63 /* AppDelegate.swift in Sources */,
+				C2519FB0308079A8001F4F63 /* SceneDelegate.swift in Sources */,
+			);
+		};
+		C2519FB8308079A8001F4F63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				C2519FE1308079A8001F4F63 /* ViewController.swift in Sources */,
+				C2519FBF308079A8001F4F63 /* AppDelegate.swift in Sources */,
+			);
+		};
+		C2519FC4308079A8001F4F63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				C2519FE4308079A8001F4F63 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+		C2519FCE308079A8001F4F63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				C2519FE5308079A8001F4F63 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2519FCB308079A8001F4F63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2519FC7308079A8001F4F63 /* TongWenTangFixed Extension (iOS) */;
+			targetProxy = C2519FCA308079A8001F4F63 /* PBXContainerItemProxy */;
+		};
+		C2519FD5308079A8001F4F63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2519FD1308079A8001F4F63 /* TongWenTangFixed Extension (macOS) */;
+			targetProxy = C2519FD4308079A8001F4F63 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C2519F9D308079A7001F4F63 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2519F9E308079A7001F4F63 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		C2519FB1308079A8001F4F63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2519FB2308079A8001F4F63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C2519FB4308079A8001F4F63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2519FB5308079A8001F4F63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C2519FC0308079A8001F4F63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2519FC1308079A8001F4F63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C2519FE6308079A8001F4F63 /* Debug configuration for PBXProject "TongWenTangFixed" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C2519FE7308079A8001F4F63 /* Release configuration for PBXProject "TongWenTangFixed" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C2519FE9308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed Extension (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed.Extension;
+				PRODUCT_NAME = "TongWenTangFixed Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2519FEA308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed Extension (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed.Extension;
+				PRODUCT_NAME = "TongWenTangFixed Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2519FED308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed;
+				PRODUCT_NAME = TongWenTangFixed;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2519FEE308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed;
+				PRODUCT_NAME = TongWenTangFixed;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2519FF0308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed Extension (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed.Extension;
+				PRODUCT_NAME = "TongWenTangFixed Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C2519FF1308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed Extension (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed.Extension;
+				PRODUCT_NAME = "TongWenTangFixed Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C2519FF4308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed;
+				PRODUCT_NAME = TongWenTangFixed;
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C2519FF5308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20800;
+				DEVELOPMENT_TEAM = C367M6C798;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "新同文堂（修復）";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 2.8.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.makcheunghei.tongwentangfixed;
+				PRODUCT_NAME = TongWenTangFixed;
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2519F9A308079A7001F4F63 /* Build configuration list for PBXProject "TongWenTangFixed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2519FE6308079A8001F4F63 /* Debug configuration for PBXProject "TongWenTangFixed" */,
+				C2519FE7308079A8001F4F63 /* Release configuration for PBXProject "TongWenTangFixed" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		C2519FE8308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2519FE9308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed Extension (iOS)" */,
+				C2519FEA308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed Extension (iOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		C2519FEC308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2519FED308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed (iOS)" */,
+				C2519FEE308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed (iOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		C2519FEF308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2519FF0308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed Extension (macOS)" */,
+				C2519FF1308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed Extension (macOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		C2519FF3308079A8001F4F63 /* Build configuration list for PBXNativeTarget "TongWenTangFixed (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2519FF4308079A8001F4F63 /* Debug configuration for PBXNativeTarget "TongWenTangFixed (macOS)" */,
+				C2519FF5308079A8001F4F63 /* Release configuration for PBXNativeTarget "TongWenTangFixed (macOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2519F97308079A7001F4F63 /* Project object */;
+	validationLevel = 1;
+}

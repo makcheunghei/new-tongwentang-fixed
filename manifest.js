@@ -58,6 +58,7 @@ const createManifest = vendor => {
       },
     ],
     action: {
+      ...(isSafari ? { default_popup: 'popup.html' } : {}),
       default_title: '__MSG_MSG_EXT_NAME__',
       default_icon: {
         16: 'icons/tongwen-icon-16.png',

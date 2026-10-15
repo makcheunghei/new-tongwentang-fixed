@@ -14,7 +14,7 @@ const convertActiveTab = async (target: LangType) => {
 };
 
 export const mountCommandListener = () => {
-  browser.commands?.onCommand.addListener(cmd => {
+  browser.commands?.onCommand?.addListener(cmd => {
     void (async () => {
       bgLog('[BG_RECEIVE_COMMAND]:', cmd);
 
