@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, copyFileSync, cpSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,6 +29,14 @@ if (!existsSync(project)) {
     ],
     { stdio: 'inherit' },
   );
+  // A runner with an older Xcode can generate its own compatible project,
+  // while compiling the same versioned native sources and onboarding pages.
+  const template = resolve(rootDir, 'apple', 'TongWenTangFixed', 'Shared (App)');
+  const generated = resolve(projectLocation, appName, 'Shared (App)');
+  if (template !== generated && existsSync(template)) {
+    copyFileSync(resolve(template, 'ViewController.swift'), resolve(generated, 'ViewController.swift'));
+    cpSync(resolve(template, 'Resources'), resolve(generated, 'Resources'), { recursive: true });
+  }
 }
 // Preserve the native sources, signing configuration and all four targets.
 console.log(`Safari iOS / iPadOS / macOS project: ${project}`);

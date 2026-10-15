@@ -54,6 +54,8 @@ jobs:
 
   safari:
     runs-on: macos-latest
+    env:
+      SAFARI_PROJECT_LOCATION: build/apple/ci-project
     steps:
       - uses: actions/checkout@v7.0.1
 

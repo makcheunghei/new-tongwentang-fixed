@@ -84,6 +84,8 @@ iPhone／iPad 安裝主 App 後，依啟用頁前往 Safari 延伸功能設定�
 
 修改 Safari 建置檔案清單後，須在 Xcode 更新 extension 的 Resources 引用；原生建置及匯出前會逐檔比對產物，避免出現有簽章但漏包操作面板或詞庫的情況。
 
+本機原生專案由 Xcode 27 產生。CI 會用 runner 已安裝的 Xcode 在 `build/apple/ci-project` 產生相容格式的臨時專案，複製相同原生介面程式碼，再驗證 macOS 及 iPhone／iPad 模擬器建置。
+
 執行完整驗證：
 
 ```sh
