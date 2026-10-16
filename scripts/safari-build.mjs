@@ -68,6 +68,7 @@ if (action.startsWith('export-')) {
     `CURRENT_PROJECT_VERSION=${build}`,
     `DEVELOPMENT_TEAM=${team}`,
     'CODE_SIGN_STYLE=Automatic',
+    'INFOPLIST_KEY_CFBundleDisplayName=新同文堂（修復）',
   ];
   if (process.env.SAFARI_UNSIGNED === '1' || simulator) args.push('CODE_SIGNING_ALLOWED=NO');
   else args.push('-allowProvisioningUpdates');
