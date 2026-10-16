@@ -6,9 +6,6 @@ export const AboutPage = () => (
   <Page title={i18n.getMessage('MSG_ABOUT')}>
     <div className="panel">
       <div className="wordmark">
-        <span className="brand-glyph" aria-hidden="true">
-          同
-        </span>
         <strong>{i18n.getMessage('MSG_EXT_NAME')}</strong>
       </div>
       <p className="help">{i18n.getMessage('UI_ABOUT_HELP')}</p>

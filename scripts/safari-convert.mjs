@@ -36,6 +36,7 @@ if (!existsSync(project)) {
   if (template !== generated && existsSync(template)) {
     copyFileSync(resolve(template, 'ViewController.swift'), resolve(generated, 'ViewController.swift'));
     cpSync(resolve(template, 'Resources'), resolve(generated, 'Resources'), { recursive: true });
+    cpSync(resolve(template, 'Assets.xcassets'), resolve(generated, 'Assets.xcassets'), { recursive: true });
   }
 }
 // Preserve the native sources, signing configuration and all four targets.

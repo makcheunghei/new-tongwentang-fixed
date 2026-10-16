@@ -1,95 +1,146 @@
 :root {
-  width: 360px;
+  width: 340px;
   min-width: 320px;
   max-width: 100%;
 }
 .popup-page {
   width: 100%;
-  background: var(--panel);
-}
-.popup-page main {
-  padding: 1.3rem;
-}
-.popup-page h1 {
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-.popup-page .wordmark small {
-  display: block;
-  font-size: 0.8rem;
-}
-.popup-page #hint {
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin: 1.5rem 0 0.8rem;
-}
-.direction-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.7rem;
-}
-.popup-page button {
-  font: inherit;
-  border-radius: 0.8rem;
-  min-height: 48px;
-  touch-action: manipulation;
-}
-.direction-pair button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.3rem;
-  text-align: left;
-  padding: 1rem;
-  background: var(--tint);
-  border: 1px solid var(--line);
-  color: var(--accent);
-}
-.direction-caption {
-  font-size: 0.85rem;
-}
-.direction-glyph {
-  font:
-    3.3rem/1.2 'Songti TC',
-    'Noto Serif TC',
-    serif;
-  margin: 0.1rem 0 0.4rem;
-}
-.direction-pair button:hover {
-  border-color: var(--accent);
-}
-.direction-pair button:active {
   background: var(--surface);
 }
-.auto-action,
-.settings-action {
+.popup-page main {
+  padding: 1rem;
+}
+.popup-page header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.7rem;
+  padding: 0.25rem 0.25rem 1rem;
+}
+.popup-page h1 {
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  margin: 0;
+  line-height: 1.35;
+}
+.app-symbol {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.app-symbol svg {
+  width: 25px;
+  height: 25px;
+}
+.popup-page #hint {
+  font-size: 0.8rem;
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+}
+.actions {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.popup-page button {
   width: 100%;
-  gap: 0.5rem;
-  padding: 0.75rem 0;
-  color: var(--accent);
+  min-height: 48px;
+  font: inherit;
   border: 0;
+  color: var(--ink);
   background: transparent;
+  touch-action: manipulation;
+}
+.conversion-action {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-align: left;
+  padding: 0.85rem 1rem;
+}
+.conversion-action + .conversion-action {
+  border-top: 1px solid var(--line);
+}
+.conversion-action strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.conversion-action small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+.direction-symbol {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: var(--tint);
+  color: var(--accent);
+  font:
+    600 1.15rem/1 -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+.action-arrow {
+  margin-left: auto;
+  width: 17px;
+  height: 17px;
+  color: var(--muted);
+}
+.popup-page button:hover {
+  background: var(--hover);
+}
+.popup-page button:active {
+  background: var(--tint);
 }
 .auto-action {
-  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-top: 1px solid var(--line) !important;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  font-size: 0.9rem !important;
+}
+.auto-action svg {
+  width: 36px;
+  height: 23px;
 }
 .settings-action {
-  border-top: 1px solid var(--line);
-  border-radius: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.35rem;
+  text-align: left;
+  font-size: 0.85rem !important;
+}
+.settings-action svg {
+  width: 22px;
+  height: 22px;
+}
+.settings-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 1.4rem;
 }
 .popup-page #status {
-  min-height: 1.5em;
-  font-size: 0.85rem;
+  margin: 0.7rem 0.3rem;
+  font-size: 0.8rem;
   color: var(--muted);
-  margin: 0.6rem 0 1rem;
 }
 .popup-page #status:empty {
-  margin: 0;
-  min-height: 0.6rem;
+  height: 0;
+  margin: 0.35rem 0;
 }
 .popup-page button:disabled {
   opacity: 0.45;

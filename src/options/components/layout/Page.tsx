@@ -1,5 +1,4 @@
 import { useEffect, useRef, type FC, type ReactNode } from 'react';
-import { i18n } from '../../../service/i18n/i18n';
 export const Page: FC<{ title: string; children: ReactNode }> = ({ title, children }) => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -9,7 +8,6 @@ export const Page: FC<{ title: string; children: ReactNode }> = ({ title, childr
   return (
     <section className="settings-page" aria-labelledby="page-title">
       <div className="page-heading">
-        <p className="eyebrow">{i18n.getMessage('UI_READING_TOOL')}</p>
         <h1 id="page-title" ref={headingRef} tabIndex={-1}>
           {title}
         </h1>

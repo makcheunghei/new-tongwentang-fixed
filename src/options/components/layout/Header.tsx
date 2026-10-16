@@ -3,12 +3,13 @@ import { closeOptionsPage } from '../../close-options';
 export const Header = () => (
   <header className="options-header">
     <div className="wordmark">
-      <span className="brand-glyph" aria-hidden="true">
-        同
+      <span className="settings-app-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+          <path d="M3 5h11M8.5 3v2M5 8c1 4 4 6 8 7M12 5c-1 5-4 8-8 10M13 21l4-11 4 11M14.5 17h5" />
+        </svg>
       </span>
       <div>
         <strong>{i18n.getMessage('MSG_EXT_NAME')}</strong>
-        <small>{i18n.getMessage('UI_READING_TOOL')}</small>
       </div>
     </div>
     <button
