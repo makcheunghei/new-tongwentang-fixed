@@ -1,6 +1,6 @@
 # 延伸功能玻璃介面草稿
 
-這次只修改 Safari HTML 面板及共用設定介面，已將獲接納的靜態方向整理成正式介面代碼。沒有變更原生 App、轉換核心、設定格式或版本號；仍未安裝或發佈。
+這次只修改 Safari HTML 面板及共用設定介面，已將獲接納的靜態方向整理成正式介面代碼，合併至 `master`，並更新安裝到 iPhone 及 iPad。沒有變更原生 App、轉換核心、設定格式或版本號；沒有發佈公開 Release。
 
 ## 釐清支援範圍
 
@@ -28,7 +28,16 @@ Safari Web Extension 的 popup 使用 HTML、CSS、JavaScript，不能直接使�
 
 提供離線靜態 HTML 預覽，重用本次實際 CSS，沒有接上擴充功能 API。設定值只用作展示，不讀取或修改使用者偏好。這些畫面不是瀏覽器或真機驗證證據。
 
-獲准推進後，本機 `npm test`（型別、lint、既有單元測試、Chromium／Firefox 建置及資源檢查）、`npm run build:safari` 及 Safari 資源檢查均通過；這些檢查不會開啟瀏覽器或模擬器。瀏覽器互動與裝置實測、安裝、封裝發佈及 Release 仍不在本輪範圍。代碼提交並推送至 `codex/glass-interface-draft` 工作分支，供審閱；版本維持 `3.1.0`。
+獲准推進後，本機 `npm test`（型別、lint、既有單元測試、Chromium／Firefox 建置及資源檢查）、`npm run build:safari` 及 Safari 資源檢查均通過。其後獲准合併及安裝，`master` 已包含介面 commit `cd68b82`；版本維持 `3.1.0`。
+
+## master 與實機試用（2026-10-16）
+
+- [`master` CI](https://github.com/makcheunghei/new-tongwentang-fixed/actions/runs/38841261681) 的一般測試與 Safari 建置均通過。
+- `npm run safari:build:ios` 成功；App 與 extension 的簽章、entitlements、profile 有效期及兩部裝置的安裝資格均已核對。
+- 建置檢查逐檔確認 extension 內的網頁資源與最新 Safari 產物完全一致。
+- iPhone 18 Pro Max 及 iPad Pro 13 吋（M5）均已更新安裝 `3.1.0`（build `30100`）。透過 `devicectl` 確認安裝位置已更新、App 啟動成功，而且啟動後程序仍然運行。
+- 使用原有 bundle identifier 更新 App，沒有解除安裝或重設偏好；沒有建立公開 Release 或上傳商店。
+- 上述結果只確認安裝、資源及主 App 啟動。Safari 面板、設定頁玻璃效果、轉換功能及網站權限仍待裝置內人工試用，不能視作已通過完整實機 UI 驗證。
 
 參考：[Apple — Safari web extensions](https://developer.apple.com/documentation/safariservices/safari-web-extensions)、[WebKit — Introducing Backdrop Filters](https://webkit.org/blog/3632/introducing-backdrop-filters/)。
 
