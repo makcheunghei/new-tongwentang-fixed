@@ -33,7 +33,9 @@ function App({ capabilities }: { capabilities: BrowserCapabilities }) {
     <main className="options-main">
       <Header />
       <Navbar page={page} setPage={setPage} capabilities={capabilities} />
-      <Suspense fallback={<p className="text-center">Loading…</p>}>{pageContent}</Suspense>
+      <div className="settings-content">
+        <Suspense fallback={<p role="status">{i18n.getMessage('UI_LOADING')}</p>}>{pageContent}</Suspense>
+      </div>
     </main>
   );
 }

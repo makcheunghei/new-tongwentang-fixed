@@ -1,60 +1,28 @@
 import type { FC } from 'react';
-import { useCallback } from 'react';
 import type { DicObj } from 'tongwen-core/dictionaries';
 import { i18n } from '../../../service/i18n/i18n';
 import { Button } from '../../components';
-
-const WordEntryRow: FC<{
-  index: number;
-  entry: [string, string];
-  onEdit: (entry: [string, string]) => void;
-  onRemove: (key: string) => void;
-}> = ({ index, entry, onEdit: handleEdit, onRemove: handleRemove }) => {
-  const edit = useCallback(() => {
-    handleEdit(entry);
-  }, [entry, handleEdit]);
-  const remove = useCallback(() => {
-    handleRemove(entry[0]);
-  }, [entry, handleRemove]);
-
-  return (
-    <tr>
-      <td>{index + 1}</td>
-      <td>{`${entry[0]} => ${entry[1]}`}</td>
-      <td>
-        <Button type="primary" onClick={edit}>
-          {i18n.getMessage('MSG_EDIT')}
-        </Button>
-      </td>
-      <td>
-        <Button type="error" onClick={remove}>
-          {i18n.getMessage('MSG_DELETE')}
-        </Button>
-      </td>
-    </tr>
-  );
-};
-
 export const WordEntryList: FC<{
   words: DicObj;
   onEdit: (entry: [string, string]) => void;
   onRemove: (key: string) => void;
-}> = ({ words, onRemove: handleRemove, onEdit: handleEdit }) => {
-  return (
-    <table className="table table-striped table-hover">
-      <thead>
-        <tr>
-          <td>#</td>
-          <td>{i18n.getMessage('MSG_WORD')}</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(words).map((entry, index) => (
-          <WordEntryRow key={entry[0]} index={index} entry={entry} onEdit={handleEdit} onRemove={handleRemove} />
-        ))}
-      </tbody>
-    </table>
-  );
-};
+}> = ({ words, onEdit, onRemove }) => (
+  <ul className="record-list">
+    {Object.keys(words).length === 0 && <li className="empty-state">{i18n.getMessage('UI_NO_WORDS')}</li>}
+    {Object.entries(words).map(entry => (
+      <li className="record-row" key={entry[0]}>
+        <div className="record-copy">
+          <strong>
+            {entry[0]} <span aria-hidden="true">→</span> {entry[1]}
+          </strong>
+        </div>
+        <div className="record-actions">
+          <Button onClick={() => onEdit(entry)}>{i18n.getMessage('MSG_EDIT')}</Button>
+          <Button type="error" onClick={() => onRemove(entry[0])}>
+            {i18n.getMessage('MSG_DELETE')}
+          </Button>
+        </div>
+      </li>
+    ))}
+  </ul>
+);

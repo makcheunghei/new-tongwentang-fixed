@@ -4,22 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>新同文堂（修復）</title>
+    <link rel="stylesheet" href="mobile.css" />
     <link rel="stylesheet" href="popup.css" />
   </head>
-  <body>
+  <body class="popup-page">
     <main>
-      <header>
-        <img src="icons/tongwen-icon-48.png" width="32" height="32" alt="" />
-        <h1>新同文堂（修復）</h1>
+      <header class="wordmark">
+        <span class="brand-glyph" aria-hidden="true">同</span>
+        <div>
+          <h1>新同文堂</h1>
+          <small>閱讀熟悉的中文</small>
+        </div>
       </header>
       <p id="hint">轉換目前的 Safari 網頁</p>
       <div class="actions">
-        <button type="button" id="s2t">簡體 → 繁體</button>
-        <button type="button" id="t2s">繁體 → 簡體</button>
-        <button type="button" id="auto">自動判斷方向</button>
+        <div class="direction-pair">
+          <button type="button" id="s2t">
+            <span class="direction-caption">简 <span aria-hidden="true">→</span></span
+            ><strong class="direction-glyph" aria-hidden="true">繁</strong><span>轉為繁體</span></button
+          ><button type="button" id="t2s">
+            <span class="direction-caption">繁 <span aria-hidden="true">→</span></span
+            ><strong class="direction-glyph" aria-hidden="true">简</strong><span>轉為簡體</span>
+          </button>
+        </div>
+        <button type="button" id="auto" class="auto-action">自動判斷方向 <span aria-hidden="true">⇄</span></button>
       </div>
       <p id="status" role="status" aria-live="polite"></p>
-      <button type="button" id="settings" class="secondary">轉換設定與詞庫</button>
+      <button type="button" id="settings" class="settings-action">
+        轉換設定與詞庫 <span aria-hidden="true">→</span>
+      </button>
     </main>
   </body>
 </html>

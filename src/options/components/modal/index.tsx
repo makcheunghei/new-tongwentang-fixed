@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from 'react';
-
+import { useEffect, useId, useRef } from 'react';
+import { i18n } from '../../../service/i18n/i18n';
 export const Modal: FC<{
   isActive: boolean;
   head?: string;
@@ -8,19 +9,35 @@ export const Modal: FC<{
   onOk?: () => void;
   onCancel: () => void;
 }> = ({ head, footer, isActive, onCancel, children }) => {
-  const active = isActive ? 'active' : '';
+  const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!dialog) return;
+    if (isActive && !dialog.open) dialog.showModal();
+    if (!isActive && dialog.open) dialog.close();
+    return () => {
+      if (dialog.open) dialog.close();
+    };
+  }, [isActive]);
   return (
-    <div className={`modal ${active}`} id="modal-id">
-      <div className="modal-container">
-        <div className="modal-header">
-          <a className="btn btn-clear float-right" aria-label="Close" onClick={onCancel} />
-          <div className="modal-title h5">{head}</div>
-        </div>
-        <div className="modal-body">
-          <div className="content">{children}</div>
-        </div>
-        <div className="modal-footer">{footer}</div>
-      </div>
-    </div>
+    <dialog
+      ref={ref}
+      className="editor-dialog"
+      aria-labelledby={titleId}
+      onCancel={event => {
+        event.preventDefault();
+        onCancel();
+      }}
+    >
+      <header className="dialog-header">
+        <h2 id={titleId}>{head || i18n.getMessage('MSG_EDIT')}</h2>
+        <button type="button" className="btn" aria-label={i18n.getMessage('MSG_CANCEL')} onClick={onCancel}>
+          ×
+        </button>
+      </header>
+      <div className="dialog-body">{isActive && children}</div>
+      {footer && <footer>{footer}</footer>}
+    </dialog>
   );
 };

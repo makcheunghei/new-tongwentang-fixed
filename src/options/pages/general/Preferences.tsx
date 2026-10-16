@@ -17,9 +17,12 @@ export const Preferences: FC = () => {
   const showDialog = useCallback(() => ref.current?.click(), []);
 
   const handleLoad = useCallback((_: SyntheticEvent<HTMLInputElement>) => {
+    const file = ref.current?.files?.[0];
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = onload;
-    reader.readAsText(ref.current!.files![0]);
+    reader.readAsText(file);
+    if (ref.current) ref.current.value = '';
   }, []);
 
   return (
@@ -27,12 +30,12 @@ export const Preferences: FC = () => {
       <div className="columns">
         <div className="column">
           <input type="file" style={{ display: 'none' }} accept=".json" ref={ref} onChange={handleLoad} />
-          <Button type="primary" onClick={showDialog}>
+          <Button onClick={showDialog}>
             {i18n.getMessage('MSG_IMPORT')} <i className="icon icon-upload" />
           </Button>
         </div>
         <div className="column">
-          <Button type="primary" onClick={exportPref}>
+          <Button onClick={exportPref}>
             {i18n.getMessage('MSG_EXPORT')} <i className="icon icon-download" />
           </Button>
         </div>

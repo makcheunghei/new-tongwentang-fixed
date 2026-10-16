@@ -268,5 +268,47 @@
   },
   "MSG_CLOSE_OPTIONS": {
     "message": "关闭设置"
+  },
+  "UI_READING_TOOL": {
+    "message": "中文阅读工具"
+  },
+  "UI_NAVIGATION": {
+    "message": "设置导航"
+  },
+  "UI_LOADING": {
+    "message": "正在加载…"
+  },
+  "UI_GENERAL_HELP": {
+    "message": "选择适合你的阅读方式。常规设置会立即保存，网站规则可覆盖转换方向。"
+  },
+  "UI_AUTOMATION": {
+    "message": "自动转换"
+  },
+  "UI_PAGE_BEHAVIOR": {
+    "message": "网页行为"
+  },
+  "UI_ADVANCED": {
+    "message": "高级设置"
+  },
+  "UI_ABOUT_HELP": {
+    "message": "繁简互转、动态网页及自定义词库。在设备上处理，专注阅读。"
+  },
+  "UI_DATA_HELP": {
+    "message": "导出设置以保留规则及词库，或从 JSON 文件导入。重置前会再次确认。"
+  },
+  "UI_NO_RULES": {
+    "message": "暂无网站规则。添加第一条，为常看的网站指定转换方式。"
+  },
+  "UI_NO_WORDS": {
+    "message": "这个词库仍为空。添加词组，定义你偏好的写法。"
+  },
+  "UI_INVALID_PATTERN": {
+    "message": "请输入网域（如 example.com），或 /正则表达式/。"
+  },
+  "UI_RULE_HELP": {
+    "message": "按顺序应用网站规则。编辑完成后，请点击“保存”应用更改。"
+  },
+  "UI_WORD_HELP": {
+    "message": "选择内置字词库，或添加个人常用词。更改后请点击“保存”。"
   }
 }

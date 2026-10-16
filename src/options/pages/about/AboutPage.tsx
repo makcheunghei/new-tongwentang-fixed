@@ -1,59 +1,37 @@
-import type { FC } from 'react';
 import { i18n } from '../../../service/i18n/i18n';
-import { Card, CardBody, CardFooter, CardHeader, Page } from '../../components';
-
-export const AboutPage: FC = () => {
-  return (
-    <Page title={i18n.getMessage('MSG_ABOUT')}>
-      <Card>
-        <CardHeader title={i18n.getMessage('MSG_EXT_NAME')} />
-
-        <CardBody>
-          <p>
-            {i18n.getMessage('MSG_REPOSITORY')}
-            <a href="https://github.com/tongwentang/tongwentang-extension" target="_blank" rel="noreferrer">
-              <i className="icon icon-link" />
+import { Page } from '../../components';
+import { Preferences } from '../general/Preferences';
+const repo = 'https://github.com/makcheunghei/new-tongwentang-fixed';
+export const AboutPage = () => (
+  <Page title={i18n.getMessage('MSG_ABOUT')}>
+    <div className="panel">
+      <div className="wordmark">
+        <span className="brand-glyph" aria-hidden="true">
+          同
+        </span>
+        <strong>{i18n.getMessage('MSG_EXT_NAME')}</strong>
+      </div>
+      <p className="help">{i18n.getMessage('UI_ABOUT_HELP')}</p>
+      <ul className="link-list">
+        {[
+          ['MSG_REPOSITORY', ''],
+          ['MSG_ISSUE_REPORT', '/issues'],
+          ['MSG_CHANGELOG', '/releases'],
+          ['MSG_LICENSE', '/blob/master/LICENSE'],
+        ].map(([label, path]) => (
+          <li key={label}>
+            <a href={repo + path} target="_blank" rel="noreferrer">
+              {i18n.getMessage(label)}
+              <span aria-hidden="true">↗</span>
             </a>
-          </p>
-          <p>
-            {i18n.getMessage('MSG_ISSUE_REPORT')}
-            <a href="https://github.com/tongwentang/tongwentang-extension/issues" target="_blank" rel="noreferrer">
-              <i className="icon icon-link" />
-            </a>
-          </p>
-          <p>
-            {i18n.getMessage('MSG_CHANGELOG')}
-            <a
-              href="https://github.com/tongwentang/tongwentang-extension/blob/master/CHANGELOG.md"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="icon icon-link" />
-            </a>
-          </p>
-          <p>
-            {i18n.getMessage('MSG_CONTRIBUTORS')}
-            <a
-              href="https://github.com/tongwentang/tongwentang-extension/graphs/contributors"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="icon icon-link" />
-            </a>
-          </p>
-          <p>
-            {i18n.getMessage('MSG_LICENSE')}
-            <a
-              href="https://github.com/tongwentang/tongwentang-extension/blob/master/LICENSE"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="icon icon-link" />
-            </a>
-          </p>
-        </CardBody>
-        <CardFooter />
-      </Card>
-    </Page>
-  );
-};
+          </li>
+        ))}
+      </ul>
+    </div>
+    <h2 className="group-heading">{i18n.getMessage('MSG_MAINTAIN_PREF')}</h2>
+    <p className="help">{i18n.getMessage('UI_DATA_HELP')}</p>
+    <div className="panel">
+      <Preferences />
+    </div>
+  </Page>
+);

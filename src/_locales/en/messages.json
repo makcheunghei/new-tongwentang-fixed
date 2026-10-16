@@ -268,5 +268,47 @@
   },
   "MSG_CLOSE_OPTIONS": {
     "message": "Close settings"
+  },
+  "UI_READING_TOOL": {
+    "message": "Chinese reading, your way"
+  },
+  "UI_NAVIGATION": {
+    "message": "Settings navigation"
+  },
+  "UI_LOADING": {
+    "message": "Loading…"
+  },
+  "UI_GENERAL_HELP": {
+    "message": "Choose how you read. General settings save automatically; website rules can override the conversion direction."
+  },
+  "UI_AUTOMATION": {
+    "message": "Automatic conversion"
+  },
+  "UI_PAGE_BEHAVIOR": {
+    "message": "Page behavior"
+  },
+  "UI_ADVANCED": {
+    "message": "Advanced settings"
+  },
+  "UI_ABOUT_HELP": {
+    "message": "Simplified and Traditional Chinese, dynamic pages, and your own dictionary. Processed on your device."
+  },
+  "UI_DATA_HELP": {
+    "message": "Export your rules and dictionaries, or import a JSON file. Reset actions require confirmation."
+  },
+  "UI_NO_RULES": {
+    "message": "No website rules yet. Add one to choose how a favorite site is converted."
+  },
+  "UI_NO_WORDS": {
+    "message": "No custom entries yet. Add a phrase to use your preferred wording."
+  },
+  "UI_INVALID_PATTERN": {
+    "message": "Enter a domain such as example.com, or a /regular expression/."
+  },
+  "UI_RULE_HELP": {
+    "message": "Website rules apply in order. Save when you finish editing."
+  },
+  "UI_WORD_HELP": {
+    "message": "Choose built-in dictionaries or add your own wording. Save to apply your changes."
   }
 }

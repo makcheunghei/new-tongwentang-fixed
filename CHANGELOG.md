@@ -1,3 +1,11 @@
+# 3.0.0（2026-10-16）
+
+- 全面重建 Safari 面板、設定頁及 Apple App 啟用頁，移除 Spectre 舊框架。
+- 新增寬屏側欄、窄屏底部導航、系統深淺色與可換行規則／詞庫列表。
+- 編輯器改用原生對話框，改善焦點、Escape、欄位標籤及無效輸入處理。
+- 設定備份與重設移至「關於」，修正專案連結及取消選檔錯誤。
+- 保留現有設定資料、轉換通訊及 iOS／iPadOS 功能限制。
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

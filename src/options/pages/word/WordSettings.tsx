@@ -3,7 +3,6 @@ import { Fragment, useCallback, useState } from 'react';
 import { LangType } from 'tongwen-core/dictionaries';
 import type { PrefWordDefault } from '../../../preference/types/v2';
 import { i18n } from '../../../service/i18n/i18n';
-import { createNoti } from '../../../service/notification/create-noti';
 import { setStorage } from '../../../service/storage/storage';
 import { Button, Divider, Modal } from '../../components';
 import { useToggle } from '../../hooks/state/use-toggle';
@@ -37,7 +36,7 @@ export const WordSettings: FC = () => {
       if (tab == null) return;
 
       setWord(pw => {
-        const newPw = { ...pw };
+        const newPw = { ...pw, custom: { ...pw.custom } };
         const map = new Map(Object.entries(pw.custom[tab]));
 
         toEdit[0] !== '' && map.delete(toEdit[0]);
@@ -56,7 +55,7 @@ export const WordSettings: FC = () => {
       if (tab == null) return;
 
       setWord(pw => {
-        const newPw = { ...pw };
+        const newPw = { ...pw, custom: { ...pw.custom } };
         const map = new Map(Object.entries(pw.custom[tab]));
 
         map.delete(key);
@@ -67,50 +66,40 @@ export const WordSettings: FC = () => {
     [tab, setWord],
   );
 
-  const save = useCallback(
-    async () => setStorage({ word }).then(async () => createNoti(i18n.getMessage('MSG_UPDATE_COMPLETED'))),
-    [word],
-  );
+  const [status, setStatus] = useState('');
+  const save = useCallback(async () => {
+    try {
+      await setStorage({ word });
+      setStatus(i18n.getMessage('MSG_UPDATE_COMPLETED'));
+    } catch {
+      setStatus(i18n.getMessage('MSG_SAVE_FAILED'));
+    }
+  }, [word]);
 
   return (
     <Fragment>
+      <p className="help">{i18n.getMessage('UI_WORD_HELP')}</p>
+      <p className="status-line" role="status">
+        {status}
+      </p>
       <div className="panel">
         <div className="panel-nav">
-          <ul className="tab tab-block">
-            <li className={`tab-item ${tab === null ? 'active' : ''}`}>
-              <a
-                style={{ cursor: 'pointer' }}
-                onClick={() => {
-                  setTab(null);
-                }}
-              >
-                {i18n.getMessage('MSG_DEFAULT')}
-              </a>
-            </li>
-            <li className={`tab-item ${tab === LangType.s2t ? 'active' : ''}`}>
-              <a
-                style={{ cursor: 'pointer' }}
-                onClick={() => {
-                  setTab(LangType.s2t);
-                }}
-              >
-                {i18n.getMessage('MSG_CUSTOM_S2T')}
-              </a>
-            </li>
-            <li className={`tab-item ${tab === LangType.t2s ? 'active' : ''}`}>
-              <a
-                style={{ cursor: 'pointer' }}
-                onClick={() => {
-                  setTab(LangType.t2s);
-                }}
-              >
-                {i18n.getMessage('MSG_CUSTOM_T2S')}
-              </a>
-            </li>
-          </ul>
+          <div className="segmented" role="group" aria-label={i18n.getMessage('MSG_WORD')}>
+            {(
+              [
+                [null, 'MSG_DEFAULT'],
+                [LangType.s2t, 'MSG_CUSTOM_S2T'],
+                [LangType.t2s, 'MSG_CUSTOM_T2S'],
+              ] as const
+            ).map(([value, label]) => (
+              <button type="button" key={label} aria-pressed={tab === value} onClick={() => setTab(value)}>
+                {i18n.getMessage(label)}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="panel-body" style={{ padding: '1em', maxHeight: '60vh' }}>
+        <div className="panel-body">
           {tab === null ? (
             <WordDefaultSettings value={word.default} onChange={setDefault} onSave={save} />
           ) : (
@@ -118,7 +107,6 @@ export const WordSettings: FC = () => {
               <div className="columns">
                 <div className="column col-auto">
                   <Button
-                    type="primary"
                     onClick={() => {
                       edit(['', '']);
                     }}
@@ -138,7 +126,7 @@ export const WordSettings: FC = () => {
           )}
         </div>
       </div>
-      <Modal isActive={isModal} onCancel={off}>
+      <Modal head={i18n.getMessage(toEdit[0] ? 'MSG_EDIT' : 'MSG_ADD')} isActive={isModal} onCancel={off}>
         <WordEntryEditor key={`${toEdit[0]}:${toEdit[1]}`} entry={toEdit} onSubmit={update} />
       </Modal>
     </Fragment>

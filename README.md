@@ -140,3 +140,11 @@ npm run build:zip:chromium
 - `apple`：iOS／iPadOS、macOS 原生主 App 及 Safari extension Xcode 專案。
 - `src/popup`：Safari 觸控操作面板。
 - `docs`：權限、建置及偏好設定文件。
+
+## 3.0.0：重新設計的閱讀介面
+
+Safari 操作面板、跨瀏覽器設定及 Apple App 啟用頁已全面重建。以「简／繁」配對操作取代舊式按鈕，配合玉綠色與跟隨系統的深淺色。設定在寬屏使用側欄，窄屏使用底部導航；網站規則及自訂詞庫採可換行列表，手機毋須橫向拖表格。
+
+一般設定即時儲存；網站規則及詞庫請按「儲存」。匯入、匯出及重設移至「關於」。編輯器支援鍵盤焦點與 Escape 關閉，觸控目標至少 44px。iOS／iPadOS 繼續隱藏不支援的右鍵功能。舊設定資料及轉換引擎相容，不用重新建立詞庫。
+
+設計理由、顏色對比及驗證範圍見 [介面設計紀錄](docs/interface-design.md)。

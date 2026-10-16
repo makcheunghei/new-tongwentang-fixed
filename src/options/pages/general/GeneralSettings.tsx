@@ -18,57 +18,69 @@ export const GeneralSettings: FC<{ capabilities: BrowserCapabilities }> = ({ cap
   } = useGeneralOpt();
 
   return (
-    <form>
-      <Select
-        id="AutoConvert"
-        label={i18n.getMessage('MSG_AUTO_CONVERT')}
-        value={general.autoConvert}
-        onChange={setAutoConvert}
-      >
-        {autoConvertOptions()}
-      </Select>
-      <Checkbox
-        isSwitch={true}
-        label={i18n.getMessage('MSG_DETECT_FALLBACK')}
-        checked={general.detectFallback === 'convert'}
-        onChange={setDetectFallback}
-      />
-      {capabilities.toolbarClick && (
+    <>
+      <p className="help">{i18n.getMessage('UI_GENERAL_HELP')}</p>
+      <h2 className="group-heading">{i18n.getMessage('UI_AUTOMATION')}</h2>
+      <form>
         <Select
-          id="BrowserAction"
-          label={i18n.getMessage('MSG_BROWSER_ACTION')}
-          value={general.browserAction}
-          onChange={setBrowserAction}
+          id="AutoConvert"
+          label={i18n.getMessage('MSG_AUTO_CONVERT')}
+          value={general.autoConvert}
+          onChange={setAutoConvert}
         >
-          {browserActionOptions()}
+          {autoConvertOptions()}
         </Select>
-      )}
-      <Select
-        id="DefaultLanguage"
-        label={i18n.getMessage('MSG_DEFAULT_CONVERT')}
-        value={general.defaultTarget}
-        onChange={setDefaultTarget}
-      >
-        {defaultTargetOptions()}
-      </Select>
-      <Checkbox
-        isSwitch={true}
-        label={i18n.getMessage('MSG_DYNAMIC_CONVERT')}
-        checked={general.spaMode}
-        onChange={setSpaMode}
-      />
-      <Checkbox
-        isSwitch={true}
-        label={i18n.getMessage('MSG_UPDATE_LANG')}
-        checked={general.updateLangAttr}
-        onChange={setUpdateLangAttr}
-      />
-      <Checkbox
-        isSwitch={true}
-        label={i18n.getMessage('MSG_DEBUG_MODE')}
-        checked={general.debugMode}
-        onChange={setDebugMode}
-      />
-    </form>
+        <Checkbox
+          isSwitch={true}
+          label={i18n.getMessage('MSG_DETECT_FALLBACK')}
+          checked={general.detectFallback === 'convert'}
+          onChange={setDetectFallback}
+        />
+      </form>
+      <h2 className="group-heading">{i18n.getMessage('UI_PAGE_BEHAVIOR')}</h2>
+      <form>
+        {capabilities.toolbarClick && (
+          <Select
+            id="BrowserAction"
+            label={i18n.getMessage('MSG_BROWSER_ACTION')}
+            value={general.browserAction}
+            onChange={setBrowserAction}
+          >
+            {browserActionOptions()}
+          </Select>
+        )}
+        <Select
+          id="DefaultLanguage"
+          label={i18n.getMessage('MSG_DEFAULT_CONVERT')}
+          value={general.defaultTarget}
+          onChange={setDefaultTarget}
+        >
+          {defaultTargetOptions()}
+        </Select>
+        <Checkbox
+          isSwitch={true}
+          label={i18n.getMessage('MSG_DYNAMIC_CONVERT')}
+          checked={general.spaMode}
+          onChange={setSpaMode}
+        />
+        <Checkbox
+          isSwitch={true}
+          label={i18n.getMessage('MSG_UPDATE_LANG')}
+          checked={general.updateLangAttr}
+          onChange={setUpdateLangAttr}
+        />
+      </form>
+      <details>
+        <summary>{i18n.getMessage('UI_ADVANCED')}</summary>
+        <form>
+          <Checkbox
+            isSwitch={true}
+            label={i18n.getMessage('MSG_DEBUG_MODE')}
+            checked={general.debugMode}
+            onChange={setDebugMode}
+          />
+        </form>
+      </details>
+    </>
   );
 };

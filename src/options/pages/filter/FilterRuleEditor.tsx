@@ -30,13 +30,23 @@ export const FilterRuleEditor: FC<{
     <div className="columns">
       <div className="column">
         <div className="form-group">
-          <label className="form-label">{i18n.getMessage('MSG_URL_REGEX')}</label>
+          <label className="form-label" htmlFor="rule-pattern">
+            {i18n.getMessage('MSG_URL_REGEX')}
+          </label>
           <input
+            id="rule-pattern"
+            aria-invalid={isError}
+            aria-describedby={isError ? 'pattern-error' : undefined}
             type="text"
             className={`form-input ${isError ? 'is-error' : ''}`}
             value={rule.pattern}
             onChange={updatePattern}
           />
+          {isError && (
+            <p id="pattern-error" role="alert">
+              {i18n.getMessage('UI_INVALID_PATTERN')}
+            </p>
+          )}
         </div>
       </div>
       <div className="column">
@@ -46,18 +56,14 @@ export const FilterRuleEditor: FC<{
       </div>
       <div className="column">
         <div className="form-group">
-          <label className="form-label">{i18n.getMessage('MSG_OK')}</label>
-          <Button type="primary" onClick={submit}>
+          <Button type="primary" disabled={isError} onClick={submit}>
             {i18n.getMessage('MSG_OK')}
           </Button>
         </div>
       </div>
       <div className="column">
         <div className="form-group">
-          <label className="form-label">{i18n.getMessage('MSG_CANCEL')}</label>
-          <Button type="primary" onClick={handleCancel}>
-            {i18n.getMessage('MSG_CANCEL')}
-          </Button>
+          <Button onClick={handleCancel}>{i18n.getMessage('MSG_CANCEL')}</Button>
         </div>
       </div>
     </div>

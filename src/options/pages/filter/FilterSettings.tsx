@@ -3,7 +3,6 @@ import { Fragment, useCallback, useState } from 'react';
 import { createFilterRule } from '../../../preference/filter-rule';
 import type { PrefFilterRule } from '../../../preference/types/v2';
 import { i18n } from '../../../service/i18n/i18n';
-import { createNoti } from '../../../service/notification/create-noti';
 import { Button, Checkbox, Divider, Modal } from '../../components';
 import { useFilter } from '../../hooks/filter';
 import { useToggle } from '../../hooks/state/use-toggle';
@@ -74,24 +73,29 @@ export const FilterSettings: FC = () => {
     [toEdit, setRules, off],
   );
 
+  const [status, setStatus] = useState('');
   const save = async () => {
     try {
       const saved = await saveFilter();
-      await createNoti(i18n.getMessage(saved ? 'MSG_UPDATE_COMPLETED' : 'MSG_SETTINGS_CONFLICT'));
+      setStatus(i18n.getMessage(saved ? 'MSG_UPDATE_COMPLETED' : 'MSG_SETTINGS_CONFLICT'));
     } catch {
-      await createNoti(i18n.getMessage('MSG_SAVE_FAILED'));
+      setStatus(i18n.getMessage('MSG_SAVE_FAILED'));
     }
   };
 
   return (
     <Fragment>
+      <p className="help">{i18n.getMessage('UI_RULE_HELP')}</p>
+      <p role="status" className="status-line">
+        {status}
+      </p>
       {externalChange && (
         <p role="alert" className="text-warning">
           {i18n.getMessage('MSG_SETTINGS_CONFLICT')}
         </p>
       )}
       <div className="panel">
-        <div className="panel-nav" style={{ padding: '1em' }}>
+        <div className="panel-nav">
           <div className="columns">
             <div className="column col-auto">
               <Checkbox
@@ -102,9 +106,7 @@ export const FilterSettings: FC = () => {
               />
             </div>
             <div className="column col-auto">
-              <Button type="primary" onClick={handleAdd}>
-                {i18n.getMessage('MSG_ADD')}
-              </Button>
+              <Button onClick={handleAdd}>{i18n.getMessage('MSG_ADD')}</Button>
             </div>
             <div className="column col-auto">
               <Button type="primary" disabled={!ready} onClick={save}>
@@ -114,11 +116,11 @@ export const FilterSettings: FC = () => {
           </div>
         </div>
 
-        <div className="panel-body" style={{ maxHeight: '60vh' }}>
-          <div className="columns" style={{ padding: '0 1em' }}>
+        <div className="panel-body">
+          <div className="columns">
             <div className="column">
               <div className="form-group">
-                <label className="form-label">{i18n.getMessage('MSG_LANG_RULE')}</label>
+                <h2>{i18n.getMessage('MSG_LANG_RULE')}</h2>
                 <label className="form-label" htmlFor="cht-tags">
                   {i18n.getMessage('MSG_LANG_CHT')}
                 </label>
@@ -133,7 +135,6 @@ export const FilterSettings: FC = () => {
             </div>
             <div className="column">
               <div className="form-group">
-                <label className="form-label">&nbsp;</label>
                 <label className="form-label" htmlFor="chs-tags">
                   {i18n.getMessage('MSG_LANG_CHS')}
                 </label>
@@ -154,7 +155,7 @@ export const FilterSettings: FC = () => {
         </div>
       </div>
 
-      <Modal isActive={isModal} onOk={on} onCancel={off}>
+      <Modal head={i18n.getMessage(toEdit.isAdd ? 'MSG_ADD' : 'MSG_EDIT')} isActive={isModal} onOk={on} onCancel={off}>
         <FilterRuleEditor
           key={`${toEdit.isAdd}:${toEdit.rule.id}`}
           value={toEdit.rule}

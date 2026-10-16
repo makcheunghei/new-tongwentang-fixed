@@ -10,28 +10,35 @@
   </head>
   <body>
     <main>
-      <img src="../Icon.png" width="88" height="88" alt="" />
-      <h1>新同文堂（修復）</h1>
-      <p>在 Safari 閱讀熟悉的中文。繁簡互轉、動態網頁轉換與自訂詞庫，都在你的裝置上處理。</p>
-      <section class="platform-ios" aria-labelledby="ios-heading">
-        <h2 id="ios-heading">在 iPhone 或 iPad 啟用</h2>
-        <ol>
-          <li>
-            開啟「設定」→「App」→「Safari」→「延伸功能」，選擇「新同文堂（修復）」。較舊系統可直接在「設定」找到
-            Safari。
-          </li>
-          <li>開啟延伸功能，並選擇允許存取的網站。</li>
-          <li>返回 Safari，從網頁選單開啟新同文堂，即可選擇「簡體 → 繁體」或「繁體 → 簡體」。</li>
-        </ol>
-        <p>在操作面板選擇「轉換設定與詞庫」，即可設定自動轉換及網域規則。</p>
-      </section>
-      <section class="platform-mac" aria-labelledby="mac-heading">
-        <h2 id="mac-heading">在 Mac 啟用</h2>
-        <p id="extension-state" role="status">在 Safari「設定」→「延伸功能」啟用新同文堂，並允許存取需要轉換的網站。</p>
-        <p>從 Safari 工具列開啟新同文堂，即可轉換目前網頁或調整設定。</p>
-      </section>
-      <button id="open-settings" type="button" hidden>開啟 Safari 延伸功能設定</button>
-      <p id="notice" role="status" aria-live="polite"></p>
+      <div class="introduction">
+        <div class="reading-mark" aria-hidden="true"><span>简</span><span>繁</span></div>
+        <p class="eyebrow">新同文堂 · SAFARI 延伸功能</p>
+        <h1>閱讀熟悉的中文。</h1>
+        <p>在 Safari 閱讀熟悉的中文。繁簡互轉、動態網頁轉換與自訂詞庫，都在你的裝置上處理。</p>
+      </div>
+      <div class="activation">
+        <section class="platform-ios" aria-labelledby="ios-heading">
+          <h2 id="ios-heading">在 iPhone 或 iPad 啟用</h2>
+          <ol>
+            <li>
+              開啟「設定」→「App」→「Safari」→「延伸功能」，選擇「新同文堂（修復）」。較舊系統可直接在「設定」找到
+              Safari。
+            </li>
+            <li>開啟延伸功能，並選擇允許存取的網站。</li>
+            <li>返回 Safari，從網頁選單開啟新同文堂，即可選擇「簡體 → 繁體」或「繁體 → 簡體」。</li>
+          </ol>
+          <p>在操作面板選擇「轉換設定與詞庫」，即可設定自動轉換及網域規則。</p>
+        </section>
+        <section class="platform-mac" aria-labelledby="mac-heading">
+          <h2 id="mac-heading">在 Mac 啟用</h2>
+          <p id="extension-state" role="status">
+            在 Safari「設定」→「延伸功能」啟用新同文堂，並允許存取需要轉換的網站。
+          </p>
+          <p>從 Safari 工具列開啟新同文堂，即可轉換目前網頁或調整設定。</p>
+        </section>
+        <button id="open-settings" type="button" hidden>開啟 Safari 延伸功能設定</button>
+        <p id="notice" role="status" aria-live="polite"></p>
+      </div>
       <footer>自動轉換預設關閉，可按網站及閱讀習慣設定。</footer>
     </main>
   </body>

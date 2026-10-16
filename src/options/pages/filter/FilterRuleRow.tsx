@@ -27,30 +27,28 @@ export const FilterRuleRow: FC<{
   }, [handleDown, index]);
 
   return (
-    <tr>
-      <td>{index + 1}</td>
-      <td>{rule.pattern}</td>
-      <td>{i18n.getMessage(`MSG_${rule.target}`)}</td>
-      <td>
+    <li className="record-row">
+      <div className="record-copy">
+        <strong>{rule.pattern}</strong>
+        <span className="badge">
+          {index + 1} · {i18n.getMessage(`MSG_${rule.target.toUpperCase()}`)}
+        </span>
+      </div>
+      <div className="record-actions">
         <Button disabled={index === 0} onClick={up}>
           {i18n.getMessage('MSG_MOVE_UP')}
         </Button>
-      </td>
-      <td>
+
         <Button disabled={!(index < length - 1)} onClick={down}>
           {i18n.getMessage('MSG_MOVE_DOWN')}
         </Button>
-      </td>
-      <td>
-        <Button type="primary" onClick={change}>
-          {i18n.getMessage('MSG_EDIT')}
-        </Button>
-      </td>
-      <td>
+
+        <Button onClick={change}>{i18n.getMessage('MSG_EDIT')}</Button>
+
         <Button type="error" onClick={remove}>
           {i18n.getMessage('MSG_DELETE')}
         </Button>
-      </td>
-    </tr>
+      </div>
+    </li>
   );
 };

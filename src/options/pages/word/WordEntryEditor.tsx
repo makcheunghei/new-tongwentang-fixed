@@ -12,6 +12,7 @@ export const WordEntryEditor: FC<{
   const [value, setValue] = useState(() => entry[1]);
 
   const submit = useCallback(() => {
+    if (!key.trim()) return;
     onSubmit([key, value]);
     setKey('');
     setValue('');
@@ -21,10 +22,13 @@ export const WordEntryEditor: FC<{
     <div className="columns">
       <div className="column col-4">
         <div className="form-group">
-          <label className="form-label">{i18n.getMessage('MSG_CONVERT_TARGET')}</label>
+          <label className="form-label" htmlFor="word-source">
+            {i18n.getMessage('MSG_CONVERT_TARGET')}
+          </label>
           <input
             className="form-input"
             type="text"
+            id="word-source"
             value={key}
             onChange={event => {
               setKey(event.currentTarget.value);
@@ -34,10 +38,13 @@ export const WordEntryEditor: FC<{
       </div>
       <div className="column col-4">
         <div className="form-group">
-          <label className="form-label">{i18n.getMessage('MSG_CONVERT_VALUE')}</label>
+          <label className="form-label" htmlFor="word-result">
+            {i18n.getMessage('MSG_CONVERT_VALUE')}
+          </label>
           <input
             className="form-input"
             type="text"
+            id="word-result"
             value={value}
             onChange={event => {
               setValue(event.currentTarget.value);
@@ -47,10 +54,9 @@ export const WordEntryEditor: FC<{
       </div>
       <div className="column col-4">
         <div className="form-group">
-          <label className="form-label">
-            <span className="d-invisible">button</span>
-          </label>
-          <Button onClick={submit}>{i18n.getMessage('MSG_OK')}</Button>
+          <Button type="primary" disabled={!key.trim()} onClick={submit}>
+            {i18n.getMessage('MSG_OK')}
+          </Button>
         </div>
       </div>
     </div>

@@ -268,5 +268,47 @@
   },
   "MSG_CLOSE_OPTIONS": {
     "message": "關閉設定"
+  },
+  "UI_READING_TOOL": {
+    "message": "中文閱讀工具"
+  },
+  "UI_NAVIGATION": {
+    "message": "設定導覽"
+  },
+  "UI_LOADING": {
+    "message": "正在載入…"
+  },
+  "UI_GENERAL_HELP": {
+    "message": "選擇適合你的閱讀方式。一般設定會即時儲存，網站規則可另行覆寫轉換方向。"
+  },
+  "UI_AUTOMATION": {
+    "message": "自動轉換"
+  },
+  "UI_PAGE_BEHAVIOR": {
+    "message": "網頁行為"
+  },
+  "UI_ADVANCED": {
+    "message": "進階設定"
+  },
+  "UI_ABOUT_HELP": {
+    "message": "繁簡互轉、動態網頁及自訂詞庫。在裝置上處理，專注閱讀。"
+  },
+  "UI_DATA_HELP": {
+    "message": "匯出設定以保留你的規則及詞庫，或從 JSON 檔案匯入。重設前會再確認。"
+  },
+  "UI_NO_RULES": {
+    "message": "未有網站規則。新增第一條，為常看的網站指定轉換方式。"
+  },
+  "UI_NO_WORDS": {
+    "message": "這個詞庫仍然空白。新增詞組，定義你偏好的寫法。"
+  },
+  "UI_INVALID_PATTERN": {
+    "message": "請輸入網域（例如 example.com），或 /正規表示式/。"
+  },
+  "UI_RULE_HELP": {
+    "message": "按次序套用網站規則。編輯完成後，請按「儲存」套用變更。"
+  },
+  "UI_WORD_HELP": {
+    "message": "選擇內置字詞庫，或加入個人慣用詞。變更後請按「儲存」。"
   }
 }

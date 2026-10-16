@@ -1,5 +1,4 @@
-import type { FC} from 'react';
-import { Fragment } from 'react';
+import type { FC } from 'react';
 import { i18n } from '../../../service/i18n/i18n';
 import { Checkbox } from '../../components/forms';
 import { useMenu } from '../../hooks/menu';
@@ -8,7 +7,7 @@ export const MenuSettings: FC = () => {
   const { menu, setMenuEnable, setWebS2t, setWebT2s, setTextS2t, setTextT2s } = useMenu();
 
   return (
-    <Fragment>
+    <form>
       <Checkbox
         isSwitch={true}
         label={i18n.getMessage('MSG_ENABLE_MENU')}
@@ -39,6 +38,6 @@ export const MenuSettings: FC = () => {
         checked={menu.group.textarea.t2s}
         onChange={setTextT2s}
       />
-    </Fragment>
+    </form>
   );
 };

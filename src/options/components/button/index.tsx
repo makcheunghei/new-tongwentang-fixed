@@ -18,14 +18,7 @@ export const Button: FC<{
   const style = fullWidth ? { width: '100%' } : {};
 
   return (
-    <button
-      type="button"
-      disabled={disabled}
-      className={className}
-      style={style}
-      onClick={handleClick}
-      data-tooltip={tooltip}
-    >
+    <button type="button" disabled={disabled} className={className} style={style} onClick={handleClick} title={tooltip}>
       {children}
     </button>
   );

@@ -1,7 +1,3 @@
 import type { FC } from 'react';
-
-export const Divider: FC<{ content?: string }> = ({ content }) => {
-  return (
-    <div className="divider text-center" style={{ marginTop: '1.5em', marginBottom: '1.5em' }} data-content={content} />
-  );
-};
+export const Divider: FC<{ content?: string }> = ({ content }) =>
+  content ? <h2 className="group-heading">{content}</h2> : <hr className="divider" />;

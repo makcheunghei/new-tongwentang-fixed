@@ -40,6 +40,12 @@ export function verifyBuild(vendor) {
   }
   for (const file of files.filter(file => file.endsWith('.html'))) {
     const html = readFileSync(resolve(dir, file), 'utf8');
+    for (const [, stylesheet] of html.matchAll(/<link[^>]*\bhref=["']([^"']+\.css)["']/g)) {
+      assert.ok(
+        !stylesheet.includes('://') && existsSync(resolve(dir, stylesheet)),
+        `Missing local stylesheet: ${stylesheet}`,
+      );
+    }
     for (const [, script] of html.matchAll(/<script[^>]*\bsrc=["']([^"']+)["']/g)) {
       assert.ok(
         !script.includes('://') && existsSync(resolve(dir, script)),
