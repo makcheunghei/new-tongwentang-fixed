@@ -21,3 +21,11 @@ Safari Web Extension 的 popup 使用 HTML、CSS、JavaScript，不能直接使�
 提供離線靜態 HTML 預覽，重用本次實際 CSS，沒有接上擴充功能 API。這些是畫面草稿，不是瀏覽器或真機驗證證據。依照本次要求，不執行自動測試、互動測試、真機安裝及 Release。
 
 參考：[Apple — Safari web extensions](https://developer.apple.com/documentation/safariservices/safari-web-extensions)、[WebKit — Introducing Backdrop Filters](https://webkit.org/blog/3632/introducing-backdrop-filters/)。
+
+## SwiftUI Expert 與 Build iOS Apps 核對
+
+已讀取 SwiftUI Expert 的 SwiftUI／WebKit 指引，以及 Build iOS Apps 的 SwiftUI Liquid Glass 指引，僅作來源與架構檢視，沒有啟動建置、模擬器或除錯工具。
+
+目前 Safari action 在 `manifest.js` 指向 `popup.html`，所以面板仍由 Safari 載入網頁。App 的 `ViewController.swift` 另行在 26 或以上載入 SwiftUI `WelcomeScreen`，其啟用按鈕使用 `.glassProminent`。兩者是不同介面入口；在外層 App 加上 SwiftUI 材質不會自動影響延伸功能面板。
+
+這兩個插件可協助原生 App 的佈局、狀態管理及玻璃 API 使用，但不會改變 Safari Web Extension 的 HTML 介面入口。此次繼續只調整延伸功能的網頁介面；原生 App 的額外重構不納入本輪。
