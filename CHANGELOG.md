@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.3] - 2026-10-16
+
+### Safari 操作面板
+
+- 修復 iPad Safari 操作面板被擠成窄直欄，令標題及按鈕文字逐字換行的問題。
+- 以根元素的明確寬度及 320px 最小寬度提供初始尺寸，避免彈出視窗與 `100vw` 互相依賴。
+- 保留窄螢幕限制及深色模式，圖示不再被標題擠窄。
+
 ## [2.8.2] - 2026-10-15
 
 ### 設定頁

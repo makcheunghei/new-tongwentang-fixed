@@ -4,6 +4,10 @@
 
 > 本專案位於 [`makcheunghei/new-tongwentang-fixed`](https://github.com/makcheunghei/new-tongwentang-fixed)。上游專案為 [`tongwentang/tongwentang-extension`](https://github.com/tongwentang/tongwentang-extension)。
 
+## 2.8.3：修復 iPad 操作面板寬度
+
+修復 iPad Safari 操作面板擠成窄直欄的問題。面板提供獨立於初始 viewport 的最小寬度，避免標題及按鈕逐字換行，並保留手機尺寸及深色模式。
+
 ## 2.8.2：設定頁加入關閉按鈕
 
 所有設定分頁頂部設有「關閉設定」按鈕，手機、平板及桌面版均可使用。按鈕會關閉設定分頁或設定彈出視窗。
