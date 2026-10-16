@@ -15,7 +15,7 @@ export const Navbar: FC<{ page: PageState; setPage: Dispatch<PageAction>; capabi
   setPage,
   capabilities,
 }) => (
-  <nav className="settings-nav" aria-label={i18n.getMessage('UI_NAVIGATION')}>
+  <nav className="settings-nav glass-surface" aria-label={i18n.getMessage('UI_NAVIGATION')}>
     <ul>
       {items
         .filter(([type]) => type !== PageType.menu || capabilities.contextMenus)

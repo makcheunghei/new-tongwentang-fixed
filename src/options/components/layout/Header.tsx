@@ -1,7 +1,7 @@
 import { i18n } from '../../../service/i18n/i18n';
 import { closeOptionsPage } from '../../close-options';
 export const Header = () => (
-  <header className="options-header">
+  <header className="options-header glass-surface">
     <div className="wordmark">
       <span className="settings-app-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
