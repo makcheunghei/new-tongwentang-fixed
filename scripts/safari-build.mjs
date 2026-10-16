@@ -73,6 +73,7 @@ if (action.startsWith('export-')) {
   if (process.env.SAFARI_UNSIGNED === '1' || simulator) args.push('CODE_SIGNING_ALLOWED=NO');
   else args.push('-allowProvisioningUpdates');
   if (platform === 'ios') args.push('TARGETED_DEVICE_FAMILY=1,2', 'IPHONEOS_DEPLOYMENT_TARGET=17.0');
+  if (platform === 'macos') args.push('MACOSX_DEPLOYMENT_TARGET=13.0');
   if (process.env.SAFARI_XCCONFIG) args.push('-xcconfig', resolve(process.env.SAFARI_XCCONFIG));
   if (action === 'archive') args.push('-archivePath', archive, 'archive');
   else args.push('build');
