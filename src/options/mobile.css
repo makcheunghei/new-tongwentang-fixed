@@ -241,6 +241,19 @@ svg {
   border-radius: 0.6rem;
   min-width: 0;
 }
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 17px) 50%,
+    calc(100% - 12px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
 .form-group:has(> .form-select) {
   padding: 0 0 0.85rem;
 }
