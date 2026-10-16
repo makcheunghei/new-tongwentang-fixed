@@ -34,12 +34,11 @@ describe('accessible editors', () => {
   it('opens a labelled modal, routes native cancellation and closes when dismissed', async () => {
     const onCancel = vi.fn();
     const render = (isActive: boolean) =>
-      createElement(Modal, {
-        isActive,
-        head: 'Edit rule',
-        onCancel,
-        children: createElement('input', { 'aria-label': 'Pattern' }),
-      });
+      createElement(
+        Modal,
+        { isActive, head: 'Edit rule', onCancel },
+        createElement('input', { 'aria-label': 'Pattern' }),
+      );
     await act(async () => root.render(render(true)));
     const dialog = container.querySelector('dialog')!;
     expect(dialog.open).toBe(true);

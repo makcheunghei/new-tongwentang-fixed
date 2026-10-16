@@ -5,7 +5,7 @@ export const Modal: FC<{
   isActive: boolean;
   head?: string;
   footer?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   onOk?: () => void;
   onCancel: () => void;
 }> = ({ head, footer, isActive, onCancel, children }) => {
