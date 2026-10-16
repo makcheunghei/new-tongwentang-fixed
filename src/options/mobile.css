@@ -1,17 +1,25 @@
 :root {
   color-scheme: light dark;
-  --surface: #f2f2f7;
-  --panel: #fff;
-  --ink: #1c1c1e;
-  --muted: #636366;
-  --accent: #0066cc;
+  --surface: #edf1fa;
+  --panel: rgba(255, 255, 255, 0.88);
+  --opaque-panel: #f8faff;
+  --ink: #18243b;
+  --muted: #52617b;
+  --accent: #175fd8;
   --on-accent: #fff;
   --danger: #b32630;
-  --line: #dedee3;
+  --line: rgba(74, 100, 151, 0.15);
   --tint: #e7f0ff;
-  --hover: #ededf2;
-  --chrome: rgba(250, 250, 252, 0.84);
-  --chrome-edge: rgba(255, 255, 255, 0.85);
+  --hover: rgba(255, 255, 255, 0.52);
+  --chrome: rgba(255, 255, 255, 0.3);
+  --chrome-edge: rgba(255, 255, 255, 0.82);
+  --glass-highlight: rgba(255, 255, 255, 0.92);
+  --glass-sheen: linear-gradient(145deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.02) 52%);
+  --glass-shadow: 0 14px 42px rgba(38, 62, 109, 0.1), 0 2px 8px rgba(38, 62, 109, 0.05);
+  --glass-inset: inset 0 1px 0 var(--glass-highlight), inset 0 -1px 0 rgba(255, 255, 255, 0.18);
+  --ambient-blue: rgba(118, 175, 248, 0.4);
+  --ambient-violet: rgba(165, 139, 234, 0.34);
+  --ambient-warm: rgba(255, 220, 191, 0.22);
   font:
     100%/1.5 -apple-system,
     BlinkMacSystemFont,
@@ -32,6 +40,19 @@ body {
   margin: 0;
   background: var(--surface);
   color: var(--ink);
+  position: relative;
+  isolation: isolate;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 6% 12%, var(--ambient-blue), transparent 55%),
+    radial-gradient(ellipse at 96% 58%, var(--ambient-violet), transparent 58%),
+    radial-gradient(ellipse at 32% 96%, var(--ambient-warm), transparent 52%);
 }
 button,
 input,
@@ -120,8 +141,13 @@ svg {
   justify-content: space-between;
   gap: 0.75rem;
   padding: 0.8rem 1.5rem;
-  border-bottom: 1px solid var(--line);
-  background: var(--panel);
+  margin: 0.8rem 1rem 0;
+  border: 1px solid var(--chrome-edge);
+  border-radius: 24px;
+  background: var(--glass-sheen), var(--chrome);
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
 }
 .wordmark {
   display: flex;
@@ -141,8 +167,10 @@ svg {
   height: 32px;
   border-radius: 9px;
   flex-shrink: 0;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: rgba(255, 255, 255, 0.44);
+  color: var(--accent);
+  border: 1px solid var(--chrome-edge);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 .settings-app-icon svg {
   width: 23px;
@@ -153,7 +181,14 @@ svg {
   flex-shrink: 0;
 }
 .settings-nav {
-  padding: 1.5rem 0.75rem;
+  padding: 0.5rem;
+  margin: 1.3rem 0 0 1rem;
+  border: 1px solid var(--chrome-edge);
+  border-radius: 22px;
+  background: var(--glass-sheen), var(--chrome);
+  box-shadow: var(--glass-inset), var(--glass-shadow);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
 }
 .settings-nav ul {
   list-style: none;
@@ -167,25 +202,27 @@ svg {
   align-items: center;
   gap: 0.6rem;
   width: 100%;
-  min-height: 44px;
+  min-height: 48px;
   padding: 0.6rem 0.85rem;
   border: 0;
-  border-radius: 0.65rem;
+  border-radius: 15px;
   text-align: left;
   font-size: 0.9rem;
   color: var(--ink);
   background: transparent;
 }
 .settings-nav button[aria-current] {
-  background: var(--panel);
-  box-shadow: 0 1px 4px #0000000b;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 2px 8px rgba(38, 62, 109, 0.06);
   font-weight: 600;
   color: var(--accent);
 }
 .settings-content {
   padding: 2rem 2.5rem 4rem;
   min-width: 0;
-  border-left: 1px solid var(--line);
+  border-left: 0;
 }
 .settings-page {
   max-width: 40rem;
@@ -207,10 +244,11 @@ svg {
 .settings-page .panel,
 .settings-page .card {
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 20px;
   background: var(--panel);
   padding: 0 1rem;
   margin-bottom: 1rem;
+  box-shadow: 0 6px 24px rgba(38, 62, 109, 0.035);
 }
 .settings-page form form {
   padding: 0;
@@ -348,10 +386,11 @@ svg {
   border-color: transparent;
 }
 .options-close {
-  background: var(--hover);
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.36);
+  border-color: var(--chrome-edge);
   color: var(--accent);
   padding: 0.4rem 0.9rem;
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 .columns,
 .actions-row {
@@ -477,9 +516,11 @@ svg {
   overflow: auto;
   border: 1px solid var(--line);
   border-radius: 24px;
-  background: var(--panel);
+  background: var(--glass-sheen), var(--panel);
   color: var(--ink);
-  box-shadow: 0 24px 100px #0003;
+  box-shadow:
+    var(--glass-inset),
+    0 24px 100px #13274830;
 }
 .editor-dialog::backdrop {
   background: #0005;
@@ -574,16 +615,13 @@ summary {
 @media (min-width: 761px) {
   .settings-nav {
     position: sticky;
-    top: 4.5rem;
+    top: 6rem;
     align-self: start;
   }
   .options-header {
     position: sticky;
-    top: 0;
+    top: 0.8rem;
     z-index: 5;
-    background: var(--chrome);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
   }
 }
 @media (max-width: 760px) {
@@ -591,9 +629,11 @@ summary {
     display: block;
   }
   .options-header {
-    padding: 0.65rem max(1rem, env(safe-area-inset-right)) 0.65rem max(1rem, env(safe-area-inset-left));
+    padding: 0.65rem 0.8rem;
+    margin: max(0.6rem, env(safe-area-inset-top)) max(0.6rem, env(safe-area-inset-right)) 0
+      max(0.6rem, env(safe-area-inset-left));
     gap: 0.5rem;
-    background: var(--panel);
+    border-radius: 22px;
   }
   .wordmark {
     flex-basis: 11rem;
@@ -620,12 +660,8 @@ summary {
     padding: 0.35rem;
     border-radius: 32px;
     border: 1px solid var(--chrome-edge);
-    background: var(--chrome);
-    box-shadow:
-      0 6px 30px #00000014,
-      0 0 0 1px #00000008;
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    background: var(--glass-sheen), var(--chrome);
+    box-shadow: var(--glass-inset), var(--glass-shadow);
   }
   .settings-nav ul {
     display: flex;
@@ -651,8 +687,10 @@ summary {
   }
   .settings-nav button[aria-current] {
     color: var(--accent);
-    background: var(--panel);
-    box-shadow: 0 1px 5px #0000000d;
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      0 2px 8px rgba(38, 62, 109, 0.06);
   }
   .settings-nav svg {
     width: 1.3rem;
@@ -681,23 +719,43 @@ summary {
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: #101014;
-    --panel: #1c1c1e;
+    --surface: #101725;
+    --panel: rgba(26, 37, 57, 0.92);
+    --opaque-panel: #1a2539;
     --ink: #f5f5f7;
-    --muted: #b8b8be;
+    --muted: #bcc9df;
     --accent: #71b7ff;
     --on-accent: #071729;
     --danger: #ffb4b8;
-    --line: #3a3a3e;
+    --line: rgba(173, 197, 237, 0.18);
     --tint: #19344f;
-    --hover: #2c2c30;
-    --chrome: rgba(36, 36, 40, 0.86);
-    --chrome-edge: rgba(255, 255, 255, 0.16);
+    --hover: rgba(151, 184, 236, 0.12);
+    --chrome: rgba(34, 48, 73, 0.38);
+    --chrome-edge: rgba(208, 226, 255, 0.25);
+    --glass-highlight: rgba(224, 237, 255, 0.3);
+    --glass-sheen: linear-gradient(145deg, rgba(200, 222, 255, 0.13), rgba(200, 222, 255, 0.015) 52%);
+    --glass-shadow: 0 16px 42px rgba(0, 5, 18, 0.3), 0 2px 8px rgba(0, 5, 18, 0.14);
+    --glass-inset: inset 0 1px 0 var(--glass-highlight), inset 0 -1px 0 rgba(200, 222, 255, 0.07);
+    --ambient-blue: rgba(32, 99, 173, 0.32);
+    --ambient-violet: rgba(100, 63, 170, 0.3);
+    --ambient-warm: rgba(124, 79, 110, 0.16);
+  }
+  .settings-app-icon,
+  .options-close {
+    background: rgba(180, 207, 249, 0.08);
+  }
+  .settings-nav button[aria-current] {
+    background: rgba(180, 207, 249, 0.16);
   }
 }
 @media (prefers-reduced-transparency: reduce) {
   :root {
-    --chrome: var(--panel);
+    --panel: var(--opaque-panel);
+    --chrome: var(--opaque-panel);
+    --glass-sheen: none;
+  }
+  body::before {
+    display: none;
   }
   .options-header,
   .settings-nav {
@@ -715,7 +773,9 @@ summary {
 @media (prefers-contrast: more) {
   :root {
     --line: var(--muted);
-    --chrome: var(--panel);
+    --panel: var(--opaque-panel);
+    --chrome: var(--opaque-panel);
+    --glass-sheen: none;
   }
   .settings-nav {
     border-color: var(--ink);
@@ -725,6 +785,15 @@ summary {
   }
 }
 @media (forced-colors: active) {
+  body::before {
+    display: none;
+  }
+  .options-header,
+  .settings-nav {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
   .form-switch input {
     appearance: auto;
     width: 28px;
@@ -738,5 +807,11 @@ summary {
   }
   .btn {
     border: 1px solid ButtonText;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .options-header,
+  .settings-nav {
+    background: var(--opaque-panel);
   }
 }
